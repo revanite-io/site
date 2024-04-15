@@ -1,0 +1,16 @@
+/*
+
+Add styles or override variables from the theme here.
+
+*/
+
+$primary: #05272b;
+$secondary: #fffaea;
+
+$enable-gradients: false;
+$enable-rounded: true;
+$enable-shadows: false;
+
+.btn-secondary {
+    color: $primary !important;
+}

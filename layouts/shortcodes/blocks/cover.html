@@ -1,0 +1,28 @@
+{{ $col_id := .Get "color" | default "dark" }}
+{{/* Height can be one of: auto, min, med, max, full. */}}
+{{ $height := .Get "height" | default "max"  }}
+<section class="
+    row td-cover-block td-cover-block--height-{{ $height }} js-td-cover td-overlay td-overlay--light 
+    -bg-{{ $col_id }}" style="background-image:url(background.jpg)">
+    <div class="container td-overlay__inner">
+        <div class="row align-items-center justify-content-center">
+            <div class="col-lg-6 col-md-4">
+                <img alt="0BG" class="img-fluid" src="/images/featured-image.png" />
+            </div>
+            <div class="col-lg-6 col-md-4" style="margin-top:10px;">
+                <p class="lead display-2 mb-0 col-12 text-center">Adventure for<br />Any Moment</p>
+                <p class="lead display-5 mb-0 col-12 text-center">Speculative fiction podcast magazine<br/>for upbeat and comedy stories.</p>
+            </div>
+            <div class="col-12 pt-3">
+                <div class="pt-3 lead text-center mx-auto">
+                    <div class="row justify-content-center">
+                        <p class="col-lg-8 lead mt-4">
+                            {{ .Inner }}
+                            <!-- {{ partial "subscribe.html" .}} -->
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

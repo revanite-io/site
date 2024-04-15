@@ -1,0 +1,20 @@
+{{ $_hugo_config := `{ "version": 1 }` }}
+{{ $col_id := .Get "color" | default .Ordinal }}
+{{ $height := .Get "height" | default "auto"  }}
+{{ $type   := .Get "type" | default "" }}
+{{ $title  := .Get "title" | default "" }}
+{{ $icon  := .Get "icon" | default "" }}
+<a id="td-block-{{ .Ordinal }}" class="td-offset-anchor"></a>
+<section class="row td-box td-box--{{ $col_id }} td-box--gradient td-box--height-{{ $height }}">
+	<div class="col text-center">
+		{{ if $icon }}<div class="h1"><i class="{{ if not (or (hasPrefix $icon "fas ") (hasPrefix $icon "fab ")) }}fas {{ end }}{{ $icon }}"></i></div>{{ end }}
+		{{ if $title }}<h2 style="padding-bottom: 1rem;">{{ $title }}</h2>{{ end }}
+		<div class="row {{ $type }}">
+			{{ if eq .Page.File.Ext "md" }}
+				{{ .Inner | markdownify }}
+			{{ else }}
+				{{ .Inner | htmlUnescape | safeHTML }}
+			{{ end }}
+		</div>
+	</div>
+</section>
