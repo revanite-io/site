@@ -1,6 +1,5 @@
 languageCode = 'en-us'
 baseURL = "https://revanite.io/"
-title = "Revanite"
 
 enableRobotsTXT = true
 
