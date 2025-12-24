@@ -1,0 +1,126 @@
+/* Global layout and reset for the personal website wireframe */
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html,
+body,
+#root {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  overscroll-behavior: none;
+  -webkit-overflow-scrolling: touch;
+}
+
+body {
+  background: var(--gf-color-background, #050816);
+}
+
+/* Cyan Flow theme enhancements */
+.cyan-theme aside,
+.cyan-theme [class*="card"] {
+  backdrop-filter: var(--gf-glass-blur, none);
+  -webkit-backdrop-filter: var(--gf-glass-blur, none);
+}
+
+/* Darker text for buttons with accent background in cyan theme */
+.cyan-theme button[style*="var(--gf-color-accent)"] {
+  color: var(--gf-color-button-text, #000000) !important;
+}
+
+/* Neon glow effects for cyan theme */
+.cyan-theme button:hover,
+.cyan-theme select:hover {
+  box-shadow: 0 0 20px var(--gf-cyan-glow, transparent);
+  border-color: var(--gf-color-accent, #3AD0E6);
+  transition: box-shadow 0.3s ease, border-color 0.3s ease;
+}
+
+/* Hide scrollbar for infinite scroll hero row */
+#affiliations > div {
+  scrollbar-width: none; /* Firefox */
+  -ms-overflow-style: none; /* IE and Edge */
+}
+
+#affiliations > div::-webkit-scrollbar {
+  display: none; /* Chrome, Safari, Opera */
+}
+
+/* Responsive padding for header on large screens */
+@media (min-width: 1024px) {
+  .site-header {
+    padding-top: calc(var(--gf-space-xl) * 2) !important;
+  }
+}
+
+/* Base typography styles */
+h2 {
+  font-size: 1.75rem;
+  font-weight: 600;
+  color: var(--gf-color-accent);
+  margin-bottom: var(--gf-space-md);
+}
+
+h3 {
+  font-size: 1.75rem;
+  font-weight: 600;
+  color: var(--gf-color-accent);
+  margin-bottom: var(--gf-space-md);
+}
+
+/* Responsive margins for main content */
+.main-content {
+  margin-left: 0;
+  margin-right: 0;
+}
+
+/* Tablet and up - add side margins */
+@media (min-width: 768px) {
+  .main-content {
+    margin-left: var(--gf-space-lg);
+    margin-right: var(--gf-space-lg);
+  }
+}
+
+/* Desktop - increase side margins */
+@media (min-width: 1024px) {
+  .main-content {
+    margin-left: var(--gf-space-xl);
+    margin-right: var(--gf-space-xl);
+  }
+}
+
+/* Large desktop - even larger margins */
+@media (min-width: 1440px) {
+  .main-content {
+    margin-left: calc(var(--gf-space-xl) * 2);
+    margin-right: calc(var(--gf-space-xl) * 2);
+  }
+}
+
+/* Responsive typography for mobile */
+@media (max-width: 768px) {
+  /* Reduce h2 font size on mobile */
+  .main-content h2 {
+    font-size: 1.6rem;
+  }
+  
+  /* Reduce h3 font size on mobile */
+  .main-content h3 {
+    font-size: 1.5rem;
+  }
+  
+  /* Reduce paragraph and list item font size on mobile */
+  .text-section p,
+  .text-section li,
+  #oss-cta p,
+  #grc-cta p,
+  #three-pillars p {
+    font-size: 1rem !important;
+  }
+}
+
