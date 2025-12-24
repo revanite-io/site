@@ -10,7 +10,7 @@ export const BackgroundArcs: React.FC = () => {
         width: "100vw",
         height: "100vh",
         zIndex: -1,
-        background: "#051616",
+        background: "#000000",
         pointerEvents: "none",
         overflow: "hidden"
       }}
@@ -40,30 +40,30 @@ export const BackgroundArcs: React.FC = () => {
           d="M-100,200 Q400,100 1100,500"
           className="arc arc-1"
           fill="none"
-          stroke="#3AD0E6"
+          stroke="#4AE0F0"
           strokeWidth="2"
           filter="url(#glow)"
-          opacity="0.5"
+          opacity="0.6"
         />
         {/* Arc 2 */}
         <path
           d="M-100,800 Q500,400 1100,900"
           className="arc arc-2"
           fill="none"
-          stroke="#3AD0E6"
+          stroke="#4AE0F0"
           strokeWidth="2"
           filter="url(#glow)"
-          opacity="0.3"
+          opacity="0.4"
         />
         {/* Arc 3 */}
         <path
           d="M200,-100 Q800,500 200,1100"
           className="arc arc-3"
           fill="none"
-          stroke="#3AD0E6"
+          stroke="#4AE0F0"
           strokeWidth="2"
           filter="url(#glow)"
-          opacity="0.2"
+          opacity="0.3"
         />
       </svg>
       <style>{`

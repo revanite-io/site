@@ -17,7 +17,7 @@ body,
 }
 
 body {
-  background: var(--gf-color-background, #050816);
+  background: var(--gf-color-background, #000000);
 }
 
 /* Cyan Flow theme enhancements */
@@ -36,7 +36,7 @@ body {
 .cyan-theme button:hover,
 .cyan-theme select:hover {
   box-shadow: 0 0 20px var(--gf-cyan-glow, transparent);
-  border-color: var(--gf-color-accent, #3AD0E6);
+  border-color: var(--gf-color-accent, #4AE0F0);
   transition: box-shadow 0.3s ease, border-color 0.3s ease;
 }
 
