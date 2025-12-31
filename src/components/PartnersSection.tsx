@@ -207,6 +207,16 @@ export const PartnersSection: React.FC = () => {
         marginTop: "var(--gf-space-xl)"
       }}
     >
+      <h3
+        style={{
+          fontSize: "1rem",
+          color: "var(--gf-color-text-subtle)",
+          textAlign: "center",
+          fontWeight: "normal"
+        }}
+      >
+        Our Projects & Partners
+      </h3>
       <div
         ref={scrollContainerRef}
         onMouseDown={handleUserInteraction}
@@ -217,8 +227,9 @@ export const PartnersSection: React.FC = () => {
           overflowY: "hidden",
           scrollBehavior: "auto",
           WebkitOverflowScrolling: "touch",
+          scrollbarWidth: "none", /* Firefox */
+          msOverflowStyle: "none", /* IE and Edge */
           paddingBottom: "var(--gf-space-lg)",
-          paddingTop: "var(--gf-space-lg)",
           width: "100vw",
           marginLeft: "calc(-50vw + 50%)",
           paddingLeft: "var(--gf-space-xl)",

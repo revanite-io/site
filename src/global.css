@@ -41,12 +41,14 @@ body {
 }
 
 /* Hide scrollbar for infinite scroll hero row */
-#affiliations > div {
+#affiliations > div,
+#partners > div {
   scrollbar-width: none; /* Firefox */
   -ms-overflow-style: none; /* IE and Edge */
 }
 
-#affiliations > div::-webkit-scrollbar {
+#affiliations > div::-webkit-scrollbar,
+#partners > div::-webkit-scrollbar {
   display: none; /* Chrome, Safari, Opera */
 }
 
