@@ -205,5 +205,115 @@ h3 {
   [style*="fontSize: 0.95rem"] {
     font-size: 0.875rem !important;
   }
+  
+  /* Responsive margins and padding for mobile */
+  
+  /* Header - reduce padding */
+  .site-header {
+    padding: var(--gf-space-md) !important;
+  }
+  
+  /* Hero section - reduce min height and spacing */
+  #hero {
+    min-height: 20vh !important;
+  }
+  
+  #hero > p {
+    margin-bottom: var(--gf-space-md) !important;
+  }
+  
+  /* Navigation - reduce padding */
+  nav a,
+  nav div {
+    padding: 0.4rem 0.8rem !important;
+  }
+  
+  nav {
+    margin-top: var(--gf-space-sm, 0.75rem) !important;
+  }
+  
+  /* Partners section - reduce margins and padding */
+  #partners {
+    margin-top: var(--gf-space-md) !important;
+    margin-bottom: var(--gf-space-md) !important;
+  }
+  
+  #partners > div {
+    padding-left: var(--gf-space-md) !important;
+    padding-right: var(--gf-space-md) !important;
+    padding-top: var(--gf-space-md) !important;
+    padding-bottom: var(--gf-space-md) !important;
+  }
+  
+  /* CTACard - reduce padding and margins */
+  section[id*="cta"] {
+    padding: var(--gf-space-md) !important;
+    margin-bottom: var(--gf-space-md) !important;
+  }
+  
+  section[id*="cta"] button,
+  section[id*="cta"] a,
+  section[id*="cta"] > div > div {
+    padding: var(--gf-space-md) var(--gf-space-lg) !important;
+  }
+  
+  section[id*="cta"] p {
+    margin-bottom: var(--gf-space-md) !important;
+  }
+  
+  /* PillarCard - reduce padding */
+  /* Target cards with surface background - will apply to cards */
+  div[style*="backgroundColor"][style*="var(--gf-color-surface)"] {
+    padding: var(--gf-space-md) !important;
+  }
+  
+  /* TextSection - reduce margins */
+  .text-section {
+    margin-bottom: var(--gf-space-md) !important;
+  }
+  
+  .text-section p {
+    margin-bottom: var(--gf-space-sm, 0.5rem) !important;
+  }
+  
+  .text-section h2 + p {
+    margin-bottom: var(--gf-space-md) !important;
+  }
+  
+  /* ListSection - reduce margins */
+  .text-section ul {
+    margin-bottom: var(--gf-space-sm, 0.5rem) !important;
+    padding-left: 1.2em !important;
+  }
+  
+  .text-section li {
+    margin-bottom: var(--gf-space-sm, 0.5rem) !important;
+  }
+  
+  /* Footer - reduce padding */
+  footer {
+    padding: var(--gf-space-md) !important;
+  }
+  
+  /* Main content - reduce padding */
+  .main-content {
+    padding: var(--gf-space-md) !important;
+    padding-top: var(--gf-space-lg) !important;
+  }
+  
+  /* Large margin multipliers - reduce significantly */
+  /* HomePage specific large margins - target divs with calculated margins */
+  .main-content > div > div[style*="marginTop"] {
+    margin-top: var(--gf-space-lg) !important;
+  }
+  
+  /* ApplicationPage - reduce section spacing */
+  main > div > div[style*="marginBottom"] {
+    margin-bottom: var(--gf-space-md) !important;
+  }
+  
+  main > div > div[style*="padding"] {
+    padding: var(--gf-space-md) !important;
+  }
 }
 
