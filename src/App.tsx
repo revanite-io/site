@@ -4,7 +4,6 @@ import { Header } from "./components/Header";
 import { Footer } from "./components/Footer";
 import { BackgroundArcs } from "./components/BackgroundArcs";
 import { HomePage } from "./pages/HomePage";
-import { BioPage } from "./pages/BioPage";
 import { ApplicationPage } from "./pages/ApplicationPage";
 import { useTheme } from "./theme";
 
@@ -37,7 +36,6 @@ export const App: React.FC = () => {
         >
           <Routes>
             <Route path="/" element={<HomePage />} />
-            <Route path="/bio" element={<BioPage />} />
             <Route path="/apply" element={<ApplicationPage />} />
             <Route path="*" element={<Navigate to="/" replace />} />
           </Routes>

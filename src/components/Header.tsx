@@ -80,29 +80,6 @@ export const Header: React.FC = () => {
           >
             Home
           </Link>
-          <Link
-            to="/bio"
-            style={{
-              color: "var(--gf-color-text)",
-              textDecoration: "none",
-              padding: "0.5rem 1rem",
-              borderRadius: "var(--gf-radius-lg)",
-              transition: "background-color 0.2s",
-              backgroundColor: location.pathname === "/bio" ? "var(--gf-color-accent-soft)" : "transparent"
-            }}
-            onMouseEnter={(e) => {
-              if (location.pathname !== "/bio") {
-                e.currentTarget.style.backgroundColor = "var(--gf-color-accent-soft)";
-              }
-            }}
-            onMouseLeave={(e) => {
-              if (location.pathname !== "/bio") {
-                e.currentTarget.style.backgroundColor = "transparent";
-              }
-            }}
-          >
-            Bio
-          </Link>
           <div
             style={{
               color: "var(--gf-color-text)",
