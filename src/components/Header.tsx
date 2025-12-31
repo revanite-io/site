@@ -1,5 +1,6 @@
 import React from "react";
 import { Link, useLocation } from "react-router-dom";
+import logoImage from "../assets/images/logo-transparent.png";
 
 export const Header: React.FC = () => {
   const location = useLocation();
@@ -26,28 +27,26 @@ export const Header: React.FC = () => {
           textAlign: "center",
         }}
       >
-        <h1
+        <img
+          src={logoImage}
+          alt="Revanite"
           style={{
-            fontSize: "3.5rem",
-            fontWeight: 700,
+            maxWidth: "80%",
+            maxHeight: "250px",
+            height: "auto",
             marginBottom: 0,
-            color: "var(--gf-color-text)",
-            lineHeight: 1.1,
-            maxWidth: "900px"
+            objectFit: "contain"
           }}
-        >
-          Revanite
-        </h1>
+        />
         <p
           style={{
             fontSize: "2rem",
             color: "var(--gf-color-text-subtle)",
-            marginTop: "0.5rem",
+            marginTop: "0",
             marginBottom: "var(--gf-space-lg)",
-            lineHeight: 1.6
           }}
         >
-          Your Title
+          Continuous Compliance Monitoring
         </p>
         <nav
           style={{
