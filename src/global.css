@@ -106,23 +106,104 @@ h3 {
 
 /* Responsive typography for mobile */
 @media (max-width: 768px) {
+  /* Reduce h1 font size on mobile */
+  h1 {
+    font-size: 1.75rem !important;
+  }
+  
   /* Reduce h2 font size on mobile */
-  .main-content h2 {
-    font-size: 1.6rem;
+  .main-content h2,
+  h2 {
+    font-size: 1.5rem !important;
   }
   
   /* Reduce h3 font size on mobile */
-  .main-content h3 {
-    font-size: 1.5rem;
+  .main-content h3,
+  h3 {
+    font-size: 1.25rem !important;
   }
   
-  /* Reduce paragraph and list item font size on mobile */
-  .text-section p,
-  .text-section li,
-  #oss-cta p,
-  #grc-cta p,
-  #three-pillars p {
+  /* Header subtitle - reduce from 2rem to 1.5rem */
+  #hero > p {
+    font-size: 1.5rem !important;
+  }
+  
+  /* PartnersSection title - keep at 1rem or reduce slightly */
+  #partners h3 {
+    font-size: 0.9rem !important;
+  }
+  
+  /* TextSection paragraphs - reduce from 1.25rem to 1rem */
+  .text-section p {
     font-size: 1rem !important;
+  }
+  
+  /* TextSection list items - reduce from 1.25rem to 1rem */
+  .text-section li {
+    font-size: 1rem !important;
+  }
+  
+  /* TextSection subtitles - reduce from 1.5rem to 1.25rem */
+  /* Target paragraphs that are likely subtitles (after h2) */
+  .text-section h2 + p {
+    font-size: 1.25rem !important;
+  }
+  
+  /* CTACard paragraphs and buttons - reduce from 1.25rem to 1rem */
+  section[id*="cta"] p,
+  section[id*="cta"] button,
+  section[id*="cta"] a,
+  section[id*="cta"] > div > div {
+    font-size: 1rem !important;
+  }
+  
+  /* PillarCard descriptions - reduce from 1.1rem to 1rem */
+  /* Target paragraphs that follow h3 in card-like containers */
+  div[style*="backgroundColor"] h3 + p {
+    font-size: 1rem !important;
+  }
+  
+  /* ApplicationPage - target main heading */
+  main h1 {
+    font-size: 1.75rem !important;
+  }
+  
+  /* General overrides for common font sizes in inline styles */
+  /* These use attribute selectors which work with React's inline styles */
+  [style*="fontSize: \"2.5rem\""],
+  [style*="fontSize: '2.5rem'"],
+  [style*="fontSize: 2.5rem"] {
+    font-size: 1.75rem !important;
+  }
+  
+  [style*="fontSize: \"2rem\""],
+  [style*="fontSize: '2rem'"],
+  [style*="fontSize: 2rem"] {
+    font-size: 1.5rem !important;
+  }
+  
+  [style*="fontSize: \"1.5rem\""],
+  [style*="fontSize: '1.5rem'"],
+  [style*="fontSize: 1.5rem"] {
+    font-size: 1.25rem !important;
+  }
+  
+  [style*="fontSize: \"1.25rem\""],
+  [style*="fontSize: '1.25rem'"],
+  [style*="fontSize: 1.25rem"] {
+    font-size: 1rem !important;
+  }
+  
+  [style*="fontSize: \"1.1rem\""],
+  [style*="fontSize: '1.1rem'"],
+  [style*="fontSize: 1.1rem"] {
+    font-size: 1rem !important;
+  }
+  
+  [style*="fontSize: \"0.95rem\""],
+  [style*="fontSize: '0.95rem'"],
+  [style*="fontSize: 0.95rem"] {
+    font-size: 0.875rem !important;
   }
 }
 
