@@ -2,7 +2,6 @@ import React from "react";
 import { TextSection } from "../../components/TextSection";
 import { ListSection } from "../../components/ListSection";
 import { CTACard } from "../../components/CTACard";
-import { AffiliationsSection } from "../../components/AffiliationsSection";
 
 export const AvailabilitySection: React.FC = () => {
   return (

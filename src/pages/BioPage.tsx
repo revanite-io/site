@@ -1,6 +1,6 @@
 import React from "react";
 import { TextSection } from "../components/TextSection";
-import { AffiliationsSection } from "../components/AffiliationsSection";
+import { PartnersSection } from "../components/PartnersSection";
 
 export const BioPage: React.FC = () => {
   return (
@@ -21,7 +21,7 @@ export const BioPage: React.FC = () => {
         maxWidth="1000px"
       />
 
-      <AffiliationsSection />
+      <PartnersSection />
 
       {/* Key Work Section */}
       <TextSection
