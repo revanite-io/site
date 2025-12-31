@@ -66,7 +66,7 @@ export const PartnersSection: React.FC = () => {
   const animationFrameRef = useRef<number | null>(null);
   const resumeTimeoutRef = useRef<number | null>(null);
   const lastScrollPositionRef = useRef<number>(0);
-  const scrollSpeed = 0.5; // pixels per frame
+  const scrollSpeed = 0.25; // pixels per frame
 
   // Triple partners for seamless infinite scroll (3x length)
   const duplicatedPartners = [...partners, ...partners, ...partners];
@@ -156,9 +156,9 @@ export const PartnersSection: React.FC = () => {
       e.stopPropagation();
       e.stopImmediatePropagation();
 
-      // Cap the scroll delta - normal speed is 0.5px/frame, 3x = 1.5px/frame
-      // At 60fps that's 90px/sec. Cap wheel events to 15px per event (very restrictive)
-      const maxDeltaPerEvent = 15;
+      // Cap the scroll delta - normal speed is 0.25px/frame, 3x = 0.75px/frame
+      // At 60fps that's 45px/sec. Cap wheel events to 7.5px per event (very restrictive)
+      const maxDeltaPerEvent = 7.5;
       const cappedDelta = Math.sign(deltaX) * Math.min(Math.abs(deltaX), maxDeltaPerEvent);
 
       // Manually scroll with capped speed
