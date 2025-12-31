@@ -47,10 +47,6 @@ jobs:
         env:
           NODE_ENV: production
         run: npm run build
-      - name: Add CNAME for custom domain
-        run: |
-          mkdir -p ./dist
-          echo "eddieknight.dev" > ./dist/CNAME
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v4
         with:
