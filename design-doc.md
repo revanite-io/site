@@ -44,7 +44,7 @@ The site provides straightforward navigation and clear paths to engagement.
 ### **Main Navigation Flow**
 
 1. **Landing:** User arrives at homepage with hero section and key content areas.  
-2. **Exploration:** User can navigate to Bio page for detailed information or Application page to engage.  
+2. **Exploration:** TBD
 3. **Application:** User fills out application form with context, stakes, stakeholders, and contact information.
 
 ### **Content Structure**
