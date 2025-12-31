@@ -89,7 +89,7 @@ export const Header: React.FC = () => {
               pointerEvents: "none"
             }}
           >
-            Apply
+            Alpha Opening Soon
           </div>
         </nav>
       </section>
