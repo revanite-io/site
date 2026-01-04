@@ -80,39 +80,21 @@ export const DebriefPage: React.FC = () => {
         <TextSection
           paragraphs={["This year has been an interesting one for my work in the CNCF, with several items to highlight:"]}
         />
-      </ContentSection>
-
-      <TwoColumnSection
-        imageUrl="https://hs-243073831.f.hubspotstarter-na2.net/hub/243073831/hubfs/cncf-1.png?upscale=true&width=380&upscale=true&name=cncf-1.png"
-        imageAlt="cncf-1"
-        imageLeft={false}
-        leftColumnRatio={8}
-        rightColumnRatio={4}
-        imageWidth={190}
-        content={
-          <ListSection
-            items={[
-              <>
-                Led by Brandt Keller, we managed to push the{" "}
-                <a
-                  href="https://www.cncf.io/blog/2025/05/05/announcing-the-automated-governance-maturity-model/?utm_source=hs_email&utm_medium=email&_hsenc=p2ANqtz-9FyjtX-24qdSpEdQAUfI7o15jfgrIGZvhSmDJynuTi0PgsT38Exih4iJwVto17MTBkIdi7"
-                  style={{ color: "#00a4bd" }}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                >
-                  <em>Automated Governance Maturity Model</em>
-                </a>{" "}
-                across the finish line. It drew on learnings from authors in a variety of industries, and served as the
-                inspiration for what would become the <em>Gemara</em> project (more on that below).
-              </>
-            ]}
-          />
-        }
-      />
-
-      <ContentSection>
         <ListSection
           items={[
+              <>
+              Led by Brandt Keller, we managed to push the{" "}
+              <a
+                href="https://www.cncf.io/blog/2025/05/05/announcing-the-automated-governance-maturity-model/?utm_source=hs_email&utm_medium=email&_hsenc=p2ANqtz-9FyjtX-24qdSpEdQAUfI7o15jfgrIGZvhSmDJynuTi0PgsT38Exih4iJwVto17MTBkIdi7"
+                style={{ color: "#00a4bd" }}
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                <em>Automated Governance Maturity Model</em>
+              </a>{" "}
+              across the finish line. It drew on learnings from authors in a variety of industries, and served as the
+              inspiration for what would become the <em>Gemara</em> project (more on that below).
+            </>,
             <>
               I flew to KubeCon in London to give a{" "}
               <a
@@ -126,14 +108,7 @@ export const DebriefPage: React.FC = () => {
               with Mike Lieberman at a conference with more than 10,000 people. We gave a high level walkthrough of the
               European Union's <em>Cyber Resilience Act</em>, focusing on understanding the different personas it impact,
               and why it's not as scary as it looks.
-            </>
-          ]}
-        />
-      </ContentSection>
-
-      <ContentSection>
-        <ListSection
-          items={[
+            </>,
             <>
               At the same event, I led four{" "}
               <a
@@ -147,38 +122,23 @@ export const DebriefPage: React.FC = () => {
               workshops alongside maintainers from Flux, OpenTelemetry, Meshery, and OSCAL Compass. This was a successful
               pilot of the OSPS Baseline and the automation we would later integrate into LFX Insights — the official
               Linux Foundation tooling.
-            </>
+            </>,
+            <>
+            All Technical Advisory Groups were restructured by the TOC this year. During the reorg, I helped refine
+            the governance documentation, and during the leadership shift I was able to transition from TAG Chair to
+            Technical Lead. I was also asked to give a presentation on the updated structure in a{" "}
+            <a
+              href="https://www.youtube.com/watch?v=661OcBuwRq8&t=59s&utm_source=hs_email&utm_medium=email&_hsenc=p2ANqtz-9FyjtX-24qdSpEdQAUfI7o15jfgrIGZvhSmDJynuTi0PgsT38Exih4iJwVto17MTBkIdi7"
+              style={{ color: "#0600ff", fontStyle: "italic" }}
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              talk at KubeCon Atlanta
+            </a>
+          </>,
           ]}
         />
       </ContentSection>
-
-      <TwoColumnSection
-        imageUrl="https://hs-243073831.f.hubspotstarter-na2.net/hub/243073831/hubfs/tag-sc.png?upscale=true&width=420&upscale=true&name=tag-sc.png"
-        imageAlt="tag-sc"
-        imageLeft={true}
-        leftColumnRatio={5}
-        rightColumnRatio={7}
-        imageWidth={210}
-        content={
-          <ListSection
-            items={[
-              <>
-                All Technical Advisory Groups were restructured by the TOC this year. During the reorg, I helped refine
-                the governance documentation, and during the leadership shift I was able to transition from TAG Chair to
-                Technical Lead. I was also asked to give a presentation on the updated structure in a{" "}
-                <a
-                  href="https://www.youtube.com/watch?v=661OcBuwRq8&t=59s&utm_source=hs_email&utm_medium=email&_hsenc=p2ANqtz-9FyjtX-24qdSpEdQAUfI7o15jfgrIGZvhSmDJynuTi0PgsT38Exih4iJwVto17MTBkIdi7"
-                  style={{ color: "#0600ff", fontStyle: "italic" }}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                >
-                  talk at KubeCon Atlanta
-                </a>
-              </>
-            ]}
-          />
-        }
-      />
 
       {/* FINOS Section */}
       <SectionHeader title="FINOS Leading Implementation" backgroundColor="#00B6E2" />
@@ -186,10 +146,6 @@ export const DebriefPage: React.FC = () => {
       <TwoColumnSection
         imageUrl="https://hs-243073831.f.hubspotstarter-na2.net/hub/243073831/hubfs/finos-award-1.jpeg?upscale=true&width=520&upscale=true&name=finos-award-1.jpeg"
         imageAlt="Receiving the FINOS Award"
-        imageLeft={false}
-        leftColumnRatio={6}
-        rightColumnRatio={6}
-        imageWidth={260}
         content={
           <TextSection
             paragraphs={[
@@ -283,10 +239,6 @@ export const DebriefPage: React.FC = () => {
       <TwoColumnSection
         imageUrl="https://hs-243073831.f.hubspotstarter-na2.net/hub/243073831/hubfs/ccc-1.png?upscale=true&width=600&upscale=true&name=ccc-1.png"
         imageAlt="ccc-1"
-        imageLeft={false}
-        leftColumnRatio={6}
-        rightColumnRatio={6}
-        imageWidth={300}
         content={
           <TextSection
             paragraphs={[
@@ -354,25 +306,10 @@ export const DebriefPage: React.FC = () => {
         </p>
       </ContentSection>
 
-      <TwoColumnSection
-        imageUrl="https://hs-243073831.f.hubspotstarter-na2.net/hub/243073831/hubfs/calm.png?upscale=true&width=500&upscale=true&name=calm.png"
-        imageAlt="calm"
-        imageLeft={true}
-        leftColumnRatio={5}
-        rightColumnRatio={7}
-        imageWidth={250}
-        content={
-          <TextSection
-            paragraphs={[
-              "It's been a year or so since Karl Moll and I had a design session theorizing the value of aligning these two FINOS projects, and this year it's started to become a reality."
-            ]}
-          />
-        }
-      />
-
       <ContentSection padding="10px 20px 40px">
         <TextSection
           paragraphs={[
+            "It's been a year or so since Karl Moll and I had a design session theorizing the value of aligning these two FINOS projects, and this year it's started to become a reality.",
             "CCC, which we discussed above, is a project dedicated to the standardization of cloud infrastructure — both compliance definitions and tools. Meanwhile, the CALM is an ecosystem of technologies related to the standardized expression of system architectures.",
             "As CCC has contributed its philosophies and schemas to the Gemara project (more on that below), the integration points with CALM have become clear: All that's needed to harness the full value of both projects is to write your machine-readable architectures in CALM and then reference the identifiers for control objectives or assessment requirements for the respective services.",
             "A huge credit is due to Matt Bain and Jim Gough for their ongoing work leading the CALM project and pursuing the integration with CCC this year."
@@ -394,10 +331,6 @@ export const DebriefPage: React.FC = () => {
       <TwoColumnSection
         imageUrl="https://hs-243073831.f.hubspotstarter-na2.net/hub/243073831/hubfs/Screenshot%202025-12-31%20at%204.58.02%20PM.png?upscale=true&width=320&upscale=true&name=Screenshot%202025-12-31%20at%204.58.02%20PM.png"
         imageAlt=""
-        imageLeft={true}
-        leftColumnRatio={4}
-        rightColumnRatio={8}
-        imageWidth={160}
         content={
           <TextSection
             paragraphs={[
@@ -450,10 +383,6 @@ export const DebriefPage: React.FC = () => {
       <TwoColumnSection
         imageUrl="https://hs-243073831.f.hubspotstarter-na2.net/hub/243073831/hubfs/osps-baseline.png?upscale=true&width=460&upscale=true&name=osps-baseline.png"
         imageAlt="osps-baseline"
-        imageLeft={false}
-        leftColumnRatio={7}
-        rightColumnRatio={5}
-        imageWidth={230}
         content={
           <TextSection
             paragraphs={[
@@ -602,10 +531,6 @@ export const DebriefPage: React.FC = () => {
       <TwoColumnSection
         imageUrl="https://hs-243073831.f.hubspotstarter-na2.net/hub/243073831/hubfs/security-insights-logo.png?upscale=true&width=500&upscale=true&name=security-insights-logo.png"
         imageAlt="security-insights-logo"
-        imageLeft={false}
-        leftColumnRatio={7}
-        rightColumnRatio={5}
-        imageWidth={250}
         content={
           <TextSection
             paragraphs={[
@@ -657,10 +582,6 @@ export const DebriefPage: React.FC = () => {
       <TwoColumnSection
         imageUrl="https://hs-243073831.f.hubspotstarter-na2.net/hub/243073831/hubfs/gemara-transparent.png?upscale=true&width=320&upscale=true&name=gemara-transparent.png"
         imageAlt="gemara-transparent"
-        imageLeft={true}
-        leftColumnRatio={4}
-        rightColumnRatio={8}
-        imageWidth={160}
         content={
           <TextSection
             paragraphs={[
@@ -740,10 +661,6 @@ export const DebriefPage: React.FC = () => {
       <TwoColumnSection
         imageUrl="https://hs-243073831.f.hubspotstarter-na2.net/hub/243073831/hubfs/Screenshot%202025-12-31%20at%205.25.43%20PM.png?upscale=true&width=600&upscale=true&name=Screenshot%202025-12-31%20at%205.25.43%20PM.png"
         imageAlt="Screenshot 2025-12-31 at 5.25.43 PM"
-        imageLeft={false}
-        leftColumnRatio={6}
-        rightColumnRatio={6}
-        imageWidth={300}
         content={
           <TextSection
             paragraphs={[
@@ -786,10 +703,6 @@ export const DebriefPage: React.FC = () => {
       <TwoColumnSection
         imageUrl="https://hs-243073831.f.hubspotstarter-na2.net/hub/243073831/hubfs/Screenshot%202025-12-31%20at%205.29.05%20PM.png?upscale=true&width=600&upscale=true&name=Screenshot%202025-12-31%20at%205.29.05%20PM.png"
         imageAlt="Screenshot 2025-12-31 at 5.29.05 PM"
-        imageLeft={true}
-        leftColumnRatio={6}
-        rightColumnRatio={6}
-        imageWidth={300}
         content={
           <TextSection
             paragraphs={[
@@ -841,10 +754,6 @@ export const DebriefPage: React.FC = () => {
       <TwoColumnSection
         imageUrl="https://hs-243073831.f.hubspotstarter-na2.net/hub/243073831/hubfs/Screenshot%202025-12-31%20at%205.47.01%20PM.png?upscale=true&width=360&upscale=true&name=Screenshot%202025-12-31%20at%205.47.01%20PM.png"
         imageAlt="Screenshot 2025-12-31 at 5.47.01 PM"
-        imageLeft={false}
-        leftColumnRatio={8}
-        rightColumnRatio={4}
-        imageWidth={180}
         content={
           <TextSection
             paragraphs={[
@@ -868,10 +777,6 @@ export const DebriefPage: React.FC = () => {
       <TwoColumnSection
         imageUrl="https://hs-243073831.f.hubspotstarter-na2.net/hub/243073831/hubfs/Screenshot%202025-12-31%20at%205.48.12%20PM.png?upscale=true&width=420&upscale=true&name=Screenshot%202025-12-31%20at%205.48.12%20PM.png"
         imageAlt="Screenshot 2025-12-31 at 5.48.12 PM"
-        imageLeft={true}
-        leftColumnRatio={5}
-        rightColumnRatio={7}
-        imageWidth={210}
         content={
           <TextSection
             paragraphs={[
