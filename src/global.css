@@ -74,6 +74,21 @@ h3 {
   margin-bottom: var(--gf-space-md);
 }
 
+/* Two-column responsive layout */
+@media (max-width: 768px) {
+  .two-column-container {
+    flex-direction: column !important;
+  }
+  .two-column-image {
+    padding: 10px 20px !important;
+    flex: 1 1 100% !important;
+  }
+  .two-column-content {
+    padding: 0px 20px !important;
+    flex: 1 1 100% !important;
+  }
+}
+
 /* Responsive margins for main content */
 .main-content {
   margin-left: 0;
