@@ -5,13 +5,15 @@ interface TwoColumnSectionProps {
   imageAlt: string;
   content: React.ReactNode;
   backgroundColor?: string;
+  padding?: string;
 }
 
 export const TwoColumnSection: React.FC<TwoColumnSectionProps> = ({
   imageUrl,
   imageAlt,
   content,
-  backgroundColor = "var(--gf-debrief-section-bg)"
+  backgroundColor = "var(--gf-debrief-section-bg)",
+  padding = "0"
 }) => {
   // Hardcoded values: image always on right, consistent ratios and width
   const imageLeft = false;
@@ -23,7 +25,7 @@ export const TwoColumnSection: React.FC<TwoColumnSectionProps> = ({
     maxWidth: "600px",
     margin: "0 auto",
     backgroundColor,
-    padding: "10px 0"
+    padding
   };
 
   const columnsContainerStyle: React.CSSProperties = {
