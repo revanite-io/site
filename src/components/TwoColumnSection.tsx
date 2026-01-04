@@ -4,10 +4,6 @@ interface TwoColumnSectionProps {
   imageUrl: string;
   imageAlt: string;
   content: React.ReactNode;
-  imageLeft?: boolean;
-  imageWidth?: number;
-  leftColumnRatio?: number; // e.g., 8 for 8/12, 7 for 7/12, etc.
-  rightColumnRatio?: number; // e.g., 4 for 4/12, 5 for 5/12, etc.
   backgroundColor?: string;
 }
 
@@ -15,12 +11,14 @@ export const TwoColumnSection: React.FC<TwoColumnSectionProps> = ({
   imageUrl,
   imageAlt,
   content,
-  imageLeft = true,
-  imageWidth,
-  leftColumnRatio = 8,
-  rightColumnRatio = 4,
   backgroundColor = "var(--gf-debrief-section-bg)"
 }) => {
+  // Hardcoded values: image always on right, consistent ratios and width
+  const imageLeft = false;
+  const leftColumnRatio = 7;
+  const rightColumnRatio = 5;
+  const imageWidth = 250;
+
   const containerStyle: React.CSSProperties = {
     maxWidth: "600px",
     margin: "0 auto",
@@ -53,7 +51,8 @@ export const TwoColumnSection: React.FC<TwoColumnSectionProps> = ({
     height: "auto",
     outline: "none",
     textDecoration: "none",
-    fontSize: "16px"
+    fontSize: "16px",
+    width: `${imageWidth}px`
   };
 
   return (
@@ -69,10 +68,7 @@ export const TwoColumnSection: React.FC<TwoColumnSectionProps> = ({
           <img
             src={imageUrl}
             alt={imageAlt}
-            style={{
-              ...imageStyle,
-              ...(imageWidth && { width: `${imageWidth}px` })
-            }}
+            style={imageStyle}
           />
         </div>
         <div className="two-column-content" style={contentColumnStyle}>
