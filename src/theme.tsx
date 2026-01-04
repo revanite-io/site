@@ -110,7 +110,8 @@ export const ThemeProvider: React.FC<ThemeProviderProps> = ({ children }) => {
     "--gf-font-body": theme.typography.body,
     "--gf-font-mono": theme.typography.mono,
     "--gf-cyan-glow": "rgba(74, 224, 240, 0.6)",
-    "--gf-glass-blur": "blur(12px)"
+    "--gf-glass-blur": "blur(12px)",
+    "--gf-debrief-section-bg": "rgba(0, 0, 0, 0.5)"
   } as React.CSSProperties;
 
   return (
