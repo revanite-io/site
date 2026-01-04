@@ -79,6 +79,29 @@ export const Header: React.FC = () => {
           >
             Home
           </Link>
+          <Link
+            to="/2025-debrief"
+            style={{
+              color: "var(--gf-color-text)",
+              textDecoration: "none",
+              padding: "0.5rem 1rem",
+              borderRadius: "var(--gf-radius-lg)",
+              transition: "background-color 0.2s",
+              backgroundColor: location.pathname === "/2025-debrief" ? "var(--gf-color-accent-soft)" : "transparent"
+            }}
+            onMouseEnter={(e) => {
+              if (location.pathname !== "/2025-debrief") {
+                e.currentTarget.style.backgroundColor = "var(--gf-color-accent-soft)";
+              }
+            }}
+            onMouseLeave={(e) => {
+              if (location.pathname !== "/2025-debrief") {
+                e.currentTarget.style.backgroundColor = "transparent";
+              }
+            }}
+          >
+            2025 Debrief
+          </Link>
           <div
             style={{
               color: "var(--gf-color-text)",

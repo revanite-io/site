@@ -5,6 +5,7 @@ import { Footer } from "./components/Footer";
 import { BackgroundArcs } from "./components/BackgroundArcs";
 import { HomePage } from "./pages/HomePage";
 import { ApplicationPage } from "./pages/ApplicationPage";
+import { DebriefPage } from "./pages/DebriefPage";
 import { useTheme } from "./theme";
 
 const AppContent: React.FC = () => {
@@ -38,6 +39,7 @@ const AppContent: React.FC = () => {
         <Routes>
           <Route path="/" element={<HomePage />} />
           <Route path="/apply" element={<ApplicationPage />} />
+          <Route path="/2025-debrief" element={<DebriefPage />} />
           <Route path="*" element={<Navigate to="/" replace />} />
         </Routes>
       </main>
