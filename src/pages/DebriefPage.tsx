@@ -15,7 +15,7 @@ export const DebriefPage: React.FC = () => {
       }}
     >
       {/* Hero Image Section */}
-      <ContentSection padding="0px">
+      <ContentSection>
         <div style={{ textAlign: "center", padding: "0px" }}>
           <img
             alt="On stage for Keynote at KubeCon London"
@@ -47,7 +47,7 @@ export const DebriefPage: React.FC = () => {
       </ContentSection>
 
       {/* Notebook Link Section */}
-      <ContentSection backgroundColor="rgba(250, 250, 250, 0.2)" padding="10px 10px">
+      <ContentSection backgroundColor="rgba(250, 250, 250, 0.2)">
         <i><p style={{ lineHeight: "175%", fontFamily: "'Courier New', Courier, monospace" }}>
         This letter was sent out as a personal update from our CEO, Eddie Knight, on December 31, 2025. You can get a summary of this letter and navigate all of the reference material in "chat" format{" "}
           <a
@@ -63,7 +63,7 @@ export const DebriefPage: React.FC = () => {
       </ContentSection>
 
       {/* Opening Paragraphs */}
-      <ContentSection padding="10px 20px">
+      <ContentSection>
         <TextSection
           paragraphs={[
             "This year it feels like I've had more open loops than the entire Marvel Cinematic Universe, and I owe a huge thanks to the folks who have pressed through to help close out some pretty sweet deliverables this year.",
@@ -198,9 +198,9 @@ export const DebriefPage: React.FC = () => {
       </ContentSection>
 
       <ContentSection>
-        <h1 style={{ margin: 0, lineHeight: "175%", fontSize: "24px", color: "#00b6e2" }}>
+        <h3 style={{ margin: 0, lineHeight: "175%", fontSize: "24px", padding: "0 0 0 10px", color: "#fff", backgroundColor: "#00b6e2" }}>
           FINOS Lifecycle Revamp
-        </h1>
+        </h3>
         <p style={{ lineHeight: "175%", fontWeight: "bold" }}>
           <em>
             The lifecycle is designed to help users easily determine which projects are appropriate for their use and to
@@ -216,9 +216,9 @@ export const DebriefPage: React.FC = () => {
       </ContentSection>
 
       <ContentSection>
-        <h1 style={{ margin: 0, lineHeight: "175%", fontSize: "24px", color: "#00b6e2" }}>
+        <h3 style={{ margin: 0, lineHeight: "175%", fontSize: "24px", padding: "0 0 0 10px", color: "#fff", backgroundColor: "#00b6e2" }}>
           CCC Core Catalog
-        </h1>
+        </h3>
         <p style={{ lineHeight: "175%", fontWeight: "bold" }}>
           <em>
             FINOS{" "}
@@ -251,14 +251,7 @@ export const DebriefPage: React.FC = () => {
       <ContentSection>
         <TextSection
           paragraphs={[
-            "After adoption of the Gemara schema to express the control catalogs, the CCC project was able to release a core set of reusable threats, control objectives, and assessment requirements which can be referenced to accelerate the creation of subsequent catalogs. (More about Gemara below)"
-          ]}
-        />
-      </ContentSection>
-
-      <ContentSection>
-        <TextSection
-          paragraphs={[
+            "After adoption of the Gemara schema to express the control catalogs, the CCC project was able to release a core set of reusable threats, control objectives, and assessment requirements which can be referenced to accelerate the creation of subsequent catalogs. (More about Gemara below)",
             <>
               There is still lots of <em>social</em> work to be done before the project can release service-specific
               control catalogs that are approved for use in financial services institutions, but a lot of great progress
@@ -289,7 +282,8 @@ export const DebriefPage: React.FC = () => {
       </ContentSection>
 
       <ContentSection>
-        <h1 style={{ margin: 0, lineHeight: "175%", fontSize: "24px", color: "#00b6e2" }}>CALM + CCC</h1>
+        <h3 style={{ margin: 0, lineHeight: "175%", fontSize: "24px", padding: "0 0 0 10px", color: "#fff", backgroundColor: "#00b6e2" }}>
+          CALM + CCC</h3>
         <p style={{ lineHeight: "175%", fontWeight: "bold" }}>
           <em>
             The{" "}
@@ -304,9 +298,7 @@ export const DebriefPage: React.FC = () => {
             (CALM) is a specification for defining system architectures in a machine and human-readable format.
           </em>
         </p>
-      </ContentSection>
 
-      <ContentSection padding="10px 20px 40px">
         <TextSection
           paragraphs={[
             "It's been a year or so since Karl Moll and I had a design session theorizing the value of aligning these two FINOS projects, and this year it's started to become a reality.",
@@ -371,7 +363,7 @@ export const DebriefPage: React.FC = () => {
       </ContentSection>
 
       <ContentSection>
-        <h1 style={{ margin: 0, lineHeight: "175%", fontSize: "24px", color: "#331f6b" }}>OSPS Baseline</h1>
+        <h3 style={{ margin: 0, lineHeight: "175%", fontSize: "24px", color: "#fff", backgroundColor: "#331f6b", padding: "0 0 0 10px" }}>OSPS Baseline</h3>
         <p style={{ lineHeight: "175%", fontWeight: "bold" }}>
           <em>
             The Open Source Project Security Baseline is designed to act as a minimum definition of requirements for a
@@ -414,7 +406,7 @@ export const DebriefPage: React.FC = () => {
         }
       />
 
-      <ContentSection padding="10px 20px 40px">
+      <ContentSection>
         <TextSection
           paragraphs={[
             "Here are a few times I was flown somewhere this year to talk about Baseline or its ecosystem:"
@@ -513,7 +505,7 @@ export const DebriefPage: React.FC = () => {
       </ContentSection>
 
       <ContentSection>
-        <h1 style={{ margin: 0, lineHeight: "175%", fontSize: "24px", color: "#331f6b" }}>Security Insights</h1>
+        <h3 style={{ margin: 0, lineHeight: "175%", fontSize: "24px", color: "#fff", backgroundColor: "#331f6b", padding: "0 0 0 10px"}}>Security Insights</h3>
         <p style={{ lineHeight: "175%", fontWeight: "bold" }}>
           <em>
             Security Insights provides a mechanism for projects to report information about their security in a
@@ -562,7 +554,7 @@ export const DebriefPage: React.FC = () => {
       </ContentSection>
 
       <ContentSection>
-        <h1 style={{ margin: 0, lineHeight: "175%", fontSize: "24px", color: "#331f6b" }}>Gemara</h1>
+        <h3 style={{ margin: 0, lineHeight: "175%", fontSize: "24px", color: "#fff", backgroundColor: "#331f6b" , padding: "0 0 0 10px" }}>Gemara</h3>
         <p style={{ lineHeight: "175%", fontWeight: "bold" }}>
           <em>
             Gemara provides a logical model to describe the categories of compliance activities, how they interact, and
@@ -591,7 +583,7 @@ export const DebriefPage: React.FC = () => {
         }
       />
 
-      <ContentSection padding="10px 20px 40px">
+      <ContentSection>
         <TextSection
           paragraphs={[
             <>
@@ -614,22 +606,7 @@ export const DebriefPage: React.FC = () => {
       </ContentSection>
 
       {/* Revanite Section */}
-      <ContentSection backgroundColor="#000000" padding="10px 20px">
-        <div style={{ textAlign: "center" }}>
-          <img
-            alt="Revanite Logo"
-            src="https://hs-243073831.f.hubspotstarter-na2.net/hub/243073831/hubfs/logo-transparent-1.png?upscale=true&width=284&upscale=true&name=logo-transparent-1.png"
-            style={{
-              maxWidth: "100%",
-              height: "auto",
-              outline: "none",
-              textDecoration: "none",
-              fontSize: "16px",
-              width: "142px"
-            }}
-          />
-        </div>
-      </ContentSection>
+      <SectionHeader title="Revanite" backgroundColor="#3AD0E6" />
 
       <ContentSection>
         <TextSection
@@ -655,7 +632,7 @@ export const DebriefPage: React.FC = () => {
       </ContentSection>
 
       <ContentSection>
-        <h1 style={{ margin: 0, lineHeight: "175%", fontSize: "24px" }}>The Platform Prototype</h1>
+        <h3 style={{ margin: 0, lineHeight: "175%", fontSize: "24px" }}>The Platform Prototype</h3>
       </ContentSection>
 
       <TwoColumnSection
@@ -724,7 +701,7 @@ export const DebriefPage: React.FC = () => {
         }
       />
 
-      <ContentSection padding="10px 20px 40px">
+      <ContentSection>
         <TextSection
           paragraphs={[
             <>
@@ -809,10 +786,6 @@ export const DebriefPage: React.FC = () => {
             <strong>Eddie Knight</strong>
           ]}
         />
-      </ContentSection>
-
-      {/* Divider */}
-      <ContentSection>
         <div
           style={{
             borderTop: "1px solid #99ACC2",
@@ -820,15 +793,6 @@ export const DebriefPage: React.FC = () => {
             margin: "0 auto"
           }}
         />
-      </ContentSection>
-
-      {/* Footer */}
-      <ContentSection padding="30px 20px">
-        <div style={{ textAlign: "center", fontSize: "12px", color: "#23496d", lineHeight: "135%" }}>
-          <p style={{ fontFamily: "Arial, sans-serif", fontSize: "12px", fontWeight: "normal" }}>
-            Revanite Incorporated, 1101 Thorpe Ln, San Marcos, TX
-          </p>
-        </div>
       </ContentSection>
     </div>
   );

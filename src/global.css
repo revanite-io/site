@@ -80,11 +80,11 @@ h3 {
     flex-direction: column !important;
   }
   .two-column-image {
-    padding: 10px 20px !important;
+    padding: 10px 20px;
     flex: 1 1 100% !important;
   }
   .two-column-content {
-    padding: 0px 20px !important;
+    padding: 0px 20px;
     flex: 1 1 100% !important;
   }
 }
