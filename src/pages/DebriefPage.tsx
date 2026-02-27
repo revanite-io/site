@@ -42,14 +42,14 @@ export const DebriefPage: React.FC = () => {
             textAlign: "center"
           }}
         >
-          2025 Retrospective from the CEO
+          2025 Retrospective from the Founder
         </h1>
       </ContentSection>
 
       {/* Notebook Link Section */}
       <ContentSection backgroundColor="rgba(250, 250, 250, 0.2)">
         <i><p style={{ lineHeight: "175%", fontFamily: "'Courier New', Courier, monospace" }}>
-        This letter was sent out as a personal update from our CEO, Eddie Knight, on December 31, 2025. You can get a summary of this letter and navigate all of the reference material in "chat" format{" "}
+        This letter was sent out as a personal update from our Founder, Eddie Knight, on December 31, 2025. You can get a summary of this letter and navigate all of the reference material in "chat" format{" "}
           <a
             href="https://notebooklm.google.com/notebook/741eb365-98c7-4809-b4f5-230c390871c2?utm_source=hs_email&utm_medium=email&_hsenc=p2ANqtz-9FyjtX-24qdSpEdQAUfI7o15jfgrIGZvhSmDJynuTi0PgsT38Exih4iJwVto17MTBkIdi7"
             style={{ fontStyle: "normal" }}
