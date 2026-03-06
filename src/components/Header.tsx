@@ -46,7 +46,7 @@ export const Header: React.FC = () => {
             marginBottom: "var(--gf-space-lg)",
           }}
         >
-          Enterprise Continuous Compliance Monitoring
+          Bridging Compliance, Engineering, and Security
         </p>
         <nav
           style={{
