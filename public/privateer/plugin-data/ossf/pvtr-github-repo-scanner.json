@@ -1,0 +1,7 @@
+{
+    "name": "ossf/pvtr-github-repo-scanner",
+    "source": "https://github.com/ossf/pvtr-github-repo-scanner",
+    "image": "ghcr.io/ossf/pvtr-github-repo-scanner:v0.19.2",
+    "latest": "0.19.2",
+    "supported-versions": ["0.19.2"]
+}
