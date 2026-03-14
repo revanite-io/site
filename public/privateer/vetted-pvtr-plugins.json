@@ -1,0 +1,8 @@
+{
+  "message": "This is a list of manually-vetted Privateer plugins. To add or update an entry, submit a review request here: https://<or it could be something else, idk.>",
+  "updated": "2025-03-14",
+  "plugins": [
+    "revanite/azure-blob-storage",
+    "ossf/pvtr-github-repo-scanner"
+  ]
+}
