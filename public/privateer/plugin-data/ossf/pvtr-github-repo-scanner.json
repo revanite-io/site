@@ -1,5 +1,6 @@
 {
     "name": "ossf/pvtr-github-repo-scanner",
+    "updated": "2025-03-14",
     "source": "https://github.com/ossf/pvtr-github-repo-scanner",
     "image": "ghcr.io/ossf/pvtr-github-repo-scanner:v0.19.2",
     "latest": "0.19.2",
