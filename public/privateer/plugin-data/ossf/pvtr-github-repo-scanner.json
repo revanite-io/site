@@ -4,5 +4,5 @@
     "source": "https://github.com/ossf/pvtr-github-repo-scanner",
     "image": "ghcr.io/ossf/pvtr-github-repo-scanner:v0.23.0",
     "latest": "0.23.0",
-    "supported-versions": ["0.19.2"]
+    "supported-versions": ["0.19.2", "0.23.0"]
 }
