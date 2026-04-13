@@ -1,8 +1,8 @@
 {
     "name": "revanite/pvtr-azure-blob-storage",
-    "updated": "2025-03-14",
+    "updated": "2025-04-12",
     "source": "https://github.com/revanite-io/pvtr-azure-blob-storage",
     "image": "",
-    "latest": "0.1.0",
-    "supported-versions": [""]
+    "latest": "0.1.1",
+    "supported-versions": ["0.1.1"]
 }
