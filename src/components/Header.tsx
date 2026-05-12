@@ -1,10 +1,7 @@
 import React from "react";
-import { Link, useLocation } from "react-router-dom";
 import logoImage from "../assets/images/logo-transparent.png";
 
 export const Header: React.FC = () => {
-  const location = useLocation();
-
   return (
     <header
       className="site-header"
@@ -56,41 +53,30 @@ export const Header: React.FC = () => {
             marginTop: "var(--gf-space-md)"
           }}
         >
-          <Link
-            to="/"
+          <a
+            href="https://meridian.revanite.io"
+            target="_blank"
+            rel="noopener noreferrer"
             style={{
               color: "var(--gf-color-text)",
               textDecoration: "none",
-              padding: "0.5rem 1rem",
+              padding: "0.5rem 1.5rem",
               borderRadius: "var(--gf-radius-lg)",
-              transition: "background-color 0.2s",
-              backgroundColor: location.pathname === "/" ? "var(--gf-color-accent-soft)" : "transparent"
+              backgroundColor: "var(--gf-color-accent-soft)",
+              border: "1px solid var(--gf-color-accent)",
+              cursor: "pointer",
+              transition: "background-color 0.2s, box-shadow 0.2s",
+              fontWeight: 600
             }}
             onMouseEnter={(e) => {
-              if (location.pathname !== "/") {
-                e.currentTarget.style.backgroundColor = "var(--gf-color-accent-soft)";
-              }
+              e.currentTarget.style.boxShadow = "0 0 12px var(--gf-color-accent)";
             }}
             onMouseLeave={(e) => {
-              if (location.pathname !== "/") {
-                e.currentTarget.style.backgroundColor = "transparent";
-              }
+              e.currentTarget.style.boxShadow = "none";
             }}
           >
-            Home
-          </Link>
-          <div
-            style={{
-              color: "var(--gf-color-text)",
-              padding: "0.5rem 1rem",
-              borderRadius: "var(--gf-radius-lg)",
-              opacity: 0.6,
-              cursor: "not-allowed",
-              pointerEvents: "none"
-            }}
-          >
-            Alpha Opening Soon
-          </div>
+            Project Meridian Alpha is Now Open!
+          </a>
         </nav>
       </section>
     </header>
