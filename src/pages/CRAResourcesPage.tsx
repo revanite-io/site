@@ -2,7 +2,7 @@ import React from "react";
 import { Link } from "react-router-dom";
 import { useDocumentTitle } from "../hooks/useDocumentTitle";
 
-const REPORT_PDF = "/research/lfr_2026_cra_awareness_report_060826.pdf";
+const REPORT_URL = "https://www.linuxfoundation.org/research/cra-readiness-2026";
 
 type ItemProps = {
   link: React.ReactNode;
@@ -112,7 +112,7 @@ export const CRAResourcesPage: React.FC = () => {
 
       <ResourceSection title="Research">
         <Item
-          link={ext(REPORT_PDF, "2026 CRA Awareness and Readiness Report")}
+          link={ext(REPORT_URL, "2026 CRA Awareness and Readiness Report")}
           description="The Linux Foundation Research study Revanite co-sponsored, drawing on 843 survey respondents and a security analysis of more than 12,000 open source projects."
         />
         <Item
@@ -220,8 +220,8 @@ export const CRAResourcesPage: React.FC = () => {
           2026 CRA Awareness and Readiness Report's Resources section lists
           additional OpenSSF training, working-group communications, and
           Linux Foundation materials — see{" "}
-          <a href={REPORT_PDF} target="_blank" rel="noopener noreferrer">
-            the report PDF
+          <a href={REPORT_URL} target="_blank" rel="noopener noreferrer">
+            the report
           </a>{" "}
           for the fuller list.
         </p>

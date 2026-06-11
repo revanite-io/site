@@ -2,7 +2,7 @@ import React from "react";
 import { Link } from "react-router-dom";
 import { useDocumentTitle } from "../hooks/useDocumentTitle";
 
-const REPORT_PDF = "/research/lfr_2026_cra_awareness_report_060826.pdf";
+const REPORT_URL = "https://www.linuxfoundation.org/research/cra-readiness-2026";
 const REPORT_TITLE = "2026 CRA Awareness and Readiness Report";
 const FEATURED_IMAGE = "/research/featured-gradient-light.png";
 
@@ -164,7 +164,7 @@ export const CRAResearchPage: React.FC = () => {
           }}
         >
           On June 9, Linux Foundation Research published the{" "}
-          <a href={REPORT_PDF} target="_blank" rel="noopener noreferrer">
+          <a href={REPORT_URL} target="_blank" rel="noopener noreferrer">
             {REPORT_TITLE}
           </a>
           . The study draws on a survey of 843 respondents and a security
@@ -520,7 +520,7 @@ export const CRAResearchPage: React.FC = () => {
         </Paragraph>
       </Section>
 
-      {/* Closing CTA — PDF download */}
+      {/* Closing CTA — Linux Foundation report */}
       <div
         className="cra-article-wide"
         style={{
@@ -530,10 +530,10 @@ export const CRAResearchPage: React.FC = () => {
       >
         <figure style={{ margin: 0 }}>
           <a
-            href={REPORT_PDF}
+            href={REPORT_URL}
             target="_blank"
             rel="noopener noreferrer"
-            aria-label="Read the full 2026 CRA Awareness and Readiness Report (PDF)"
+            aria-label="Read the full 2026 CRA Awareness and Readiness Report on linuxfoundation.org"
             style={{
               display: "block",
               borderRadius: "0.75rem",
