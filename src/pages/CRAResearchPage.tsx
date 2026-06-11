@@ -167,8 +167,7 @@ export const CRAResearchPage: React.FC = () => {
           <a href={REPORT_PDF} target="_blank" rel="noopener noreferrer">
             {REPORT_TITLE}
           </a>
-          , authored by Adrienn Lawson with a foreword by Red Hat's Roman
-          Zhukov. The study draws on a survey of 843 respondents and a security
+          . The study draws on a survey of 843 respondents and a security
           analysis of more than 12,000 open source projects to measure how the
           global software ecosystem is preparing for the European Union's Cyber
           Resilience Act.
@@ -513,8 +512,7 @@ export const CRAResearchPage: React.FC = () => {
               fontSize: "0.85rem"
             }}
           >
-            40 pages, PDF. Authored by Adrienn Lawson, Linux Foundation
-            Research, with a foreword by Roman Zhukov, Red Hat.
+            40 pages, PDF.
           </figcaption>
         </figure>
       </div>
