@@ -335,6 +335,23 @@ export const CRAResearchPage: React.FC = () => {
           distinction the European Commission's March 2026 draft guidance
           addresses directly, though that document has not yet been finalized.
         </Paragraph>
+
+        <Paragraph>
+          There is a related failure mode the cost numbers above don't
+          capture: cloning open source projects at industrial scale and
+          shipping them as closed-source compliance products without pushing
+          fixes back upstream. The vendor checks every CRA-readiness box —
+          SBOM, support contract, conformity assessment — but a repackager is
+          a vendor, not a steward. The CRA's steward category exists
+          precisely because the two roles are different. This pattern also
+          concentrates compliance risk in a single repackaging pipeline,
+          running counter to the next section's finding that contributor
+          diversity is a strong predictor of project security. This is not a
+          viable position. A compliance posture built on un-upstreamed forks
+          relies on an upstream the buyer is actively starving — “consume,
+          fork, monetize, walk away” undermines exactly the ecosystem the
+          regulation depends on.
+        </Paragraph>
       </Section>
 
       <Section
