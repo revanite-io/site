@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import logoImage from "../assets/images/logo-transparent.png";
 
 export const Header: React.FC = () => {
@@ -75,8 +76,33 @@ export const Header: React.FC = () => {
               e.currentTarget.style.boxShadow = "none";
             }}
           >
-            Project Meridian Alpha is Now Open!
+            Meridian Alpha is Now Open!
           </a>
+          <Link
+            to="/cra"
+            style={{
+              color: "var(--gf-color-text-subtle)",
+              textDecoration: "none",
+              padding: "0.5rem 1.25rem",
+              borderRadius: "var(--gf-radius-lg)",
+              border: "1px solid var(--gf-color-border-strong)",
+              cursor: "pointer",
+              transition: "color 0.2s, box-shadow 0.2s, border-color 0.2s",
+              fontWeight: 500
+            }}
+            onMouseEnter={(e) => {
+              e.currentTarget.style.color = "var(--gf-color-accent)";
+              e.currentTarget.style.borderColor = "var(--gf-color-accent)";
+              e.currentTarget.style.boxShadow = "0 0 12px var(--gf-color-accent)";
+            }}
+            onMouseLeave={(e) => {
+              e.currentTarget.style.color = "var(--gf-color-text-subtle)";
+              e.currentTarget.style.borderColor = "var(--gf-color-border-strong)";
+              e.currentTarget.style.boxShadow = "none";
+            }}
+          >
+            EU CRA Readiness →
+          </Link>
         </nav>
       </section>
     </header>

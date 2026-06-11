@@ -1,15 +1,17 @@
 import React from "react";
-import { BrowserRouter, Routes, Route, Navigate, useLocation } from "react-router-dom";
+import { BrowserRouter, Routes, Route, Navigate, Outlet, useLocation } from "react-router-dom";
 import { Header } from "./components/Header";
 import { Footer } from "./components/Footer";
 import { BackgroundArcs } from "./components/BackgroundArcs";
+import { CRALayout } from "./components/CRALayout";
 import { HomePage } from "./pages/HomePage";
 import { ApplicationPage } from "./pages/ApplicationPage";
 import { DebriefPage } from "./pages/DebriefPage";
-import { useTheme } from "./theme";
+import { CRAResearchPage } from "./pages/CRAResearchPage";
+import { CRAFieldGuidePage } from "./pages/CRAFieldGuidePage";
+import { CRAResourcesPage } from "./pages/CRAResourcesPage";
 
-const AppContent: React.FC = () => {
-  const { theme } = useTheme();
+const HomeLayout: React.FC = () => {
   const location = useLocation();
   const isHomePage = location.pathname === "/";
 
@@ -36,12 +38,7 @@ const AppContent: React.FC = () => {
           paddingTop: "var(--gf-space-xl)"
         }}
       >
-        <Routes>
-          <Route path="/" element={<HomePage />} />
-          <Route path="/apply" element={<ApplicationPage />} />
-          <Route path="/2025-debrief" element={<DebriefPage />} />
-          <Route path="*" element={<Navigate to="/" replace />} />
-        </Routes>
+        <Outlet />
       </main>
       {!isHomePage && <Footer />}
     </div>
@@ -51,8 +48,19 @@ const AppContent: React.FC = () => {
 export const App: React.FC = () => {
   return (
     <BrowserRouter>
-      <AppContent />
+      <Routes>
+        <Route element={<HomeLayout />}>
+          <Route path="/" element={<HomePage />} />
+          <Route path="/apply" element={<ApplicationPage />} />
+          <Route path="/2025-debrief" element={<DebriefPage />} />
+        </Route>
+        <Route element={<CRALayout />}>
+          <Route path="/cra" element={<CRAResearchPage />} />
+          <Route path="/cra/field-guide" element={<CRAFieldGuidePage />} />
+          <Route path="/cra/resources" element={<CRAResourcesPage />} />
+        </Route>
+        <Route path="*" element={<Navigate to="/" replace />} />
+      </Routes>
     </BrowserRouter>
   );
 };
-

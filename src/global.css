@@ -1,5 +1,153 @@
 /* Global layout and reset for the personal website wireframe */
 
+/* CRA section — publication-style typography. Scoped to .cra-layout so the
+   home/debrief shells are untouched. */
+.cra-layout {
+  --cra-serif: "Source Serif Pro", "Iowan Old Style", "Apple Garamond",
+    "Palatino Linotype", Palatino, "Georgia Pro", Georgia, serif;
+  --cra-sans: "Inter", system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
+  font-family: var(--cra-serif);
+  font-size: 18px;
+  line-height: 1.7;
+  color: #1a1d22;
+}
+
+.cra-layout .cra-nav,
+.cra-layout .cra-nav a,
+.cra-layout .cra-nav button {
+  font-family: var(--cra-sans);
+}
+
+.cra-layout h1,
+.cra-layout h2,
+.cra-layout h3 {
+  font-family: var(--cra-serif);
+  font-weight: 700;
+  letter-spacing: -0.012em;
+  line-height: 1.2;
+  color: #1a1d22;
+}
+
+.cra-layout h1 {
+  font-size: 3rem;
+}
+
+.cra-layout h2 {
+  font-size: 2rem;
+}
+
+.cra-layout h3 {
+  font-size: 1.5rem;
+}
+
+.cra-layout .text-section p,
+.cra-layout .text-section li {
+  font-family: var(--cra-serif);
+  font-size: 1.125rem;
+  line-height: 1.75;
+  color: #2a2e35;
+}
+
+.cra-layout .text-section p strong,
+.cra-layout .text-section li strong {
+  color: #1a1d22;
+}
+
+.cra-layout a {
+  color: #0a6b7d;
+  text-decoration: underline;
+  text-decoration-thickness: 1px;
+  text-underline-offset: 0.18em;
+  transition: color 0.15s, text-decoration-color 0.15s;
+}
+
+.cra-layout a:hover {
+  color: #08596a;
+  text-decoration-thickness: 2px;
+}
+
+/* Sans-serif "eyebrow" / kicker label above section titles */
+.cra-layout .cra-kicker {
+  font-family: var(--cra-sans);
+  font-size: 0.78rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: #0a8aa0;
+  margin-bottom: 0.5rem;
+  display: block;
+}
+
+/* Section title — replaces the colored band SectionHeader on CRA pages */
+.cra-layout .cra-section-title {
+  font-family: var(--cra-serif);
+  font-weight: 700;
+  font-size: 2rem;
+  letter-spacing: -0.012em;
+  color: #1a1d22;
+  margin: 0 0 1rem;
+  padding-bottom: 0.5rem;
+  border-bottom: 1px solid #d8cfb9;
+}
+
+/* Stat numbers — tabular figures look more like a publication */
+.cra-layout .cra-stat-number {
+  font-family: var(--cra-serif);
+  font-feature-settings: "tnum" 1, "lnum" 1;
+  letter-spacing: -0.02em;
+}
+
+/* Article container — narrower for comfortable reading */
+.cra-layout .cra-article {
+  max-width: 680px;
+  margin: 0 auto;
+  padding: 0 1.25rem;
+}
+
+.cra-layout .cra-article-wide {
+  max-width: 880px;
+  margin: 0 auto;
+  padding: 0 1.25rem;
+}
+
+.cra-layout .cra-byline {
+  font-family: var(--cra-sans);
+  font-size: 0.9rem;
+  color: #5a6068;
+  letter-spacing: 0.02em;
+}
+
+.cra-layout .cra-lede {
+  font-family: var(--cra-serif);
+  font-size: 1.35rem;
+  line-height: 1.55;
+  color: #2a2e35;
+}
+
+@media (max-width: 768px) {
+  .cra-layout {
+    font-size: 17px;
+  }
+  .cra-layout h1 {
+    font-size: 2.1rem;
+  }
+  .cra-layout h2,
+  .cra-layout .cra-section-title {
+    font-size: 1.6rem;
+  }
+  .cra-layout h3 {
+    font-size: 1.25rem;
+  }
+  .cra-layout .text-section p,
+  .cra-layout .text-section li {
+    font-size: 1.05rem;
+  }
+  .cra-layout .cra-lede {
+    font-size: 1.15rem;
+  }
+}
+
+
 *,
 *::before,
 *::after {
