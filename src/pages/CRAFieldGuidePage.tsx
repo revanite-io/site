@@ -272,9 +272,9 @@ export const CRAFieldGuidePage: React.FC = () => {
               >
                 BSI-TR-03185-2 technical guidance
               </a>
-              . That dual adoption gives manufacturers a single set of
-              requirements they can point at to evidence due diligence over the
-              open source components in their products.
+              . While it doesn't fully cover CRA requirements alone,
+              this detailed control catalog provides a foundation upon which
+              other CRA-specific solutions can be built.
             </>
           }
         />

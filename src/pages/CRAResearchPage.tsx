@@ -382,6 +382,62 @@ export const CRAResearchPage: React.FC = () => {
         </Paragraph>
       </Section>
 
+      {/* Reporting deadline callout */}
+      <div
+        className="cra-article"
+        style={{ marginTop: "2rem", marginBottom: "0.5rem" }}
+      >
+        <aside
+          style={{
+            padding: "1.35rem 1.6rem",
+            background: "rgba(10, 138, 160, 0.08)",
+            borderLeft: "4px solid #0a8aa0",
+            borderRadius: "0 0.4rem 0.4rem 0"
+          }}
+        >
+          <span
+            className="cra-kicker"
+            style={{
+              color: "#0a6b7d",
+              marginBottom: "0.5rem",
+              display: "block"
+            }}
+          >
+            Earlier than you think
+          </span>
+          <p
+            style={{
+              margin: "0 0 0.85rem",
+              fontSize: "1.2rem",
+              lineHeight: 1.55,
+              color: "#1a1d22",
+              fontWeight: 600
+            }}
+          >
+            The reporting clock starts before full compliance does.
+          </p>
+          <p
+            style={{
+              margin: 0,
+              fontSize: "1rem",
+              lineHeight: 1.7,
+              color: "#2a2e35"
+            }}
+          >
+            Most CRA discussion focuses on the December 2027
+            full-applicability deadline. Article 14's vulnerability and
+            incident reporting obligations take effect earlier — on 11
+            September 2026. From that date, manufacturers must notify ENISA
+            and the relevant national CSIRT within 24 hours of becoming aware
+            of an actively exploited vulnerability, with a follow-up within
+            72 hours and a final report within 14 days of a corrective or
+            mitigating measure becoming available. Severe incidents follow
+            the same 24-hour and 72-hour windows with a final report within
+            one month.
+          </p>
+        </aside>
+      </div>
+
       <Section kicker="Section V" title="What This Means for Manufacturers">
         <Paragraph>
           Drawing on the report's findings, four concrete actions for
