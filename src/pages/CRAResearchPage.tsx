@@ -145,16 +145,6 @@ export const CRAResearchPage: React.FC = () => {
               height: "auto"
             }}
           />
-          <figcaption
-            className="cra-byline"
-            style={{
-              margin: "0.75rem 0 0",
-              textAlign: "center",
-              fontSize: "0.85rem"
-            }}
-          >
-            Cover image © The Linux Foundation, used with attribution.
-          </figcaption>
         </figure>
       </div>
 
@@ -527,6 +517,24 @@ export const CRAResearchPage: React.FC = () => {
             Research, with a foreword by Roman Zhukov, Red Hat.
           </figcaption>
         </figure>
+      </div>
+
+      <div
+        className="cra-article"
+        style={{ marginTop: "1.5rem", marginBottom: "2rem" }}
+      >
+        <p
+          className="cra-byline"
+          style={{
+            textAlign: "center",
+            fontSize: "0.85rem",
+            margin: 0,
+            color: "#5a6068"
+          }}
+        >
+          All images on this page © The Linux Foundation, used with
+          attribution.
+        </p>
       </div>
     </article>
   );
