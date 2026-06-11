@@ -4,8 +4,10 @@ import { ListSection } from "../components/ListSection";
 import { SectionHeader } from "../components/SectionHeader";
 import { TwoColumnSection } from "../components/TwoColumnSection";
 import { ContentSection } from "../components/ContentSection";
+import { useDocumentTitle } from "../hooks/useDocumentTitle";
 
 export const DebriefPage: React.FC = () => {
+  useDocumentTitle("2025 Debrief — Revanite");
   return (
     <div
       style={{

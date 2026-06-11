@@ -1,5 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import { useDocumentTitle } from "../hooks/useDocumentTitle";
 
 const REPORT_PDF = "/research/lfr_2026_cra_awareness_report_060826.pdf";
 const REPORT_TITLE = "2026 CRA Awareness and Readiness Report";
@@ -82,6 +83,7 @@ const InfographicGrid: React.FC<{ children: React.ReactNode }> = ({
 );
 
 export const CRAResearchPage: React.FC = () => {
+  useDocumentTitle("The CRA Readiness Gap — Revanite");
   return (
     <article>
       {/* Masthead */}

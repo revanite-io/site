@@ -1,6 +1,8 @@
 import React, { useState } from "react";
+import { useDocumentTitle } from "../hooks/useDocumentTitle";
 
 export const ApplicationPage: React.FC = () => {
+  useDocumentTitle("Apply — Revanite");
   const [formData, setFormData] = useState({
     context: "",
     stakes: "",

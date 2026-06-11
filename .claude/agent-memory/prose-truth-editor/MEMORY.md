@@ -1,0 +1,2 @@
+- [CRA Pages — Project Context](project-cra-pages.md) — CRA section editorial pitfalls, confirmed data, timeline facts, inconsistencies found in first review
+- [User — Eddie Knight, Revanite founder](user-role.md) — founder/contributor, deep CRA/OpenSSF domain knowledge, wants direct feedback

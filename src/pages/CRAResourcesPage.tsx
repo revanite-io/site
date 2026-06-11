@@ -1,5 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import { useDocumentTitle } from "../hooks/useDocumentTitle";
 
 const REPORT_PDF = "/research/lfr_2026_cra_awareness_report_060826.pdf";
 
@@ -67,6 +68,7 @@ const ResourceSection: React.FC<ResourceSectionProps> = ({
 );
 
 export const CRAResourcesPage: React.FC = () => {
+  useDocumentTitle("CRA Resources — Revanite");
   return (
     <article>
       <header

@@ -1,5 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import { useDocumentTitle } from "../hooks/useDocumentTitle";
 
 type SectionProps = {
   kicker: string;
@@ -122,6 +123,7 @@ const ProjectCard: React.FC<ProjectCardProps> = ({
 );
 
 export const CRAFieldGuidePage: React.FC = () => {
+  useDocumentTitle("Field Guide to OSS Tools for CRA Readiness — Revanite");
   return (
     <article>
       <header
