@@ -368,12 +368,14 @@ export const CRAFieldGuidePage: React.FC = () => {
           }
           craRole={
             <>
-              For SaaS and cloud-delivered products that must demonstrate
-              stringent security configuration to satisfy CRA essential
-              cybersecurity requirements, CCC supplies an off-the-shelf
-              community-maintained library of controls and the plugins to
-              evaluate them — rather than each manufacturer authoring
-              their own from scratch.
+              Mostly as a next step. Cloud services sit largely outside the
+              CRA's scope — SaaS is not covered, and cloud offerings fall
+              chiefly under NIS2 and DORA instead. But the readiness work is
+              the same shape: once your CRA program runs on Gemara catalogs
+              and automated evaluation, CCC extends that machinery to the
+              cloud estate those adjacent regulations govern, with a
+              community-maintained library of controls rather than each
+              organization authoring its own from scratch.
             </>
           }
         />
