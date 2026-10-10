@@ -38,7 +38,7 @@ const founders = [
     name: "Eddie Knight",
     title: "Co-founder",
     body:
-      "Created the OSPS Baseline and Gemara. Chair of the FINOS Technical Oversight Committee, technical lead in the CNCF, and a long-time Linux Foundation maintainer and strategic advisor. Previously at Sonatype, Morgan Stanley and Bank of America.",
+      "Created the OSPS Baseline and Gemara. Chair of the FINOS Technical Oversight Committee, technical lead in the CNCF, and a long-time Linux Foundation maintainer and strategic advisor. Background includes Sonatype, Morgan Stanley and Bank of America.",
     links: [
       { label: "eddieknight.dev", href: "https://eddieknight.dev" },
       { label: "GitHub", href: "https://github.com/eddie-knight" }
@@ -48,7 +48,7 @@ const founders = [
     name: "Jason Meridth",
     title: "Co-founder",
     body:
-      "Leads Privateer. Maintainer in the CNCF and OpenSSF communities. Previously at Chainguard, GitHub, Rackspace and Cisco.",
+      "Leads Privateer. Maintainer in the CNCF and OpenSSF communities. Background includes Chainguard, GitHub, Rackspace and Cisco.",
     links: [
       { label: "jmeridth.com", href: "https://jmeridth.com" },
       { label: "GitHub", href: "https://github.com/jmeridth" }
