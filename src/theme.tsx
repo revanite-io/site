@@ -29,6 +29,7 @@ export type AppTheme = {
   };
   typography: {
     body: string;
+    display: string;
     mono: string;
   };
 };
@@ -64,6 +65,7 @@ const cyanTheme: AppTheme = {
   },
   typography: {
     body: "'Inter', system-ui, -apple-system, BlinkMacSystemFont, sans-serif",
+    display: "'Space Grotesk', 'Inter', system-ui, sans-serif",
     mono: "ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, \"Liberation Mono\", \"Courier New\", monospace"
   }
 };
@@ -108,6 +110,7 @@ export const ThemeProvider: React.FC<ThemeProviderProps> = ({ children }) => {
     "--gf-space-lg": theme.spacing.lg,
     "--gf-space-xl": theme.spacing.xl,
     "--gf-font-body": theme.typography.body,
+    "--gf-font-display": theme.typography.display,
     "--gf-font-mono": theme.typography.mono,
     "--gf-cyan-glow": "rgba(74, 224, 240, 0.6)",
     "--gf-glass-blur": "blur(12px)",

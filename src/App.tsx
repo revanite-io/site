@@ -1,20 +1,16 @@
 import React from "react";
-import { BrowserRouter, Routes, Route, Navigate, Outlet, useLocation } from "react-router-dom";
+import { BrowserRouter, Routes, Route, Navigate, Outlet } from "react-router-dom";
 import { Header } from "./components/Header";
 import { Footer } from "./components/Footer";
 import { BackgroundArcs } from "./components/BackgroundArcs";
 import { CRALayout } from "./components/CRALayout";
 import { HomePage } from "./pages/HomePage";
-import { ApplicationPage } from "./pages/ApplicationPage";
 import { DebriefPage } from "./pages/DebriefPage";
 import { CRAResearchPage } from "./pages/CRAResearchPage";
 import { CRAFieldGuidePage } from "./pages/CRAFieldGuidePage";
 import { CRAResourcesPage } from "./pages/CRAResourcesPage";
 
 const HomeLayout: React.FC = () => {
-  const location = useLocation();
-  const isHomePage = location.pathname === "/";
-
   return (
     <div
       className="cyan-theme"
@@ -40,7 +36,7 @@ const HomeLayout: React.FC = () => {
       >
         <Outlet />
       </main>
-      {!isHomePage && <Footer />}
+      <Footer />
     </div>
   );
 };
@@ -51,7 +47,6 @@ export const App: React.FC = () => {
       <Routes>
         <Route element={<HomeLayout />}>
           <Route path="/" element={<HomePage />} />
-          <Route path="/apply" element={<ApplicationPage />} />
           <Route path="/2025-debrief" element={<DebriefPage />} />
         </Route>
         <Route element={<CRALayout />}>

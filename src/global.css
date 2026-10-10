@@ -189,13 +189,11 @@ body {
 }
 
 /* Hide scrollbar for infinite scroll hero row */
-#affiliations > div,
 #partners > div {
   scrollbar-width: none; /* Firefox */
   -ms-overflow-style: none; /* IE and Edge */
 }
 
-#affiliations > div::-webkit-scrollbar,
 #partners > div::-webkit-scrollbar {
   display: none; /* Chrome, Safari, Opera */
 }
@@ -295,7 +293,7 @@ h3 {
   #partners h3 {
     font-size: 0.9rem !important;
   }
-  
+
   /* TextSection paragraphs - reduce from 1.25rem to 1rem */
   .text-section p {
     font-size: 1rem !important;
@@ -400,14 +398,14 @@ h3 {
     margin-top: var(--gf-space-md) !important;
     margin-bottom: var(--gf-space-md) !important;
   }
-  
+
   #partners > div {
     padding-left: var(--gf-space-md) !important;
     padding-right: var(--gf-space-md) !important;
     padding-top: var(--gf-space-md) !important;
     padding-bottom: var(--gf-space-md) !important;
   }
-  
+
   /* CTACard - reduce padding and margins */
   section[id*="cta"] {
     padding: var(--gf-space-md) !important;
@@ -480,3 +478,206 @@ h3 {
   }
 }
 
+
+/* Home page. Classes only — the [style*=] overrides above never touch it. */
+.home {
+  max-width: 1100px;
+  margin: 0 auto;
+  width: 100%;
+}
+
+.home > section + section {
+  margin-top: calc(var(--gf-space-xl) * 2);
+}
+
+.home a {
+  color: var(--gf-color-accent);
+  text-decoration: underline;
+  text-decoration-thickness: 1px;
+  text-underline-offset: 0.2em;
+}
+
+.home a:hover,
+.home a:focus-visible {
+  text-decoration-thickness: 2px;
+}
+
+.home a:focus-visible {
+  outline: 2px solid var(--gf-color-accent);
+  outline-offset: 3px;
+}
+
+.home-intro h1 {
+  font-family: var(--gf-font-display);
+  font-size: clamp(2.5rem, 5.5vw, 4rem);
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  line-height: 1.05;
+  color: var(--gf-color-text);
+  max-width: 14ch;
+  margin: 0 0 var(--gf-space-lg);
+}
+
+.home-intro p {
+  font-size: 1.2rem;
+  line-height: 1.6;
+  color: var(--gf-color-text-subtle);
+  max-width: 58ch;
+  margin: 0;
+}
+
+/* The stack: three glass panels joined by one cyan wire. It is a real
+   sequence (model → evaluator → registry), so the wire carries the order. */
+.home-pipeline ol {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: var(--gf-space-lg);
+}
+
+.pipeline-card {
+  position: relative;
+  background: var(--gf-color-surface);
+  border: 1px solid var(--gf-color-border-strong);
+  border-radius: var(--gf-radius-xl);
+  padding: var(--gf-space-lg);
+  display: flex;
+  flex-direction: column;
+}
+
+.pipeline-card.is-live {
+  border-color: var(--gf-color-accent);
+  box-shadow: var(--gf-shadow-surface-strong);
+}
+
+.pipeline-card:not(:last-child)::after {
+  content: "";
+  position: absolute;
+  top: 3.1rem;
+  right: calc(-1 * var(--gf-space-lg) - 1px);
+  width: calc(var(--gf-space-lg) + 2px);
+  height: 2px;
+  background: var(--gf-color-accent);
+  box-shadow: 0 0 8px var(--gf-cyan-glow);
+}
+
+.pipeline-role {
+  font-family: var(--gf-font-display);
+  font-size: 0.95rem;
+  font-weight: 500;
+  color: var(--gf-color-accent);
+  margin: 0 0 0.35rem;
+}
+
+.home-pipeline h2 {
+  font-family: var(--gf-font-display);
+  font-size: 1.6rem;
+  font-weight: 700;
+  letter-spacing: -0.01em;
+  color: var(--gf-color-text);
+  margin: 0 0 var(--gf-space-md);
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  flex-wrap: wrap;
+}
+
+.pipeline-live {
+  font-family: var(--gf-font-body);
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.01em;
+  color: var(--gf-color-button-text);
+  background: var(--gf-color-accent);
+  border-radius: var(--gf-radius-pill);
+  padding: 0.2em 0.7em;
+}
+
+.pipeline-card > p:not([class]) {
+  color: var(--gf-color-text);
+  font-size: 1rem;
+  line-height: 1.6;
+  margin: 0 0 var(--gf-space-md);
+  flex: 1;
+}
+
+.pipeline-links {
+  margin: 0;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem 1.25rem;
+  font-size: 0.95rem;
+}
+
+/* Founders: plain type on black, no cards. */
+.home-founders h2 {
+  font-family: var(--gf-font-display);
+  font-size: 1.1rem;
+  font-weight: 500;
+  color: var(--gf-color-text-subtle);
+  margin: 0 0 var(--gf-space-lg);
+  padding-bottom: 0.6rem;
+  border-bottom: 1px solid var(--gf-color-border-strong);
+}
+
+.home-founders > div {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: var(--gf-space-xl);
+}
+
+.home-founders h3 {
+  font-family: var(--gf-font-display);
+  font-size: 1.6rem;
+  font-weight: 700;
+  letter-spacing: -0.01em;
+  color: var(--gf-color-text);
+  margin: 0;
+}
+
+.founder-title {
+  color: var(--gf-color-accent);
+  font-size: 0.95rem;
+  margin: 0.2rem 0 var(--gf-space-md);
+}
+
+.home-founders article > p:not([class]) {
+  color: var(--gf-color-text);
+  font-size: 1.05rem;
+  line-height: 1.65;
+  max-width: 46ch;
+  margin: 0 0 var(--gf-space-md);
+}
+
+@media (max-width: 900px) {
+  .home-pipeline ol,
+  .home-founders > div {
+    grid-template-columns: 1fr;
+  }
+
+  /* !important only to beat the legacy global h1/h2 mobile overrides above. */
+  .home-intro h1 {
+    font-size: 2.25rem !important;
+  }
+
+  .home-founders h2 {
+    font-size: 1.1rem !important;
+  }
+
+  .pipeline-card:not(:last-child)::after {
+    top: auto;
+    right: auto;
+    left: var(--gf-space-lg);
+    bottom: calc(-1 * var(--gf-space-lg) - 1px);
+    width: 2px;
+    height: calc(var(--gf-space-lg) + 2px);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .arc {
+    animation: none;
+  }
+}

@@ -1,5 +1,4 @@
 import React from "react";
-import { Link } from "react-router-dom";
 import logoImage from "../assets/images/logo-transparent.png";
 
 export const Header: React.FC = () => {
@@ -46,64 +45,6 @@ export const Header: React.FC = () => {
         >
           Automated Governance at Scale
         </p>
-        <nav
-          style={{
-            display: "flex",
-            gap: "var(--gf-space-md)",
-            alignItems: "center",
-            marginTop: "var(--gf-space-md)"
-          }}
-        >
-          <a
-            href="https://meridian.revanite.io"
-            target="_blank"
-            rel="noopener noreferrer"
-            style={{
-              color: "var(--gf-color-text)",
-              textDecoration: "none",
-              padding: "0.5rem 1.5rem",
-              borderRadius: "var(--gf-radius-lg)",
-              backgroundColor: "var(--gf-color-accent-soft)",
-              border: "1px solid var(--gf-color-accent)",
-              cursor: "pointer",
-              transition: "background-color 0.2s, box-shadow 0.2s",
-              fontWeight: 600
-            }}
-            onMouseEnter={(e) => {
-              e.currentTarget.style.boxShadow = "0 0 12px var(--gf-color-accent)";
-            }}
-            onMouseLeave={(e) => {
-              e.currentTarget.style.boxShadow = "none";
-            }}
-          >
-            Meridian Alpha is Now Open!
-          </a>
-          <Link
-            to="/cra"
-            style={{
-              color: "var(--gf-color-text-subtle)",
-              textDecoration: "none",
-              padding: "0.5rem 1.25rem",
-              borderRadius: "var(--gf-radius-lg)",
-              border: "1px solid var(--gf-color-border-strong)",
-              cursor: "pointer",
-              transition: "color 0.2s, box-shadow 0.2s, border-color 0.2s",
-              fontWeight: 500
-            }}
-            onMouseEnter={(e) => {
-              e.currentTarget.style.color = "var(--gf-color-accent)";
-              e.currentTarget.style.borderColor = "var(--gf-color-accent)";
-              e.currentTarget.style.boxShadow = "0 0 12px var(--gf-color-accent)";
-            }}
-            onMouseLeave={(e) => {
-              e.currentTarget.style.color = "var(--gf-color-text-subtle)";
-              e.currentTarget.style.borderColor = "var(--gf-color-border-strong)";
-              e.currentTarget.style.boxShadow = "none";
-            }}
-          >
-            EU CRA Readiness →
-          </Link>
-        </nav>
       </section>
     </header>
   );

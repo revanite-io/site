@@ -31,7 +31,7 @@ export const Footer: React.FC = () => {
           }}
         >
           <a
-            href="#"
+            href="https://github.com/revanite-io"
             target="_blank"
             rel="noopener noreferrer"
             style={{
@@ -47,24 +47,6 @@ export const Footer: React.FC = () => {
             }}
           >
             GitHub
-          </a>
-          <a
-            href="#"
-            target="_blank"
-            rel="noopener noreferrer"
-            style={{
-              color: "var(--gf-color-text-subtle)",
-              textDecoration: "none",
-              transition: "color 0.2s"
-            }}
-            onMouseEnter={(e) => {
-              e.currentTarget.style.color = "var(--gf-color-accent)";
-            }}
-            onMouseLeave={(e) => {
-              e.currentTarget.style.color = "var(--gf-color-text-subtle)";
-            }}
-          >
-            LinkedIn
           </a>
         </div>
       </div>
