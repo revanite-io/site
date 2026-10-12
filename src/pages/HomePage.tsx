@@ -48,7 +48,7 @@ const founders = [
     name: "Jason Meridth",
     title: "Co-founder",
     body:
-      "Leads Privateer. Maintainer in the CNCF and OpenSSF communities. Background includes Chainguard, GitHub, Rackspace and Cisco.",
+      "Leads Privateer. Leads and maintains multiple open source projects, including many in the CNCF and OpenSSF communities. Background includes Chainguard, GitHub, Rackspace and Cisco. Strong passion for security, open source, automation, and mentorship.",
     links: [
       { label: "jmeridth.com", href: "https://jmeridth.com" },
       { label: "GitHub", href: "https://github.com/jmeridth" }
