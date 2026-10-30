@@ -92,7 +92,12 @@ export const PartnersSection: React.FC<{ partners?: Partner[] }> = ({ partners: 
       const clientWidth = container.clientWidth;
       // With 3 sets, one set is 1/3 of the total width
       const oneSetWidth = scrollWidth / 3;
-      const currentScroll = container.scrollLeft;
+      // Browsers round scrollLeft to whole (device) pixels, so a 0.25px step
+      // read back from it never advances; keep the exact position in a ref and
+      // only trust scrollLeft when the user has moved the strip by hand.
+      const actual = container.scrollLeft;
+      const tracked = lastScrollPositionRef.current;
+      const currentScroll = Math.abs(actual - tracked) > 1 ? actual : tracked;
 
       // Calculate new scroll position
       let newScroll = currentScroll + scrollSpeed;
@@ -104,11 +109,13 @@ export const PartnersSection: React.FC<{ partners?: Partner[] }> = ({ partners: 
       }
 
       container.scrollLeft = newScroll;
+      lastScrollPositionRef.current = newScroll;
 
       animationFrameRef.current = requestAnimationFrame(autoScroll);
     };
 
-    // Start auto-scroll
+    // Start auto-scroll, unless the visitor asked for reduced motion
+    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
     animationFrameRef.current = requestAnimationFrame(autoScroll);
 
     return () => {
