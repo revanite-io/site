@@ -59,7 +59,9 @@ const partners: Partner[] = Object.entries(logoModules)
     logo: module.default
   }));
 
-export const PartnersSection: React.FC = () => {
+// The Astro home page passes pre-optimised logos; without them the raw files are used.
+export const PartnersSection: React.FC<{ partners?: Partner[] }> = ({ partners: optimised }) => {
+  const logos = optimised ?? partners;
   const scrollContainerRef = useRef<HTMLDivElement>(null);
   const [isUserInteracting, setIsUserInteracting] = useState(false);
   const isUserInteractingRef = useRef(false);
@@ -69,7 +71,7 @@ export const PartnersSection: React.FC = () => {
   const scrollSpeed = 0.25; // pixels per frame
 
   // Triple partners for seamless infinite scroll (3x length)
-  const duplicatedPartners = [...partners, ...partners, ...partners];
+  const duplicatedPartners = [...logos, ...logos, ...logos];
 
   // Sync ref with state
   useEffect(() => {
@@ -202,21 +204,9 @@ export const PartnersSection: React.FC = () => {
   return (
     <section
       id="partners"
-      style={{
-        marginBottom: "var(--gf-space-xl)",
-        marginTop: "var(--gf-space-xl)"
-      }}
+      aria-label="Our projects and partners"
+      style={{ padding: "0.75rem 0" }}
     >
-      <h3
-        style={{
-          fontSize: "1rem",
-          color: "var(--gf-color-text-subtle)",
-          textAlign: "center",
-          fontWeight: "normal"
-        }}
-      >
-        Our Projects & Partners
-      </h3>
       <div
         ref={scrollContainerRef}
         onMouseDown={handleUserInteraction}
@@ -229,18 +219,14 @@ export const PartnersSection: React.FC = () => {
           WebkitOverflowScrolling: "touch",
           scrollbarWidth: "none", /* Firefox */
           msOverflowStyle: "none", /* IE and Edge */
-          paddingBottom: "var(--gf-space-lg)",
-          width: "100vw",
-          marginLeft: "calc(-50vw + 50%)",
-          paddingLeft: "var(--gf-space-xl)",
-          paddingRight: "var(--gf-space-xl)"
+          width: "100%"
         }}
       >
         <div
           style={{
             display: "flex",
             flexDirection: "row",
-            gap: "var(--gf-space-lg)",
+            gap: "2.5rem",
             width: "max-content"
           }}
         >
@@ -251,7 +237,7 @@ export const PartnersSection: React.FC = () => {
                 display: "flex",
                 alignItems: "center",
                 justifyContent: "center",
-                padding: "var(--gf-space-md)",
+                padding: "0.5rem",
                 transition: "transform 0.2s, opacity 0.2s",
                 flexShrink: 0
               }}
@@ -276,8 +262,8 @@ export const PartnersSection: React.FC = () => {
                   }
                 }}
                 style={{
-                  maxHeight: "80px",
-                  maxWidth: "240px",
+                  maxHeight: "32px",
+                  maxWidth: "140px",
                   objectFit: "contain",
                   width: "auto",
                   height: "auto"

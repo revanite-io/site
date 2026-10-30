@@ -36,6 +36,11 @@
   --color-accent-hover: #0a8aa0;
   --color-accent-soft: #ecfeff;
   --color-brand: #3ad0e6;
+  /* Dark slate surfaces (nav bar, logo strip): the Revanite logo only sits on dark. */
+  --color-ink: #0f172a;
+  --color-ink-line: #1e293b;
+  --color-ink-fg: #f1f5f9;
+  --color-ink-muted: #94a3b8;
   --color-accent-fg: #ffffff;
 
   --font-sans: 'Inter Variable', ui-sans-serif, system-ui, -apple-system,

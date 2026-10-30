@@ -3,6 +3,7 @@ import { defineConfig } from 'astro/config';
 import icon from 'astro-icon';
 import sitemap from '@astrojs/sitemap';
 import tailwindcss from '@tailwindcss/vite';
+import react from '@astrojs/react';
 
 const site = 'https://revanite.io';
 
@@ -21,7 +22,7 @@ export default defineConfig({
   site,
   trailingSlash: 'never',
   build: { format: 'file' },
-  integrations: [icon(), sitemap({ filter: (page) => !isRedirect(page) })],
+  integrations: [icon(), react(), sitemap({ filter: (page) => !isRedirect(page) })],
   vite: { plugins: [tailwindcss()] },
   prefetch: {
     prefetchAll: true,

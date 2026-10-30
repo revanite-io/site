@@ -10,6 +10,7 @@
     "test:build": "./test-build.sh"
   },
   "dependencies": {
+    "@astrojs/react": "^7.1.2",
     "@astrojs/rss": "^4.0.19",
     "@astrojs/sitemap": "^3.7.4",
     "@iconify-json/lucide": "^1.2.149",
@@ -17,9 +18,13 @@
     "@tailwindcss/vite": "^4.3.3",
     "astro": "^7.4.4",
     "astro-icon": "^1.2.0",
+    "react": "^19.3.1",
+    "react-dom": "^19.3.1",
     "tailwindcss": "^4.3.3"
   },
   "devDependencies": {
+    "@types/react": "^19.3.0",
+    "@types/react-dom": "^19.3.0",
     "typescript": "^7.0.2"
   }
 }

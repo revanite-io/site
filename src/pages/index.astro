@@ -1,5 +1,6 @@
 ---
-import { Image } from 'astro:assets';
+import { getImage } from 'astro:assets';
+import { PartnersSection } from '../components/PartnersSection';
 import { Icon } from 'astro-icon/components';
 import Layout from '../layouts/Layout.astro';
 import EntryList from '../components/EntryList.astro';
@@ -57,10 +58,12 @@ const founders = [
 const partnerLogos = import.meta.glob<{ default: ImageMetadata }>('../assets/images/partners/*.{png,svg,jpg,jpeg,webp}', {
   eager: true,
 });
-const partners = Object.entries(partnerLogos).map(([path, mod]) => ({
-  name: path.replace(/^.*\/|\.[^.]+$/g, '').replace(/-/g, ' '),
-  src: mod.default,
-}));
+const partners = await Promise.all(
+  Object.entries(partnerLogos).map(async ([path, mod]) => ({
+    name: path.replace(/^.*\/|\.[^.]+$/g, '').replace(/-/g, ' '),
+    logo: (await getImage({ src: mod.default, height: 64 })).src,
+  })),
+);
 
 const latest = [...(await getPosts()), ...(await getGuides())]
   .sort((a, b) => {
@@ -110,6 +113,11 @@ const jsonLd = [
       </div>
     </div>
   </section>
+
+  <!-- Logos are white-on-transparent, so the strip sits on the dark slate of the nav. -->
+  <div class="border-y border-[var(--color-ink-line)] bg-[var(--color-ink)]">
+    <PartnersSection client:visible partners={partners} />
+  </div>
 
   <section id="stack" class="scroll-mt-24 border-t border-[var(--color-line)]">
     <div class="container-page py-20 md:py-24">
@@ -195,19 +203,4 @@ const jsonLd = [
     </div>
   </section>
 
-  <!-- The partner logos are white-on-transparent, so they sit on a dark band. -->
-  <section class="bg-[var(--color-fg)] text-[var(--color-bg)]">
-    <div class="container-page py-14">
-      <h2 class="text-center font-sans text-xs font-semibold uppercase tracking-widest opacity-70">Our projects and partners</h2>
-      <ul class="mt-8 flex flex-wrap items-center justify-center gap-x-10 gap-y-8">
-        {
-          partners.map((p) => (
-            <li>
-              <Image src={p.src} alt={`${p.name} logo`} height={56} class="h-10 w-auto object-contain md:h-14" />
-            </li>
-          ))
-        }
-      </ul>
-    </div>
-  </section>
 </Layout>
