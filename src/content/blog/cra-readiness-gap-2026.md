@@ -1,8 +1,8 @@
 ---
 title: "The CRA Readiness Gap"
-description: "Eighteen months out from the December 2027 compliance deadline, awareness of the EU Cyber Resilience Act has not improved — and manufacturers are still choosing the most expensive path to compliance."
+description: "With the December 2027 compliance deadline approaching, awareness of the EU Cyber Resilience Act has not improved — and manufacturers are still choosing the most expensive path to compliance."
 date: 2026-06-10     # first commit of CRAResearchPage.tsx, 6ce7b5f
-updated: 2026-06-11  # last content commit, bf7742f
+updated: 2026-10-30  # timing, Commission guidance and reporting dates brought up to date
 authors: [revanite]
 tags: [cra, osps-baseline, gemara]
 image: /research/featured-gradient-light.png
@@ -10,6 +10,8 @@ aliases: [/cra]
 ---
 
 <p class="kicker">Linux Foundation Research · June 2026</p>
+
+*Editor's note, October 30, 2026: updated for events since June. The European Commission finalised its CRA guidance in July 2026, and the reporting obligations took effect on 11 September 2026.*
 
 *By the Revanite team · based on research by Adrienn Lawson, Linux Foundation*
 
@@ -31,7 +33,7 @@ The same extraterritorial reach that pushed GDPR cookie-consent banners onto web
 
 ## Awareness Is Not Improving
 
-The 2026 survey found that overall CRA awareness has not improved year over year, even though the regulation entered into force during the survey window — putting the December 2027 full-compliance deadline roughly 18 months out. Penalties for non-compliance can reach **€15 million or 2.5% of global annual turnover**, yet most respondents do not know this.
+The 2026 survey found that overall CRA awareness has not improved year over year, even though the regulation entered into force during the survey window — putting the December 2027 full-compliance deadline roughly 18 months out when the report was published. Penalties for non-compliance can reach **€15 million or 2.5% of global annual turnover**, yet most respondents do not know this.
 
 <div class="figure-grid">
   <img src="/research/infographics/social-01.png" alt="66% of respondents remain unfamiliar with the CRA, similar to the level in 2025 (62%), despite the regulation entering into force during the year." loading="lazy" />
@@ -62,7 +64,7 @@ One of the most striking findings is the price tag attached to private-fork main
   <img src="/research/infographics/social-07.png" alt="Maintaining an average of 86 private forks costs organizations approximately $258,000 in labor every release cycle, which greatly scales with organization size." loading="lazy" />
 </div>
 
-The report's analysis suggests that as the December 2027 deadline approaches, upstream contribution may become the only financially rational path forward. Contributing fixes upstream and funding open source projects does not, by itself, appear to classify a manufacturer's engagement as commercial activity under the CRA — a distinction the European Commission's March 2026 draft guidance addresses directly, though that document has not yet been finalized.
+The report's analysis suggests that as the December 2027 deadline approaches, upstream contribution may become the only financially rational path forward. Contributing fixes upstream and funding open source projects does not, by itself, appear to classify a manufacturer's engagement as commercial activity under the CRA — a distinction the European Commission's [guidance on applying the CRA](https://digital-strategy.ec.europa.eu/en/library/commission-publishes-new-guidance-support-timely-cyber-resilience-act-implementation) addresses directly. That guidance, drafted in March 2026 and adopted on 27 July 2026, treats people who contribute code to open source projects they do not control as outside the CRA, and says that a commercial entity paying for an openly shared project does not by itself make that project commercial.
 
 There is a related failure mode the cost numbers above don't capture: cloning open source projects at industrial scale and shipping them as closed-source compliance products without pushing fixes back upstream. The vendor checks every CRA-readiness box — SBOM, support contract, conformity assessment — but a repackager is a vendor, not a steward. The CRA's steward category exists precisely because the two roles are different. This pattern also concentrates compliance risk in a single repackaging pipeline, running counter to the next section's finding that contributor diversity is a strong predictor of project security. This is not a viable position. A compliance posture built on un-upstreamed forks relies on an upstream the buyer is actively starving — “consume, fork, monetize, walk away” undermines exactly the ecosystem the regulation depends on.
 
@@ -81,9 +83,9 @@ The vulnerability counts above draw on the LFX-indexed dataset; a separate analy
 
 <aside class="callout">
 
-**Earlier than you think.** The reporting clock starts before full compliance does.
+**Earlier than you think.** The reporting clock is already running.
 
-Most CRA discussion focuses on the December 2027 full-applicability deadline. Article 14's vulnerability and incident reporting obligations take effect earlier — on 11 September 2026. From that date, manufacturers must notify ENISA and the relevant national CSIRT within 24 hours of becoming aware of an actively exploited vulnerability, with a follow-up within 72 hours and a final report within 14 days of a corrective or mitigating measure becoming available. Severe incidents follow the same 24-hour and 72-hour windows with a final report within one month.
+Most CRA discussion focuses on the December 2027 full-applicability deadline. Article 14's vulnerability and incident reporting obligations took effect earlier, on 11 September 2026. Since that date, manufacturers must notify ENISA and the relevant national CSIRT within 24 hours of becoming aware of an actively exploited vulnerability, with a follow-up within 72 hours and a final report within 14 days of a corrective or mitigating measure becoming available. Severe incidents follow the same 24-hour and 72-hour windows with a final report within one month.
 
 </aside>
 

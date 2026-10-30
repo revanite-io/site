@@ -25,3 +25,6 @@ export const href = (e: Post | Guide) => `/${e.collection === 'blog' ? 'blog' : 
 
 export const formatDate = (d: Date) =>
   d.toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric', timeZone: 'UTC' });
+
+// "Updated October 2026": the month is enough for a revision date.
+export const formatMonth = (d: Date) => d.toLocaleDateString('en-US', { year: 'numeric', month: 'long', timeZone: 'UTC' });

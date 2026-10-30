@@ -4,7 +4,7 @@ import { getEntries, render } from 'astro:content';
 import { Icon } from 'astro-icon/components';
 import Layout from './Layout.astro';
 import EntryList from '../components/EntryList.astro';
-import { formatDate, getGuides, hasTag, type Guide, type Post } from '../lib/content';
+import { formatDate, formatMonth, getGuides, hasTag, type Guide, type Post } from '../lib/content';
 
 interface Props {
   entry: Post | Guide;
@@ -86,7 +86,7 @@ if (guide && guide.faq.length > 0) {
         <p class="mt-6 text-sm text-[var(--color-subtle)]">
           {authors.map((a) => a.data.name).join(' and ')}
           {published && <> · <time datetime={published.toISOString()}>{formatDate(published)}</time></>}
-          {updated && <> · Updated <time datetime={updated.toISOString()}>{formatDate(updated)}</time></>}
+          {updated && <> · Updated <time datetime={updated.toISOString()}>{formatMonth(updated)}</time></>}
         </p>
         {
           topics.length > 0 && (

@@ -3,7 +3,7 @@ title: "A Field Guide to OSS Tools for CRA Readiness"
 description: "The open source ecosystem already contains the building blocks regulated manufacturers need to meet their CRA obligations. Here is how each one fits."
 layout: explainer
 date: 2026-06-10     # first commit of CRAFieldGuidePage.tsx, 6ce7b5f
-updated: 2026-06-12  # last content commit, 8f67ae3 "fix CCC role"
+updated: 2026-10-30  # CRA Baseline status, GitHub and BSI references, scanner Action link
 authors: [revanite]
 tags: [cra, gemara, osps-baseline, privateer]
 aliases: [/cra/field-guide]
@@ -23,7 +23,7 @@ A logical model and schemas that describe the categories of compliance activitie
 
 Gemara allows organizations to express control catalogs, threats, and assessment requirements as machine-readable artifacts that connect high-level regulatory guidance to concrete, automated evaluations. The schemas and SDK are publicly used by FINOS, OpenSSF, LFX Insights, Revanite's Privateer project, and Red Hat's ComplyTime project.
 
-**How it helps with the CRA.** Gemara is the schema layer underneath the OpenSSF's upcoming *CRA Baseline for Manufacturers* and *CRA Baseline for Open Source Consumers*. With Gemara, manufacturers can attach CRA assessment requirements directly to risk assessments and automated evaluations, enabling end-to-end automated governance and audit programs rather than ad hoc spreadsheets.
+**How it helps with the CRA.** Gemara is the schema layer underneath the OpenSSF's *CRA Baseline for Manufacturers* and *CRA Baseline for Open Source Consumers*, both still in development as of October 2026. With Gemara, manufacturers can attach CRA assessment requirements directly to risk assessments and automated evaluations, enabling end-to-end automated governance and audit programs rather than ad hoc spreadsheets.
 
 [gemara.openssf.org →](https://gemara.openssf.org/)
 
@@ -37,9 +37,9 @@ Once the schema is in place, manufacturers need a credible, widely-adopted body 
 
 A minimum definition of security requirements for an open source project, scaled to its maturity level.
 
-The Open Source Project Security Baseline (OSPS Baseline) describes proper security hygiene for risk mitigation within an open source project. It is referenced as a core requirement by OpenSSF and FINOS, used by the Linux Foundation's LFX Insights platform to evaluate the health of more than 20,000 repositories, and was [named by GitHub as one of the year's most influential open source projects](https://github.blog/open-source/maintainers/this-years-most-influential-open-source-projects/).
+The Open Source Project Security Baseline (OSPS Baseline) describes proper security hygiene for risk mitigation within an open source project. It is referenced as a core requirement by OpenSSF and FINOS, used by the Linux Foundation's LFX Insights platform to evaluate the health of more than 20,000 repositories, and was [named by GitHub as one of 2025's most influential open source projects](https://github.blog/open-source/maintainers/this-years-most-influential-open-source-projects/).
 
-**How it helps with the CRA.** The OSPS Baseline is used by the OpenSSF's upcoming *CRA Baseline for Manufacturers* and *CRA Baseline for Open Source Consumers*, and it is also referenced by Germany's [BSI-TR-03185-2 technical guidance](https://www.bsi.bund.de/SharedDocs/Downloads/EN/BSI/Publications/TechGuidelines/TR03185/BSI-TR-03185-2.html). While it doesn't fully cover CRA requirements alone, this detailed control catalog provides a foundation upon which other CRA-specific solutions can be built.
+**How it helps with the CRA.** The OSPS Baseline is used by the OpenSSF's *CRA Baseline for Manufacturers* and *CRA Baseline for Open Source Consumers*, both still in development, and it is also referenced by Germany's [BSI TR-03185 technical guideline](https://www.bsi.bund.de/dok/TR-03185-en) in its part on the secure software lifecycle for open source software. While it doesn't fully cover CRA requirements alone, this detailed control catalog provides a foundation upon which other CRA-specific solutions can be built.
 
 [baseline.openssf.org →](https://baseline.openssf.org/)
 
@@ -67,7 +67,7 @@ The [pvtr-github-repo-scanner](https://github.com/ossf/pvtr-github-repo-scanner)
 
 **How it helps with the CRA.** When the CRA Baselines for Manufacturers and Open Source Consumers are published, the scanner is the most direct way to evaluate a manufacturer's own repositories — and those of the upstream projects they depend on — against those baselines on every commit, inside the same CI pipeline they already operate.
 
-[GitHub Action · OSPS Baseline Scanner →](https://github.com/marketplace/actions/open-source-project-security-baseline-scanner)
+[GitHub Action · OSPS Baseline Scanner →](https://github.com/revanite-io/osps-baseline-action)
 
 <p class="kicker">IV. Dive Deeper</p>
 

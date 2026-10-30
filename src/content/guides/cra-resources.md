@@ -3,7 +3,7 @@ title: "A Starting Point for CRA Readiness"
 description: "The most useful CRA resources are not ours — they live with the European Commission, the OpenSSF, and the Linux Foundation. This page is a curated set of pointers to those sources, alongside the open source projects we contribute to."
 layout: explainer
 date: 2026-06-10     # first commit of CRAResourcesPage.tsx, 6ce7b5f
-updated: 2026-06-11  # last content commit, bf7742f
+updated: 2026-10-30  # BSI TR-03185 link
 authors: [revanite]
 tags: [cra]
 aliases: [/cra/resources]
@@ -34,7 +34,7 @@ For full context on how each project fits the CRA compliance picture, start with
 
 ## Other guidance
 
-- [BSI TR-03185-2](https://www.bsi.bund.de/SharedDocs/Downloads/EN/BSI/Publications/TechGuidelines/TR03185/BSI-TR-03185-2.html) — The German Federal Office for Information Security's technical guideline on the secure software lifecycle for open source software.
+- [BSI TR-03185](https://www.bsi.bund.de/dok/TR-03185-en) — The German Federal Office for Information Security's technical guideline on the secure software lifecycle. Its second part covers open source software; it was published separately as TR-03185-2 and is now part of the single TR-03185 document.
 
 ## Revanite
 

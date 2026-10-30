@@ -2,12 +2,15 @@
 title: "2025 Retrospective from the Founder"
 description: "Eddie Knight's look back at 2025: keynotes, the OSPS Baseline and Gemara in the OpenSSF, FINOS Common Cloud Controls and CALM, and what comes next for Revanite."
 date: 2025-12-31     # the letter's own send date; first committed to the site 2026-01-04
+updated: 2026-10-30  # notes on the January plans, Security Insights site, two moved links
 authors: [eddie]
 tags: [news, osps-baseline, gemara, cra]
 aliases: [/2025-debrief]
 ---
 
 ![On stage for Keynote at KubeCon London](https://hs-243073831.f.hubspotstarter-na2.net/hub/243073831/hubfs/a1744057244303.png?upscale=true&width=1200&upscale=true&name=a1744057244303.png)
+
+*Editor's note, October 30, 2026: the letter is unchanged apart from short updates on the plans it made for January (the FINOS lifecycle, Gemara v1, the Security Insights site) and two links that have moved.*
 
 *This letter was sent out as a personal update from our Founder, Eddie Knight, on December 31, 2025. You can get a summary of this letter and navigate all of the reference material in "chat" format [here](https://notebooklm.google.com/notebook/741eb365-98c7-4809-b4f5-230c390871c2).*
 
@@ -44,7 +47,7 @@ There are three big workstreams I'd like to highlight:
 
 A bit of a pet project, but one I'm quite excited about… The FINOS project ecosystem has been operating for some time using the processes and standards that were written when the foundation was first initialized, with some ad hoc improvements over time.
 
-After 12 months of deliberation and countless revisions, the TOC and FINOS Staff have produced new guidance for projects which reflect the modern state of the foundation and align it with reference structures such as the CNCF's project lifecycle and the OSPS Baseline. Now that all the documentation updates are wrapping up, you can expect a formal announcement in January!
+After 12 months of deliberation and countless revisions, the TOC and FINOS Staff have produced new guidance for projects which reflect the modern state of the foundation and align it with reference structures such as the CNCF's project lifecycle and the OSPS Baseline. Now that all the documentation updates are wrapping up, you can expect a formal announcement in January! *(Update: FINOS [announced the updated lifecycle](https://www.finos.org/blog/updated-finos-project-lifecycle) on March 30, 2026.)*
 
 ### CCC Core Catalog
 
@@ -98,9 +101,9 @@ Here are a few times I was flown somewhere this year to talk about Baseline or i
 
 Adolfo "Puerco" Garcia Veytia has had an especially poignant way of presenting the concept to audiences around the world, culminating in an [epic keynote](https://www.youtube.com/watch?v=OdGxWBK8Jpc) alongside Stacey Potter in Atlanta.
 
-Following the official first release in February, the Baseline became part of the core project requirements for both OpenSSF and FINOS, and much more. It's been referenced in what feels like dozens of conference talks, it's the leading resource for the German government's [BSI-TR-03185-2](https://www.bsi.bund.de/SharedDocs/Downloads/EN/BSI/Publications/TechGuidelines/TR03185/BSI-TR-03185-2.html), and — thanks to the scanner we built using Privateer — it's being used by the Linux Foundation's LFX Insights platform to determine the health of over 20,000 open source project repositories.
+Following the official first release in February, the Baseline became part of the core project requirements for both OpenSSF and FINOS, and much more. It's been referenced in what feels like dozens of conference talks, it's the leading resource for the German government's [BSI-TR-03185-2](https://www.bsi.bund.de/dok/TR-03185-en), and — thanks to the scanner we built using Privateer — it's being used by the Linux Foundation's LFX Insights platform to determine the health of over 20,000 open source project repositories.
 
-Baseline was also referenced by GitHub as one of the [Most Influential Projects of 2025](https://github.blog/open-source/maintainers/this-years-most-influential-open-source-projects/#open-source-project-security-baseline-ospsb-raising-the-bar)! If your project is hosted on that platform, use the [GitHub Action for OSPS Baseline](https://github.com/marketplace/actions/open-source-project-security-baseline-scanner) to run the same scans as LFX insights in your own CI pipeline.
+Baseline was also referenced by GitHub as one of the [Most Influential Projects of 2025](https://github.blog/open-source/maintainers/this-years-most-influential-open-source-projects/#open-source-project-security-baseline-ospsb-raising-the-bar)! If your project is hosted on that platform, use the [GitHub Action for OSPS Baseline](https://github.com/revanite-io/osps-baseline-action) to run the same scans as LFX insights in your own CI pipeline.
 
 ### Security Insights
 
@@ -112,7 +115,7 @@ This year I've focused the SI updates on documentation improvements, instead of 
 
 ![security-insights-logo](https://hs-243073831.f.hubspotstarter-na2.net/hub/243073831/hubfs/security-insights-logo.png?upscale=true&width=500&upscale=true&name=security-insights-logo.png)
 
-As soon as folks return to the office following the New Year celebrations to push through the DNS changes, you'll see a lovely new site at [security-insights.openssf.org](http://security-insights.openssf.org/).
+As soon as folks return to the office following the New Year celebrations to push through the DNS changes, you'll see a lovely new site at [security-insights.openssf.org](https://security-insights.openssf.org/). *(Update: the site is live.)*
 
 Users can also use the new form on LFX Insights for a guided creation process!
 
@@ -128,7 +131,7 @@ This project has had a wild year. In January it was only a sliver of an idea com
 
 With a lot of dedication from Jenn Power and Travis Truman, the project development moved faster than logistics could keep up. It was being used by both FINOS and OpenSSF before it even received its official name on May 26th.
 
-Now we're nearing a v1 release in January! Project contributors Hannah Braswell and Sonu Preetam have made great contributions to help deliver a [documentation website](https://gemara.openssf.org/) for the project which includes an open source "Lexicon" of GRC terms and Architecture Decision Records to help elucidate the decisions that brought us to where we are today.
+Now we're nearing a v1 release in January! *(Update: [Gemara v1.0.0](https://github.com/gemaraproj/gemara/releases/tag/v1.0.0) was released on April 10, 2026.)* Project contributors Hannah Braswell and Sonu Preetam have made great contributions to help deliver a [documentation website](https://gemara.openssf.org/) for the project which includes an open source "Lexicon" of GRC terms and Architecture Decision Records to help elucidate the decisions that brought us to where we are today.
 
 The Gemara schemas and SDK are now being publicly used by FINOS, OpenSSF, LFX Insights, Revanite's Privateer project, and Red Hat's ComplyTime project. It's also serving as the entire foundation for the things we're building at Revanite.
 

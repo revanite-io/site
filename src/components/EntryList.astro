@@ -1,5 +1,5 @@
 ---
-import { formatDate, href, type Guide, type Post } from '../lib/content';
+import { formatDate, formatMonth, href, type Guide, type Post } from '../lib/content';
 
 interface Props {
   entries: (Post | Guide)[];
@@ -20,7 +20,7 @@ const { entries } = Astro.props;
         >
           <span class="text-xs font-semibold uppercase tracking-widest text-[var(--color-accent)]">
             {e.collection === 'blog'
-              ? formatDate(e.data.date)
+              ? formatDate(e.data.date) + (e.data.updated ? ` · Updated ${formatMonth(e.data.updated)}` : '')
               : e.data.layout === 'how-to'
                 ? 'How-to guide'
                 : 'Explainer'}
