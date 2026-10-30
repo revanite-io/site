@@ -44,4 +44,4 @@ Pushing to `main` triggers `.github/workflows/pages.yaml`, which builds and depl
 
 **Assets:** static files in `public/` (absolute URLs); partner logos in `src/assets/images/partners/` are optimised by `astro:assets` on the home page. `unused-assets/` is not imported.
 
-**Legacy:** the previous React/Vite SPA (`index.html`, `vite.config.ts`, `src/main.tsx`, `src/App.tsx`, `src/theme.tsx`, `src/global.css`, `src/hooks/`, `src/components/*.tsx` except `PartnersSection.tsx`, `src/pages/*.tsx`) is no longer built and is pending deletion. Astro warns about the `.tsx` files in `src/pages/` until they are removed.
+**Legacy:** the previous React/Vite SPA has been removed. `tsconfig.json` still excludes its old paths; `src/vite-env.d.ts` is left from it.
