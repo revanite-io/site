@@ -34,7 +34,7 @@ Pushing to `main` triggers `.github/workflows/pages.yaml`, which builds and depl
 
 ## Architecture
 
-**Stack:** Astro 7, Tailwind CSS 4 (via `@tailwindcss/vite`) with `@tailwindcss/typography` for rendered Markdown, `astro-icon` (Lucide), `@astrojs/sitemap`, `@astrojs/rss`.
+**Stack:** Astro 7 (with `@astrojs/react` for the one island, the scrolling logo strip `src/components/PartnersSection.tsx`), Tailwind CSS 4 (via `@tailwindcss/vite`) with `@tailwindcss/typography` for rendered Markdown, `astro-icon` (Lucide), `@astrojs/sitemap`, `@astrojs/rss`.
 
 **Pages:** `src/pages/index.astro` (home; project and founder copy lives as arrays at the top), `blog/`, `guides/`, `topics/`, `404.astro`, `rss.xml.ts`, `robots.txt.ts`. Output uses `build.format: 'file'` and `trailingSlash: 'never'`, so `/blog/x` is `dist/blog/x.html`.
 
@@ -44,4 +44,4 @@ Pushing to `main` triggers `.github/workflows/pages.yaml`, which builds and depl
 
 **Assets:** static files in `public/` (absolute URLs); partner logos in `src/assets/images/partners/` are optimised by `astro:assets` on the home page. `unused-assets/` is not imported.
 
-**Legacy:** the previous React/Vite SPA (`index.html`, `vite.config.ts`, `src/main.tsx`, `src/App.tsx`, `src/theme.tsx`, `src/global.css`, `src/hooks/`, `src/components/*.tsx`, `src/pages/*.tsx`) is no longer built and is pending deletion. Astro warns about the `.tsx` files in `src/pages/` until they are removed.
+**Legacy:** the previous React/Vite SPA (`index.html`, `vite.config.ts`, `src/main.tsx`, `src/App.tsx`, `src/theme.tsx`, `src/global.css`, `src/hooks/`, `src/components/*.tsx` except `PartnersSection.tsx`, `src/pages/*.tsx`) is no longer built and is pending deletion. Astro warns about the `.tsx` files in `src/pages/` until they are removed.

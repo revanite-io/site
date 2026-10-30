@@ -34,6 +34,25 @@ const projects = [
   },
 ];
 
+// Descriptions are taken from the CRA field guide, the CRA topic page and the 2025 debrief.
+const moreProjects = [
+  {
+    name: 'OpenSSF Baseline (OSPS Baseline)',
+    body: 'A minimum-bar set of security practices for open source projects, designed to be assessable.',
+    href: 'https://baseline.openssf.org',
+  },
+  {
+    name: 'OSPS Baseline scanner',
+    body: 'A Privateer plugin that evaluates GitHub repositories against the OSPS Baseline.',
+    href: 'https://github.com/ossf/pvtr-github-repo-scanner',
+  },
+  {
+    name: 'Security Insights',
+    body: 'A mechanism for projects to report information about their security in a machine-processable way.',
+    href: 'https://security-insights.openssf.org',
+  },
+];
+
 const founders = [
   {
     name: 'Eddie Knight',
@@ -153,6 +172,23 @@ const jsonLd = [
           ))
         }
       </ol>
+
+      <h3 class="mt-14 text-xs font-semibold uppercase tracking-widest text-[var(--color-subtle)]">Also from our team</h3>
+      <ul class="mt-6 grid grid-cols-1 gap-4 sm:grid-cols-3">
+        {
+          moreProjects.map((p) => (
+            <li class="overflow-hidden rounded-xl border border-[var(--color-line)] bg-[var(--color-surface)]">
+              <a href={p.href} target="_blank" rel="noopener noreferrer" class="flex h-full flex-col gap-2 p-5 transition-colors hover:bg-[var(--color-accent-soft)]">
+                <span class="inline-flex items-center gap-1 font-semibold tracking-tight">
+                  {p.name}
+                  <Icon name="lucide:arrow-up-right" class="h-3.5 w-3.5 text-[var(--color-accent)]" />
+                </span>
+                <span class="text-sm leading-relaxed text-[var(--color-muted)]">{p.body}</span>
+              </a>
+            </li>
+          ))
+        }
+      </ul>
     </div>
   </section>
 
