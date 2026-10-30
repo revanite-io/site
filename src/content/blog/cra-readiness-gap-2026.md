@@ -108,8 +108,6 @@ Even as a small team, we have contributed several elements to the open source ec
 
 Each of these projects has a direct role to play in helping regulated firms meet their CRA obligations — from secure development hygiene, through machine-readable policy, through automated evaluation and reporting. [Read more about how the OSS projects we contribute to map to CRA obligations →](/guides/cra-field-guide)
 
-For firms that want CRA compliance built on these projects without staffing the integration work in-house, our commercial platform is [Meridian](https://meridian.revanite.io).
-
 [![Read the full 2026 CRA Awareness and Readiness Report on linuxfoundation.org](/research/cta-read-the-report.png)](https://www.linuxfoundation.org/research/cra-readiness-2026)
 
 *40 pages, PDF.*

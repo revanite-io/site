@@ -36,8 +36,4 @@ For full context on how each project fits the CRA compliance picture, start with
 
 - [BSI TR-03185](https://www.bsi.bund.de/dok/TR-03185-en) — The German Federal Office for Information Security's technical guideline on the secure software lifecycle. Its second part covers open source software; it was published separately as TR-03185-2 and is now part of the single TR-03185 document.
 
-## Revanite
-
-- [Meridian](https://meridian.revanite.io) — Our commercial platform composing the open source projects above into an end-to-end CRA-readiness workflow.
-
 This page is a starting point, not an exhaustive bibliography. The 2026 CRA Awareness and Readiness Report's Resources section lists additional OpenSSF training, working-group communications, and Linux Foundation materials — see [the report](https://www.linuxfoundation.org/research/cra-readiness-2026) for the fuller list.

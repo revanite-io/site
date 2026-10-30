@@ -9,7 +9,7 @@ tags: [cra, gemara, osps-baseline, privateer]
 aliases: [/cra/field-guide]
 ---
 
-The [2026 CRA Awareness and Readiness Report](/blog/cra-readiness-gap-2026) makes clear that the practical gap between policy and implementation is the largest barrier to compliance. The projects below address that gap directly. Revanite contributors are active in each of these projects, and our commercial platform [Meridian](https://meridian.revanite.io) is built on top of the same stack so that regulated firms can adopt continuous CRA compliance without vendor lock-in or the need to re-invent the underlying tooling.
+The [2026 CRA Awareness and Readiness Report](/blog/cra-readiness-gap-2026) makes clear that the practical gap between policy and implementation is the largest barrier to compliance. The projects below address that gap directly. Revanite contributors are active in each of these projects.
 
 <p class="kicker">I. A Stable Foundation</p>
 
@@ -106,7 +106,5 @@ Authored across multiple industries through CNCF TAG Security, the AGMM gives or
 ## Putting It Together
 
 These projects are independent, open source, and designed to interoperate. A manufacturer can adopt them piecemeal — for example, dropping the OSPS Baseline scanner into a CI pipeline tomorrow — or assemble them into a single continuous compliance program over time.
-
-For firms that want the latter without staffing the integration work in-house, our commercial platform [Meridian](https://meridian.revanite.io) composes these projects into an end-to-end CRA-readiness workflow, with the same standards and schemas underneath so nothing is proprietary or locked in.
 
 For the data behind the urgency, see our summary of the [2026 CRA Awareness and Readiness Report →](/blog/cra-readiness-gap-2026)

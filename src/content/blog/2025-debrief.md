@@ -161,7 +161,7 @@ We're also working with our partners at [ControlPlane](https://control-plane.io/
 
 When connected to the Privateer ecosystem and the secure-by-default IaC registry that we've primed with support from [Krumware](https://krum.io/), the Revanite Platform can enable GRC and security teams to define acceptance requirements, engineers to deploy pre-approved infrastructure, and application developers to ship fully compliant code to production without ever being forced to chase down control authors and schedule a meeting to figure out security and compliance requirements.
 
-If this sounds interesting, send me an email to join the Alpha waitlist — or to discuss pre-seed investment opportunities.
+If this sounds interesting, send me an email to discuss pre-seed investment opportunities.
 
 ## Closing on a Personal Note
 
