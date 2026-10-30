@@ -8,6 +8,9 @@ const md = (dir: string) => glob({ pattern: ['**/*.md', '!**/_*.md'], base: `./s
 // Former paths that should redirect to this entry, e.g. "/2025-debrief".
 const aliases = z.array(z.string().startsWith('/')).default([]);
 
+// Every post and guide must carry a publish date; say so plainly when one is missing.
+const date = z.coerce.date({ error: 'needs a valid `date:` (YYYY-MM-DD) in its frontmatter' });
+
 const common = {
   title: z.string(),
   description: z.string(),
@@ -23,7 +26,7 @@ const blog = defineCollection({
   loader: md('blog'),
   schema: z.object({
     ...common,
-    date: z.coerce.date(),
+    date,
     updated: z.coerce.date().optional(),
   }),
 });
@@ -33,7 +36,7 @@ const guides = defineCollection({
   schema: z.object({
     ...common,
     layout: z.enum(['how-to', 'explainer']),
-    date: z.coerce.date(),
+    date,
     updated: z.coerce.date().optional(),
     weight: z.number().optional(),
     prerequisites: z.array(z.string()).default([]),
