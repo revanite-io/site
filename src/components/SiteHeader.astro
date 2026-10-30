@@ -1,5 +1,5 @@
 ---
-import Logo from './Logo.astro';
+import Wordmark from './Wordmark.astro';
 
 const nav = [
   { href: '/blog', label: 'Blog' },
@@ -16,11 +16,10 @@ const path = Astro.url.pathname;
   <div class="container-page flex flex-wrap items-center justify-between gap-x-6 py-3 md:h-16 md:flex-nowrap md:py-0">
     <a
       href="/"
-      class="flex items-center gap-2 font-semibold tracking-tight text-[var(--color-ink-fg)]"
+      class="flex items-center text-[var(--color-ink-fg)]"
       aria-label="Revanite — home"
     >
-      <Logo class="h-5 w-auto lg:h-6" />
-      Revanite
+      <Wordmark class="h-6 w-auto md:h-7" />
     </a>
 
     <a href="https://grc.store" class="btn text-sm bg-[var(--color-ink-fg)] text-[var(--color-ink)] hover:bg-[var(--color-brand)] md:order-last">grc.store</a>
@@ -35,7 +34,7 @@ const path = Astro.url.pathname;
                 href={item.href}
                 class:list={[
                   'transition-colors hover:text-[var(--color-ink-fg)]',
-                  path.startsWith(item.href) && 'font-medium text-[var(--color-ink-fg)]',
+                  path.startsWith(item.href) && 'text-[var(--color-ink-fg)]',
                 ]}
                 aria-current={path.startsWith(item.href) ? 'page' : undefined}
               >

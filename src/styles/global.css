@@ -54,6 +54,8 @@
   html {
     -webkit-text-size-adjust: 100%;
     text-rendering: optimizeLegibility;
+    /* Reserve the scrollbar on short pages too, so the nav bar doesn't shift sideways between pages. */
+    scrollbar-gutter: stable;
   }
 
   body {
