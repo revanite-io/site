@@ -1,0 +1,11 @@
+# Authors referenced by `authors:` in blog and guide frontmatter.
+- id: eddie
+  name: Eddie Knight
+  role: Co-founder
+  url: https://eddieknight.dev
+- id: jason
+  name: Jason Meridth
+  role: Co-founder
+  url: https://jmeridth.com
+- id: revanite
+  name: The Revanite team

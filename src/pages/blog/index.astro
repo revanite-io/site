@@ -1,0 +1,15 @@
+---
+import Listing from '../../layouts/Listing.astro';
+import EntryList from '../../components/EntryList.astro';
+import { getPosts } from '../../lib/content';
+
+const posts = await getPosts();
+---
+
+<Listing
+  eyebrow="Blog"
+  title="Notes from the stack"
+  description="Research write-ups, opinion and news from the people building Gemara, Privateer and grc.store."
+>
+  <div class="mt-14"><EntryList entries={posts} /></div>
+</Listing>

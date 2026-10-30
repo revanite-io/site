@@ -1,0 +1,39 @@
+---
+// Redirect pages for every `aliases:` entry in blog, guide and topic frontmatter,
+// so a moved or renamed page keeps its old URL working on any static host.
+import { getCollection } from 'astro:content';
+import { getGuides, getPosts, href } from '../lib/content';
+
+export async function getStaticPaths() {
+  const targets = [
+    ...(await getPosts()).map((e) => ({ to: href(e), aliases: e.data.aliases })),
+    ...(await getGuides()).map((e) => ({ to: href(e), aliases: e.data.aliases })),
+    ...(await getCollection('topics')).map((t) => ({ to: `/topics/${t.id}`, aliases: t.data.aliases })),
+  ];
+  const seen = new Map<string, string>();
+  return targets.flatMap(({ to, aliases }) =>
+    aliases.map((from) => {
+      if (seen.has(from)) throw new Error(`alias ${from} is claimed by both ${seen.get(from)} and ${to}`);
+      seen.set(from, to);
+      return { params: { alias: from.replace(/^\/|\/$/g, '') }, props: { to } };
+    }),
+  );
+}
+
+const { to } = Astro.props as { to: string };
+const target = new URL(to, Astro.site).toString();
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <title>Moved to {to}</title>
+    <meta http-equiv="refresh" content={`0; url=${to}`} />
+    <meta name="robots" content="noindex" />
+    <link rel="canonical" href={target} />
+  </head>
+  <body>
+    <p>This page has moved to <a href={to}>{target}</a>.</p>
+  </body>
+</html>

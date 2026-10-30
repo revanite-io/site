@@ -1,0 +1,17 @@
+---
+// The Revanite mark, redrawn from public/images/revanite-logo.png so the chevron
+// can take the text colour on light backgrounds (the PNG's chevron is white).
+interface Props {
+  class?: string;
+}
+
+const { class: className } = Astro.props;
+---
+
+<svg viewBox="620 252 760 625" class={className} aria-hidden="true">
+  <path fill="currentColor" d="M630 565 845 262h105L737 565l213 302H845z" />
+  <path
+    fill="var(--color-brand)"
+    d="M840 565 1055 262h130a173 173 0 0 1 0 346l185 259h-105L1050 565l30-43h105a87 87 0 0 0 0-174h-87L945 565l215 302h-105z"
+  />
+</svg>

@@ -1,0 +1,50 @@
+---
+import Logo from './Logo.astro';
+
+const nav = [
+  { href: '/blog', label: 'Blog' },
+  { href: '/guides', label: 'Guides' },
+  { href: '/topics', label: 'Topics' },
+];
+
+const path = Astro.url.pathname;
+---
+
+<header
+  class="sticky top-0 z-40 border-b border-[var(--color-line)] bg-[var(--color-bg)]/80 backdrop-blur supports-[backdrop-filter]:bg-[var(--color-bg)]/70"
+>
+  <div class="container-page flex flex-wrap items-center justify-between gap-x-6 py-3 md:h-16 md:flex-nowrap md:py-0">
+    <a
+      href="/"
+      class="flex items-center gap-2 font-semibold tracking-tight text-[var(--color-fg)]"
+      aria-label="Revanite — home"
+    >
+      <Logo class="h-5 w-auto lg:h-6" />
+      Revanite
+    </a>
+
+    <a href="https://grc.store" class="btn btn-primary text-sm md:order-last">grc.store</a>
+
+    <!-- Wraps to its own row below md so it stays reachable without a menu script. -->
+    <nav class="w-full pt-2 md:w-auto md:flex-1 md:pt-0" aria-label="Primary">
+      <ul class="flex items-center gap-6 text-sm text-[var(--color-muted)] md:gap-7">
+        {
+          nav.map((item) => (
+            <li>
+              <a
+                href={item.href}
+                class:list={[
+                  'transition-colors hover:text-[var(--color-fg)]',
+                  path.startsWith(item.href) && 'font-medium text-[var(--color-fg)]',
+                ]}
+                aria-current={path.startsWith(item.href) ? 'page' : undefined}
+              >
+                {item.label}
+              </a>
+            </li>
+          ))
+        }
+      </ul>
+    </nav>
+  </div>
+</header>

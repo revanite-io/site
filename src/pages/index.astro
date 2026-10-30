@@ -1,0 +1,213 @@
+---
+import { Image } from 'astro:assets';
+import { Icon } from 'astro-icon/components';
+import Layout from '../layouts/Layout.astro';
+import EntryList from '../components/EntryList.astro';
+import { getGuides, getPosts } from '../lib/content';
+
+const projects = [
+  {
+    name: 'Gemara',
+    role: 'The model',
+    body: 'A machine-readable schema for controls, threats, policies and evidence, hosted by the OpenSSF. It is the shared language the rest of the stack speaks, and it already underpins FINOS Common Cloud Controls, the OSPS Baseline and LFX Insights.',
+    links: [
+      { label: 'gemara.openssf.org', href: 'https://gemara.openssf.org' },
+      { label: 'Source', href: 'https://github.com/gemaraproj/gemara' },
+    ],
+  },
+  {
+    name: 'Privateer',
+    role: 'The evaluator',
+    body: 'Runs community or private plugins against any software asset and writes the result as Gemara evidence. Plugin scaffolding is generated straight from a Gemara control catalog, so a new standard becomes a runnable check in minutes.',
+    links: [
+      { label: 'privateerproj.com', href: 'https://privateerproj.com' },
+      { label: 'Source', href: 'https://github.com/privateerproj/privateer' },
+    ],
+  },
+  {
+    name: 'grc.store',
+    role: 'The registry',
+    live: true,
+    body: 'The public registry for compliance assets. Publish, sign and verify Gemara artifacts as OCI bundles: control catalogs, guidance, policies and the evaluation logs Privateer produces. Search it, pull from it, or publish your own.',
+    links: [{ label: 'grc.store', href: 'https://grc.store' }],
+  },
+];
+
+const founders = [
+  {
+    name: 'Eddie Knight',
+    title: 'Co-founder',
+    body: 'Created the OSPS Baseline and Gemara. Chair of the FINOS Technical Oversight Committee, technical lead in the CNCF, and a long-time Linux Foundation maintainer and strategic advisor. Background includes Sonatype, Morgan Stanley and Bank of America.',
+    links: [
+      { label: 'eddieknight.dev', href: 'https://eddieknight.dev' },
+      { label: 'GitHub', href: 'https://github.com/eddie-knight' },
+    ],
+  },
+  {
+    name: 'Jason Meridth',
+    title: 'Co-founder',
+    body: 'Leads Privateer. Leads and maintains multiple open source projects, including many in the CNCF and OpenSSF communities. Background includes Chainguard, GitHub, Rackspace and Cisco. Strong passion for security, open source, automation, and mentorship.',
+    links: [
+      { label: 'jmeridth.com', href: 'https://jmeridth.com' },
+      { label: 'GitHub', href: 'https://github.com/jmeridth' },
+    ],
+  },
+];
+
+const partnerLogos = import.meta.glob<{ default: ImageMetadata }>('../assets/images/partners/*.{png,svg,jpg,jpeg,webp}', {
+  eager: true,
+});
+const partners = Object.entries(partnerLogos).map(([path, mod]) => ({
+  name: path.replace(/^.*\/|\.[^.]+$/g, '').replace(/-/g, ' '),
+  src: mod.default,
+}));
+
+const latest = [...(await getPosts()), ...(await getGuides())]
+  .sort((a, b) => {
+    const date = (e: typeof a) => ('date' in e.data ? e.data.date : e.data.updated).valueOf();
+    return date(b) - date(a);
+  })
+  .slice(0, 3);
+
+const jsonLd = [
+  {
+    '@context': 'https://schema.org',
+    '@type': 'Organization',
+    name: 'Revanite',
+    url: 'https://revanite.io',
+    logo: 'https://revanite.io/images/revanite-logo.png',
+    sameAs: ['https://github.com/revanite-io'],
+    founder: founders.map((f) => ({ '@type': 'Person', name: f.name })),
+  },
+];
+---
+
+<Layout title="Revanite — Compliance that machines can read" jsonLd={jsonLd}>
+  <section class="relative overflow-hidden">
+    <div
+      aria-hidden="true"
+      class="pointer-events-none absolute inset-0 -z-10 bg-[radial-gradient(ellipse_at_top,_var(--color-accent-soft)_0%,_transparent_60%)]"
+    >
+    </div>
+    <div class="container-page py-20 md:py-32">
+      <div class="max-w-3xl">
+        <p class="eyebrow">Open source GRC engineering</p>
+        <h1 class="mt-5 text-balance text-4xl font-semibold tracking-tight sm:text-5xl md:text-6xl">
+          Compliance that <span class="text-[var(--color-accent)]">machines can read.</span>
+        </h1>
+        <p class="mt-6 max-w-2xl text-pretty text-lg text-[var(--color-muted)] md:text-xl">
+          Revanite builds and maintains the open source stack for GRC engineering: a shared data model, an evaluation
+          engine, and a public registry. Each project stands on its own. Together they carry a control from the page it
+          was written on to proof that it holds.
+        </p>
+        <div class="mt-10 flex flex-wrap items-center gap-3">
+          <a href="#stack" class="btn btn-secondary">See the stack</a>
+          <a href="/guides" class="btn btn-primary">
+            Read the guides
+            <Icon name="lucide:arrow-right" class="h-4 w-4" />
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="stack" class="scroll-mt-24 border-t border-[var(--color-line)]">
+    <div class="container-page py-20 md:py-24">
+      <div class="max-w-3xl">
+        <p class="eyebrow">The open source stack</p>
+        <h2 class="mt-4 text-balance text-3xl font-semibold tracking-tight sm:text-4xl">Model, evaluate, publish.</h2>
+      </div>
+      <ol
+        class="mt-12 grid grid-cols-1 gap-px overflow-hidden rounded-xl border border-[var(--color-line)] bg-[var(--color-line)] lg:grid-cols-3"
+      >
+        {
+          projects.map((p) => (
+            <li class="flex h-full flex-col gap-3 bg-[var(--color-surface)] p-6 md:p-8">
+              <p class="text-xs font-semibold uppercase tracking-widest text-[var(--color-accent)]">{p.role}</p>
+              <h3 class="flex items-center gap-2 text-2xl font-semibold tracking-tight">
+                {p.name}
+                {p.live && (
+                  <span class="rounded-full border border-[var(--color-accent)]/30 bg-[var(--color-accent-soft)] px-2 py-0.5 text-[0.65rem] font-semibold uppercase tracking-widest text-[var(--color-accent)]">
+                    Now live
+                  </span>
+                )}
+              </h3>
+              <p class="flex-1 text-sm leading-relaxed text-[var(--color-muted)]">{p.body}</p>
+              <p class="flex flex-wrap gap-4 text-sm font-medium">
+                {p.links.map((l) => (
+                  <a href={l.href} target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-1 text-[var(--color-accent)] hover:text-[var(--color-accent-hover)]">
+                    {l.label}
+                    <Icon name="lucide:arrow-up-right" class="h-3.5 w-3.5" />
+                  </a>
+                ))}
+              </p>
+            </li>
+          ))
+        }
+      </ol>
+    </div>
+  </section>
+
+  {
+    latest.length > 0 && (
+      <section class="border-t border-[var(--color-line)] bg-[var(--color-surface)]">
+        <div class="container-page py-20 md:py-24">
+          <div class="flex flex-wrap items-end justify-between gap-4">
+            <div>
+              <p class="eyebrow">Latest</p>
+              <h2 class="mt-4 text-balance text-3xl font-semibold tracking-tight sm:text-4xl">From the blog and guides</h2>
+            </div>
+            <a href="/topics" class="inline-flex items-center gap-2 text-sm font-medium text-[var(--color-accent)] hover:text-[var(--color-accent-hover)]">
+              Browse by topic
+              <Icon name="lucide:arrow-right" class="h-4 w-4" />
+            </a>
+          </div>
+          <div class="mt-10">
+            <EntryList entries={latest} />
+          </div>
+        </div>
+      </section>
+    )
+  }
+
+  <section class="border-t border-[var(--color-line)]">
+    <div class="container-page py-20 md:py-24">
+      <p class="eyebrow">Founders</p>
+      <div class="mt-10 grid gap-12 md:grid-cols-2">
+        {
+          founders.map((f) => (
+            <article>
+              <h3 class="text-2xl font-semibold tracking-tight">{f.name}</h3>
+              <p class="mt-1 text-sm text-[var(--color-subtle)]">{f.title}</p>
+              <p class="mt-4 leading-relaxed text-[var(--color-muted)]">{f.body}</p>
+              <p class="mt-4 flex flex-wrap gap-4 text-sm font-medium">
+                {f.links.map((l) => (
+                  <a href={l.href} target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-1 text-[var(--color-accent)] hover:text-[var(--color-accent-hover)]">
+                    {l.label}
+                    <Icon name="lucide:arrow-up-right" class="h-3.5 w-3.5" />
+                  </a>
+                ))}
+              </p>
+            </article>
+          ))
+        }
+      </div>
+    </div>
+  </section>
+
+  <!-- The partner logos are white-on-transparent, so they sit on a dark band. -->
+  <section class="bg-[var(--color-fg)] text-[var(--color-bg)]">
+    <div class="container-page py-14">
+      <h2 class="text-center font-sans text-xs font-semibold uppercase tracking-widest opacity-70">Our projects and partners</h2>
+      <ul class="mt-8 flex flex-wrap items-center justify-center gap-x-10 gap-y-8">
+        {
+          partners.map((p) => (
+            <li>
+              <Image src={p.src} alt={`${p.name} logo`} height={56} class="h-10 w-auto object-contain md:h-14" />
+            </li>
+          ))
+        }
+      </ul>
+    </div>
+  </section>
+</Layout>

@@ -1,53 +1,37 @@
-# Personal Website Wireframe
+# revanite.io
 
-A React-based personal website wireframe using the cyan theme from the greenfield project.
+Source for [revanite.io](https://revanite.io): a static [Astro](https://astro.build) site. Blog posts and guides are Markdown files, gathered into topic pages.
 
-## Features
-
-- **Cyan Theme**: Beautiful cyan color scheme with animated background arcs
-- **Responsive Design**: Works on desktop and mobile devices
-- **Wireframe Structure**: Ready to be extended with your own content
-- **Modern Stack**: Built with React 19, TypeScript, and Vite
-
-## Getting Started
-
-1. Install dependencies:
 ```bash
 npm install
+npm run dev      # http://localhost:4321, drafts included
+npm run build    # outputs dist/ and validates all content
 ```
 
-2. Start the development server:
-```bash
-npm run dev
-```
+## Adding a blog post
 
-3. Build for production:
-```bash
-npm run build
-```
+1. Copy `src/content/blog/_template.md` to `src/content/blog/<slug>.md`. The filename becomes the URL: `/blog/<slug>`.
+2. Fill in the frontmatter:
+   - `title`, `description` (one sentence; used on cards, in search results and social previews) and `date` are required.
+   - `authors`: ids from `src/content/authors.yaml`.
+   - `tags`: each must match a file in `src/content/topics/`. Tag announcements `news`.
+   - `image` (optional): social preview image under `public/`.
+   - `draft: true` while it is in review. Drafts show in `npm run dev` but are not published.
+   - `aliases` (optional): old URLs that should redirect here.
+3. Write the body in Markdown. Raw HTML works too, for example `<aside class="callout">` or `<div class="figure-grid">` (see `blog/cra-readiness-gap-2026.md`).
+4. Check it with `npm run dev`, then open a pull request. CI builds it, and the build fails on a bad field, naming the file. Set `draft: false` before merging. Merging to `main` publishes.
 
-## Structure
+## Adding a guide
 
-- `src/components/` - Reusable components (Header, Footer, BackgroundArcs)
-- `src/pages/` - Page components (HomePage)
-- `src/theme.tsx` - Theme configuration with cyan color scheme
-- `src/global.css` - Global styles and theme enhancements
+Same steps, from `src/content/guides/_template.md`, into `src/content/guides/<slug>.md` (`/guides/<slug>`). Pick a `layout`:
 
-## Customization
+- `how-to`: each H2 becomes a numbered step; fill `prerequisites` and `outcome`.
+- `explainer`: prose; related how-to guides on the same topics are listed at the end.
 
-This is a wireframe designed to be extended. You can:
+Optional `faq` entries render at the end and are published as FAQ structured data.
 
-1. Update the content in `src/pages/HomePage.tsx`
-2. Modify the header navigation in `src/components/Header.tsx`
-3. Add new pages and routes
-4. Customize colors and styling in `src/theme.tsx`
-5. Add new components as needed
+## Adding a topic
 
-## Theme Colors
+Create `src/content/topics/<slug>.md` with `title` and `description`. The body is intro copy. The page at `/topics/<slug>` lists everything tagged `<slug>`; pin items with `featured: [slug, ...]`.
 
-The cyan theme uses:
-- Background: Dark teal (#051616)
-- Accent: Cyan (#00f2ff)
-- Surface: Semi-transparent dark teal
-- Text: Light cyan/white tones
-
+See `CLAUDE.md` for the architecture.

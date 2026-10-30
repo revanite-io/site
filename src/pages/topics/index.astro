@@ -1,0 +1,33 @@
+---
+import { getCollection } from 'astro:content';
+import Listing from '../../layouts/Listing.astro';
+import { getGuides, getPosts, hasTag } from '../../lib/content';
+
+const entries = [...(await getPosts()), ...(await getGuides())];
+const topics = (await getCollection('topics'))
+  .map((t) => ({ ...t, count: entries.filter((e) => hasTag(e, t.id)).length }))
+  .sort((a, b) => a.data.title.localeCompare(b.data.title));
+---
+
+<Listing eyebrow="Topics" title="Topics" description="Every blog post and guide, gathered by subject.">
+  <ul
+    class="mt-14 grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3"
+  >
+    {
+      topics.map((t) => (
+        <li class="overflow-hidden rounded-xl border border-[var(--color-line)] bg-[var(--color-surface)]">
+          <a
+            href={`/topics/${t.id}`}
+            class="flex h-full flex-col gap-3 p-6 transition-colors hover:bg-[var(--color-accent-soft)]"
+          >
+            <span class="text-xs font-semibold uppercase tracking-widest text-[var(--color-accent)]">
+              {t.count} {t.count === 1 ? 'item' : 'items'}
+            </span>
+            <h2 class="text-lg font-semibold tracking-tight">{t.data.title}</h2>
+            <p class="text-sm leading-relaxed text-[var(--color-muted)]">{t.data.description}</p>
+          </a>
+        </li>
+      ))
+    }
+  </ul>
+</Listing>

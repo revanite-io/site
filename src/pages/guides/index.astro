@@ -1,0 +1,15 @@
+---
+import Listing from '../../layouts/Listing.astro';
+import EntryList from '../../components/EntryList.astro';
+import { getGuides } from '../../lib/content';
+
+const guides = await getGuides();
+---
+
+<Listing
+  eyebrow="Guides"
+  title="Guides"
+  description="Explainers and step-by-step how-tos for machine-readable compliance with open source tools."
+>
+  <div class="mt-14"><EntryList entries={guides} /></div>
+</Listing>

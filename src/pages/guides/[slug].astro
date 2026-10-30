@@ -1,0 +1,12 @@
+---
+import Article from '../../layouts/Article.astro';
+import { getGuides, type Guide } from '../../lib/content';
+
+export async function getStaticPaths() {
+  return (await getGuides()).map((entry) => ({ params: { slug: entry.id }, props: { entry } }));
+}
+
+const { entry } = Astro.props as { entry: Guide };
+---
+
+<Article entry={entry} />

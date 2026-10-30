@@ -1,0 +1,66 @@
+---
+import { getCollection, render, type CollectionEntry } from 'astro:content';
+import Listing from '../../layouts/Listing.astro';
+import EntryList from '../../components/EntryList.astro';
+import { getGuides, getPosts, hasTag } from '../../lib/content';
+
+export async function getStaticPaths() {
+  return (await getCollection('topics')).map((topic) => ({ params: { slug: topic.id }, props: { topic } }));
+}
+
+const { topic } = Astro.props as { topic: CollectionEntry<'topics'> };
+const { Content } = await render(topic);
+
+const guides = (await getGuides()).filter((e) => hasTag(e, topic.id));
+const posts = (await getPosts()).filter((e) => hasTag(e, topic.id));
+const featured = topic.data.featured.map((slug) => {
+  const hit = [...guides, ...posts].find((e) => e.id === slug);
+  if (!hit) throw new Error(`topics/${topic.id}.md: featured "${slug}" is not a published post or guide tagged ${topic.id}`);
+  return hit;
+});
+const rest = (list: typeof guides | typeof posts) => list.filter((e) => !featured.includes(e));
+
+const sections = [
+  { heading: 'Start here', entries: featured },
+  { heading: 'Guides', entries: rest(guides) },
+  { heading: 'From the blog', entries: rest(posts) },
+].filter((s) => s.entries.length > 0);
+
+const url = new URL(Astro.url.pathname, Astro.site).toString();
+const jsonLd = [
+  {
+    '@context': 'https://schema.org',
+    '@type': 'CollectionPage',
+    name: topic.data.title,
+    description: topic.data.description,
+    url,
+    hasPart: [...guides, ...posts].map((e) => ({
+      '@type': e.collection === 'blog' ? 'BlogPosting' : 'TechArticle',
+      headline: e.data.title,
+      url: new URL(`/${e.collection === 'blog' ? 'blog' : 'guides'}/${e.id}`, Astro.site).toString(),
+    })),
+  },
+];
+---
+
+<Listing eyebrow="Topic" title={topic.data.title} description={topic.data.description} jsonLd={jsonLd}>
+  {
+    sections.map((s) => (
+      <section class="mt-14">
+        <h2 class="text-2xl font-semibold tracking-tight">{s.heading}</h2>
+        <div class="mt-6">
+          <EntryList entries={s.entries} />
+        </div>
+      </section>
+    ))
+  }
+  {
+    topic.body?.trim() && (
+      <section class="mt-16 border-t border-[var(--color-line)] pt-12">
+        <div class="prose prose-lg">
+          <Content />
+        </div>
+      </section>
+    )
+  }
+</Listing>

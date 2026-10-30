@@ -4,42 +4,44 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 ## Project
 
-Marketing site for Revanite (revanite.io), deployed to GitHub Pages. Single-page React app — there is no backend. The home page presents the open source stack (Gemara, Privateer, grc.store) and the two founders; all content lives as data arrays in `src/pages/HomePage.tsx`.
+Marketing site and knowledge base for Revanite (revanite.io). Static Astro site: every page is pre-rendered HTML, there is no backend. Content is blog posts and guides written in Markdown, gathered by topic.
 
 ## Commands
 
 | Task | Command |
 | --- | --- |
 | Install deps | `npm install` (or `make install`) |
-| Dev server | `npm run dev` (or `make start` — opens browser) |
-| Production build | `npm run build` (or `make build`) — outputs `dist/` |
+| Dev server | `npm run dev` (or `make start`; opens browser). Drafts are visible here. |
+| Production build | `npm run build` (or `make build`), outputs `dist/` |
 | Preview built site | `npm run preview` (or `make preview`) |
 | Simulate CI build | `npm run test:build` (runs `./test-build.sh`) |
 
-There is **no test suite, no linter, and no typecheck script**. `test:build` only verifies `npm ci && vite build` produces a populated `dist/` — it does not test application behavior. When validating changes, run `npm run build` to catch TypeScript errors (Vite invokes `tsc` implicitly via `@vitejs/plugin-react-swc`), and spot-check behavior in `npm run dev`.
+There is no test suite or linter. `npm run build` is the check: it validates every content file's frontmatter against `src/content.config.ts` and fails naming the file and field. `astro check` is not wired in because `@astrojs/check` does not yet accept TypeScript 7.
 
 ## Deployment
 
-Pushing to `main` triggers `.github/workflows/pages.yaml`, which builds and deploys to GitHub Pages. The `CNAME` file pins the custom domain to `revanite.io`. There is no staging environment — merged commits ship to production.
+Pushing to `main` triggers `.github/workflows/pages.yaml`, which builds and deploys to production. There is no staging environment. `.github/workflows/ci.yaml` builds every pull request. Both workflows pin every action to a commit SHA, and Dependabot maintains the pins; keep that convention.
 
-Note the workflow uses `step-security/harden-runner` and pins every action to a commit SHA. Dependabot maintains these pins (`.github/dependabot.yml`); preserve the SHA-pinning convention when editing the workflow.
+## Content model
+
+- `src/content/blog/<slug>.md` serves `/blog/<slug>`: dated posts. Announcements carry the `news` tag.
+- `src/content/guides/<slug>.md` serves `/guides/<slug>`: `layout: how-to` (numbered H2 steps, prerequisites, outcome) or `layout: explainer` (prose).
+- `src/content/topics/<slug>.md` serves `/topics/<slug>`: intro copy plus every post and guide tagged with that topic. **Every tag must be a topic file**; the schema enforces it.
+- `src/content/authors.yaml`: author ids for `authors:`.
+- `aliases:` in any frontmatter lists old URLs; `src/pages/[...alias].astro` builds a redirect page for each, and the sitemap leaves them out. Use it whenever a page moves.
+- `draft: true` keeps an entry out of the production build.
+- Templates: `blog/_template.md`, `guides/_template.md` (files starting with `_` are not content).
 
 ## Architecture
 
-**Stack:** React 19 + React Router 7 + Vite 8 + TypeScript 6 (strict). SWC for React transform. No CSS framework — styling is inline `style={}` props plus `src/global.css` for responsive media queries.
+**Stack:** Astro 7, Tailwind CSS 4 (via `@tailwindcss/vite`) with `@tailwindcss/typography` for rendered Markdown, `astro-icon` (Lucide), `@astrojs/sitemap`, `@astrojs/rss`.
 
-**Entry points:** `index.html` → `src/main.tsx` → `<ThemeProvider><App /></ThemeProvider>`. `App.tsx` wires `BrowserRouter` with `/` and `/2025-debrief` under `HomeLayout`, the `/cra` pages under `CRALayout`, and a catch-all `Navigate to="/"`. `/cra` and `/2025-debrief` are kept reachable for external links but are not linked from the home page.
+**Pages:** `src/pages/index.astro` (home; project and founder copy lives as arrays at the top), `blog/`, `guides/`, `topics/`, `404.astro`, `rss.xml.ts`, `robots.txt.ts`. Output uses `build.format: 'file'` and `trailingSlash: 'never'`, so `/blog/x` is `dist/blog/x.html`.
 
-**Theme system (important):** `src/theme.tsx` is the single source of truth for design tokens. `ThemeProvider` projects the `cyanTheme` object into CSS custom properties (`--gf-color-*`, `--gf-space-*`, `--gf-font-*`, etc.) on a wrapper `<div>`. **Components should read tokens via `var(--gf-...)` in inline styles — do not hard-code colors or spacing.** The `gf-` prefix is a legacy artifact from the "greenfield" project this was forked from; keep it for consistency.
+**Layouts:** `Layout.astro` owns per-page meta (title, description, canonical, Open Graph, JSON-LD). `Article.astro` renders posts and guides, `Listing.astro` the index and topic pages.
 
-**Routing note:** Because this is a GitHub Pages SPA on a custom domain, client routes like `/2025-debrief` rely on the `Navigate to="/"` catch-all at the React-Router level. Any new top-level route must be added in `App.tsx`; unknown paths reload to `/` rather than 404.
+**Design:** based on the Meridian marketing site (`~/dev/rev/meridian-site`): light stone palette, Inter body, Source Serif 4 headings, tokens as `--color-*` in `@theme` in `src/styles/global.css`. The accent is Revanite teal (`--color-accent`, a darker cut of the logo cyan `--color-brand`). Use the tokens, not hard-coded colours. This replaces the earlier "Sharp Contrast" dark theme in `design-doc.md`.
 
-**Responsive strategy:** `global.css` does heavy lifting with attribute selectors like `[style*="fontSize: \"2.5rem\""]` to override inline styles on mobile. This is fragile — when adding new inline font sizes, check whether a matching override exists in the `@media (max-width: 768px)` block and add one if needed, rather than fighting the cascade. The home page opts out: it uses `.home-*` classes defined at the bottom of `global.css` and carries no inline styles, so those overrides never reach it.
+**Assets:** static files in `public/` (absolute URLs); partner logos in `src/assets/images/partners/` are optimised by `astro:assets` on the home page. `unused-assets/` is not imported.
 
-**Components vs. sections:** `src/components/` holds reusable building blocks (e.g., `TextSection`, `TwoColumnSection`, `BackgroundArcs`). `src/pages/` holds top-level route components. Prefer composing existing components over creating new ad-hoc markup.
-
-**Assets:** Images served from `/public/images/` (absolute URLs in markup) or imported from `src/assets/` (bundled by Vite). The `unused-assets/` directory at the repo root is exactly what it says — do not import from it.
-
-## Design reference
-
-`design-doc.md` describes the intended "Sharp Contrast" visual identity: pure black (#000000) background, cyan accents (#4AE0F0 — brightened from the Revanite logo's #3AD0E6), glassmorphism surfaces, and the Inter / Space Grotesk / JetBrains Mono font stack. Match this aesthetic when adding UI; the tokens in `theme.tsx` already encode it.
+**Legacy:** the previous React/Vite SPA (`index.html`, `vite.config.ts`, `src/main.tsx`, `src/App.tsx`, `src/theme.tsx`, `src/global.css`, `src/hooks/`, `src/components/*.tsx`, `src/pages/*.tsx`) is no longer built and is pending deletion. Astro warns about the `.tsx` files in `src/pages/` until they are removed.
