@@ -212,7 +212,7 @@ export const PartnersSection: React.FC<{ partners?: Partner[] }> = ({ partners: 
     <section
       id="partners"
       aria-label="Our projects and partners"
-      style={{ padding: "0.75rem 0" }}
+      style={{ padding: "0.625rem 0" }}
     >
       <div
         ref={scrollContainerRef}
@@ -244,7 +244,7 @@ export const PartnersSection: React.FC<{ partners?: Partner[] }> = ({ partners: 
                 display: "flex",
                 alignItems: "center",
                 justifyContent: "center",
-                padding: "0.5rem",
+                padding: "0.375rem",
                 transition: "transform 0.2s, opacity 0.2s",
                 flexShrink: 0
               }}
@@ -269,8 +269,8 @@ export const PartnersSection: React.FC<{ partners?: Partner[] }> = ({ partners: 
                   }
                 }}
                 style={{
-                  maxHeight: "32px",
-                  maxWidth: "140px",
+                  maxHeight: "44px",
+                  maxWidth: "190px",
                   objectFit: "contain",
                   width: "auto",
                   height: "auto"

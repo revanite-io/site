@@ -80,7 +80,7 @@ const partnerLogos = import.meta.glob<{ default: ImageMetadata }>('../assets/ima
 const partners = await Promise.all(
   Object.entries(partnerLogos).map(async ([path, mod]) => ({
     name: path.replace(/^.*\/|\.[^.]+$/g, '').replace(/-/g, ' '),
-    logo: (await getImage({ src: mod.default, height: 64 })).src,
+    logo: (await getImage({ src: mod.default, height: 88 })).src,
   })),
 );
 
