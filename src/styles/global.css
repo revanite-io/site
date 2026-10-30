@@ -50,6 +50,25 @@
   --radius-card: 0.75rem;
 }
 
+/* Dark mode: the dark half of Shakedown's default theme (arrival, hue turned to Revanite teal).
+   Set by the nav toggle; the nav, logo strip and footer stay on --color-ink in both modes. */
+:root[data-theme='dark'] {
+  color-scheme: dark;
+  --color-bg: oklch(0.145 0.008 223);
+  --color-surface: oklch(0.205 0.012 223);
+  --color-fg: oklch(0.92 0.006 215);
+  --color-muted: oklch(0.76 0.01 215);
+  --color-subtle: oklch(0.68 0.01 215);
+  --color-line: oklch(0.26 0.012 223);
+  --color-line-strong: oklch(0.32 0.014 223);
+  --color-accent: oklch(0.76 0.12 205);
+  --color-accent-hover: oklch(0.85 0.09 205);
+  --color-accent-soft: oklch(0.76 0.12 205 / 0.15);
+  --color-accent-fg: oklch(0.145 0.008 223);
+}
+
+@custom-variant dark (&:where([data-theme='dark'], [data-theme='dark'] *));
+
 @layer base {
   html {
     -webkit-text-size-adjust: 100%;
@@ -130,20 +149,26 @@
   }
 }
 
-/* Rendered Markdown (blog posts, guides, topic intros). */
+/* Rendered Markdown (blog posts, guides, topic intros). Unlayered so the tokens beat the
+   typography plugin's own grey palette, which sits in the utilities layer. */
+.prose {
+  --tw-prose-body: var(--color-fg);
+  --tw-prose-headings: var(--color-fg);
+  --tw-prose-links: var(--color-accent);
+  --tw-prose-bold: var(--color-fg);
+  --tw-prose-quotes: var(--color-muted);
+  --tw-prose-quote-borders: var(--color-accent);
+  --tw-prose-bullets: var(--color-subtle);
+  --tw-prose-counters: var(--color-subtle);
+  --tw-prose-hr: var(--color-line);
+  --tw-prose-captions: var(--color-subtle);
+  --tw-prose-code: var(--color-fg);
+  --tw-prose-th-borders: var(--color-line-strong);
+  --tw-prose-td-borders: var(--color-line);
+}
+
 @layer components {
   .prose {
-    --tw-prose-body: var(--color-fg);
-    --tw-prose-headings: var(--color-fg);
-    --tw-prose-links: var(--color-accent);
-    --tw-prose-bold: var(--color-fg);
-    --tw-prose-quotes: var(--color-muted);
-    --tw-prose-quote-borders: var(--color-accent);
-    --tw-prose-bullets: var(--color-subtle);
-    --tw-prose-counters: var(--color-subtle);
-    --tw-prose-hr: var(--color-line);
-    --tw-prose-captions: var(--color-subtle);
-    --tw-prose-code: var(--color-fg);
     max-width: 44rem;
     overflow-wrap: break-word;
   }

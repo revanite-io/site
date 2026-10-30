@@ -1,4 +1,5 @@
 ---
+import { Icon } from 'astro-icon/components';
 import Wordmark from './Wordmark.astro';
 
 const nav = [
@@ -43,7 +44,37 @@ const path = Astro.url.pathname;
             </li>
           ))
         }
+        <!-- ml-auto: at the right of the nav row on phones, beside grc.store on desktop. -->
+        <li class="ml-auto">
+          <button
+            id="theme-toggle"
+            type="button"
+            aria-pressed="false"
+            class="inline-flex h-9 w-9 items-center justify-center rounded-lg text-[var(--color-ink-muted)] transition-colors hover:bg-[var(--color-ink-line)] hover:text-[var(--color-ink-fg)]"
+          >
+            <span class="sr-only">Dark mode</span>
+            <Icon name="lucide:moon" class="h-5 w-5 dark:hidden" aria-hidden="true" />
+            <Icon name="lucide:sun" class="hidden h-5 w-5 dark:block" aria-hidden="true" />
+          </button>
+        </li>
       </ul>
     </nav>
   </div>
 </header>
+
+<script is:inline>
+  (() => {
+    const root = document.documentElement;
+    const button = document.getElementById('theme-toggle');
+    button.setAttribute('aria-pressed', String(root.dataset.theme === 'dark'));
+    button.addEventListener('click', () => {
+      const dark = root.dataset.theme !== 'dark';
+      if (dark) root.dataset.theme = 'dark';
+      else delete root.dataset.theme;
+      button.setAttribute('aria-pressed', String(dark));
+      try {
+        localStorage.setItem('theme', dark ? 'dark' : 'light');
+      } catch {}
+    });
+  })();
+</script>
