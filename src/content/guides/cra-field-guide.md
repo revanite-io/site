@@ -2,13 +2,16 @@
 title: "A Field Guide to OSS Tools for CRA Readiness"
 description: "The open source ecosystem already contains the building blocks regulated manufacturers need to meet their CRA obligations. Here is how each one fits."
 layout: explainer
-updated: 2026-06-12
+date: 2026-06-10     # first commit of CRAFieldGuidePage.tsx, 6ce7b5f
+updated: 2026-06-12  # last content commit, 8f67ae3 "fix CCC role"
 authors: [revanite]
 tags: [cra, gemara, osps-baseline, privateer]
 aliases: [/cra/field-guide]
 ---
 
 The [2026 CRA Awareness and Readiness Report](/blog/cra-readiness-gap-2026) makes clear that the practical gap between policy and implementation is the largest barrier to compliance. The projects below address that gap directly. Revanite contributors are active in each of these projects, and our commercial platform [Meridian](https://meridian.revanite.io) is built on top of the same stack so that regulated firms can adopt continuous CRA compliance without vendor lock-in or the need to re-invent the underlying tooling.
+
+<p class="kicker">I. A Stable Foundation</p>
 
 ## Machine-Readable Policy
 
@@ -24,6 +27,8 @@ Gemara allows organizations to express control catalogs, threats, and assessment
 
 [gemara.openssf.org →](https://gemara.openssf.org/)
 
+<p class="kicker">II. Clear Requirements</p>
+
 ## Security Hygiene Baselines
 
 Once the schema is in place, manufacturers need a credible, widely-adopted body of requirements to point at. These baselines describe what “secure-by-design” looks like for an open source project — which is exactly what manufacturers must demonstrate for the dependencies they ship.
@@ -37,6 +42,8 @@ The Open Source Project Security Baseline (OSPS Baseline) describes proper secur
 **How it helps with the CRA.** The OSPS Baseline is used by the OpenSSF's upcoming *CRA Baseline for Manufacturers* and *CRA Baseline for Open Source Consumers*, and it is also referenced by Germany's [BSI-TR-03185-2 technical guidance](https://www.bsi.bund.de/SharedDocs/Downloads/EN/BSI/Publications/TechGuidelines/TR03185/BSI-TR-03185-2.html). While it doesn't fully cover CRA requirements alone, this detailed control catalog provides a foundation upon which other CRA-specific solutions can be built.
 
 [baseline.openssf.org →](https://baseline.openssf.org/)
+
+<p class="kicker">III. Confirmation</p>
 
 ## Automated Evaluation
 
@@ -62,6 +69,8 @@ The [pvtr-github-repo-scanner](https://github.com/ossf/pvtr-github-repo-scanner)
 
 [GitHub Action · OSPS Baseline Scanner →](https://github.com/marketplace/actions/open-source-project-security-baseline-scanner)
 
+<p class="kicker">IV. Dive Deeper</p>
+
 ## Domain-Specific Control Catalogs
 
 Beyond horizontal baselines, regulated industries need control catalogs that speak the language of the services they actually deploy. The CCC project provides those catalogs and the plugins to evaluate them, with a financial-grade bar that translates well to other regulated sectors.
@@ -76,6 +85,8 @@ CCC describes consistent controls for compliant public cloud deployments in the 
 
 [ccc.finos.org →](https://ccc.finos.org/)
 
+<p class="kicker">V. Assess Your Progress</p>
+
 ## Automated Governance Maturity
 
 The final piece is organizational maturity. Even the best tooling under-delivers if the governance program around it is still manual, point-in-time, and disconnected from engineering systems.
@@ -89,6 +100,8 @@ Authored across multiple industries through CNCF TAG Security, the AGMM gives or
 **How it helps with the CRA.** The level of automated auditability the CRA demands — continuous vulnerability handling, SBOM accuracy, supply-chain transparency, and timely reporting — is exactly what the AGMM's higher tiers describe. Use it as the roadmap for the GRC program that the rest of these tools plug into.
 
 [tag-security.cncf.io · AGMM →](https://tag-security.cncf.io/community/resources/automated-governance-maturity-model/)
+
+<p class="kicker">In closing</p>
 
 ## Putting It Together
 

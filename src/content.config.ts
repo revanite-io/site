@@ -33,7 +33,8 @@ const guides = defineCollection({
   schema: z.object({
     ...common,
     layout: z.enum(['how-to', 'explainer']),
-    updated: z.coerce.date(),
+    date: z.coerce.date(),
+    updated: z.coerce.date().optional(),
     weight: z.number().optional(),
     prerequisites: z.array(z.string()).default([]),
     outcome: z.string().optional(),

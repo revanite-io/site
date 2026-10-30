@@ -1,7 +1,7 @@
 ---
 title: "2025 Retrospective from the Founder"
 description: "Eddie Knight's look back at 2025: keynotes, the OSPS Baseline and Gemara in the OpenSSF, FINOS Common Cloud Controls and CALM, and what comes next for Revanite."
-date: 2025-12-31
+date: 2025-12-31     # the letter's own send date; first committed to the site 2026-01-04
 authors: [eddie]
 tags: [news, osps-baseline, gemara, cra]
 aliases: [/2025-debrief]

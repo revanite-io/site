@@ -1,15 +1,17 @@
 ---
 title: "The CRA Readiness Gap"
-description: "Eighteen months out from the December 2027 compliance deadline, awareness of the EU Cyber Resilience Act has not improved, and manufacturers are still choosing the most expensive path to compliance."
-date: 2026-06-10
-updated: 2026-06-11
+description: "Eighteen months out from the December 2027 compliance deadline, awareness of the EU Cyber Resilience Act has not improved — and manufacturers are still choosing the most expensive path to compliance."
+date: 2026-06-10     # first commit of CRAResearchPage.tsx, 6ce7b5f
+updated: 2026-06-11  # last content commit, bf7742f
 authors: [revanite]
 tags: [cra, osps-baseline, gemara]
 image: /research/featured-gradient-light.png
 aliases: [/cra]
 ---
 
-*Based on research by Adrienn Lawson, Linux Foundation.*
+<p class="kicker">Linux Foundation Research · June 2026</p>
+
+*By the Revanite team · based on research by Adrienn Lawson, Linux Foundation*
 
 ![Cover of the 2026 CRA Awareness and Readiness Report](/research/featured-gradient-light.png)
 
@@ -25,6 +27,8 @@ The same extraterritorial reach that pushed GDPR cookie-consent banners onto web
 
 </aside>
 
+<p class="kicker">Section I</p>
+
 ## Awareness Is Not Improving
 
 The 2026 survey found that overall CRA awareness has not improved year over year, even though the regulation entered into force during the survey window — putting the December 2027 full-compliance deadline roughly 18 months out. Penalties for non-compliance can reach **€15 million or 2.5% of global annual turnover**, yet most respondents do not know this.
@@ -37,6 +41,8 @@ The 2026 survey found that overall CRA awareness has not improved year over year
   <img src="/research/infographics/social-05.png" alt="56% of respondents are unaware that non-compliance fines can reach €15 million or 2.5% of global annual turnover." loading="lazy" />
 </div>
 
+<p class="kicker">Section II</p>
+
 ## ‘Consume and Forget’ Is Still Widespread
 
 Beyond awareness, the report shows that manufacturers have made limited progress on the practices the CRA will demand. The CRA places responsibility for security maintenance squarely on manufacturers who integrate open source components into their products (CRA Article 13), but the data show the "consume and forget" posture is still widespread.
@@ -45,6 +51,8 @@ Beyond awareness, the report shows that manufacturers have made limited progress
   <img src="/research/infographics/social-06.png" alt="Only 32% of manufacturers produce SBOMs for all products, and 51% still passively rely on upstream projects for security fixes." loading="lazy" />
   <img src="/research/infographics/social-08.png" alt="Only 41% of manufacturers expect to be fully compliant by December 2027, while 39% do not know when they will be." loading="lazy" />
 </div>
+
+<p class="kicker">Section III</p>
 
 ## The Cost of Forking
 
@@ -57,6 +65,8 @@ One of the most striking findings is the price tag attached to private-fork main
 The report's analysis suggests that as the December 2027 deadline approaches, upstream contribution may become the only financially rational path forward. Contributing fixes upstream and funding open source projects does not, by itself, appear to classify a manufacturer's engagement as commercial activity under the CRA — a distinction the European Commission's March 2026 draft guidance addresses directly, though that document has not yet been finalized.
 
 There is a related failure mode the cost numbers above don't capture: cloning open source projects at industrial scale and shipping them as closed-source compliance products without pushing fixes back upstream. The vendor checks every CRA-readiness box — SBOM, support contract, conformity assessment — but a repackager is a vendor, not a steward. The CRA's steward category exists precisely because the two roles are different. This pattern also concentrates compliance risk in a single repackaging pipeline, running counter to the next section's finding that contributor diversity is a strong predictor of project security. This is not a viable position. A compliance posture built on un-upstreamed forks relies on an upstream the buyer is actively starving — “consume, fork, monetize, walk away” undermines exactly the ecosystem the regulation depends on.
+
+<p class="kicker">Section IV</p>
 
 ## Vulnerabilities Are Surging — Upstream Investment Is the Lever
 
@@ -77,6 +87,8 @@ Most CRA discussion focuses on the December 2027 full-applicability deadline. Ar
 
 </aside>
 
+<p class="kicker">Section V</p>
+
 ## What This Means for Manufacturers
 
 Drawing on the report's findings, four concrete actions for manufacturers:
@@ -85,6 +97,8 @@ Drawing on the report's findings, four concrete actions for manufacturers:
 -   **Adopt operational toolkits** that turn policy language into automated, auditable evaluations — SBOM templates, vulnerability disclosure workflows, compliance checklists scaled to organization size.
 -   **Invest in the open source projects you depend on.** Organizational diversity is a strong predictor of project security, which makes upstream investment a direct investment in your own compliance posture.
 -   **Engage with the standards work in flight** — including the OpenSSF's upcoming *CRA Baseline for Manufacturers* and *CRA Baseline for Open Source Consumers*, both of which translate the regulation into machine-readable assessment requirements.
+
+<p class="kicker">Section VI</p>
 
 ## How Revanite Is Helping
 

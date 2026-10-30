@@ -12,7 +12,7 @@ npm run build    # outputs dist/ and validates all content
 
 1. Copy `src/content/blog/_template.md` to `src/content/blog/<slug>.md`. The filename becomes the URL: `/blog/<slug>`.
 2. Fill in the frontmatter:
-   - `title`, `description` (one sentence; used on cards, in search results and social previews) and `date` are required.
+   - `title`, `description` (one sentence; used on cards, in search results and social previews) and `date` (first published) are required. Backdated content keeps its original date.
    - `authors`: ids from `src/content/authors.yaml`.
    - `tags`: each must match a file in `src/content/topics/`. Tag announcements `news`.
    - `image` (optional): social preview image under `public/`.

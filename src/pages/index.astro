@@ -85,10 +85,7 @@ const partners = await Promise.all(
 );
 
 const latest = [...(await getPosts()), ...(await getGuides())]
-  .sort((a, b) => {
-    const date = (e: typeof a) => ('date' in e.data ? e.data.date : e.data.updated).valueOf();
-    return date(b) - date(a);
-  })
+  .sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf())
   .slice(0, 3);
 
 const jsonLd = [

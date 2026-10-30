@@ -25,7 +25,7 @@ Pushing to `main` triggers `.github/workflows/pages.yaml`, which builds and depl
 ## Content model
 
 - `src/content/blog/<slug>.md` serves `/blog/<slug>`: dated posts. Announcements carry the `news` tag.
-- `src/content/guides/<slug>.md` serves `/guides/<slug>`: `layout: how-to` (numbered H2 steps, prerequisites, outcome) or `layout: explainer` (prose).
+- `src/content/guides/<slug>.md` serves `/guides/<slug>`: dated like posts (`date`, optional `updated`); `layout: how-to` (numbered H2 steps, prerequisites, outcome) or `layout: explainer` (prose).
 - `src/content/topics/<slug>.md` serves `/topics/<slug>`: intro copy plus every post and guide tagged with that topic. **Every tag must be a topic file**; the schema enforces it.
 - `src/content/authors.yaml`: author ids for `authors:`.
 - `aliases:` in any frontmatter lists old URLs; `src/pages/[...alias].astro` builds a redirect page for each, and the sitemap leaves them out. Use it whenever a page moves.

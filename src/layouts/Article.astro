@@ -18,7 +18,7 @@ const topics = await getEntries(data.tags);
 
 const isPost = entry.collection === 'blog';
 const guide = entry.collection === 'guides' ? entry.data : undefined;
-const published = isPost ? entry.data.date : undefined;
+const published = entry.data.date;
 const updated = entry.data.updated;
 
 const section = isPost ? { href: '/blog', label: 'All posts' } : { href: '/guides', label: 'All guides' };

@@ -164,6 +164,16 @@
     margin-bottom: 0;
   }
 
+  /* <p class="kicker"> in Markdown: a small label above a section heading. */
+  .prose .kicker {
+    margin-bottom: -0.75rem;
+    font-size: 0.75rem;
+    font-weight: 600;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--color-accent);
+  }
+
   /* How-to guides: each H2 is a numbered step. */
   .prose.how-to {
     counter-reset: step;

@@ -3,7 +3,8 @@
 title: "Guide title"
 description: "One sentence for cards, search results and social previews."
 layout: how-to            # how-to: numbered H2 steps | explainer: prose
-updated: 2026-11-02
+date: 2026-11-02          # first published
+# updated: 2026-11-10
 authors: [jason]          # ids from src/content/authors.yaml
 tags: [privateer]         # each must match a file in src/content/topics/
 # weight: 10              # lower sorts first on guide and topic lists
