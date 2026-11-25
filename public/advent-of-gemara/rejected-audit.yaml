@@ -1,0 +1,80 @@
+metadata:
+  id: strimzi-osps-audit-2026-12
+  type: AuditLog
+  gemara-version: v1.5.0
+  version: 1.0.0
+  date: 2026-12-02T09:00:00Z
+  description: Audit of strimzi-kafka-operator against the OSPS Baseline at maturity level 2.
+  author:
+    id: advent-auditor
+    name: Advent Auditor
+    type: Human
+  mapping-references:
+    - id: osps-baseline-2026-08
+      title: Open Source Project Security Baseline
+      version: 2026-08
+    - id: strimzi-evaluation
+      title: Privateer evaluation of strimzi-kafka-operator
+      version: 1.3.1-20261125T123436Z
+      url: https://grc.store/strimzi/strimzi-kafka-operator-osps-baseline-2026-08/versions/1.3.1-20261125T123436Z
+target:
+  id: strimzi/strimzi-kafka-operator
+  name: strimzi/strimzi-kafka-operator
+  type: Software
+  version: 1.3.1
+summary: Most maturity level 2 requirements pass. Secret scanning and required status checks could not be confirmed and need follow-up.
+criteria:
+  - reference-id: osps-baseline-2026-08
+results:
+  - id: RES-01
+    title: Primary branch is protected
+    type: Strength
+    description: Branch rules require approving reviews and prevent deletion of the default branch.
+    criteria-reference:
+      reference-id: osps-baseline-2026-08
+      entries:
+        - reference-id: OSPS-AC-03.01
+        - reference-id: OSPS-AC-03.02
+    evidence:
+      - id: EV-01
+        type: EvaluationLog
+        collected-at: 2026-11-25T12:35:11Z
+        source:
+          reference-id: grc-store
+          entry-id: OSPS-AC-03
+  - id: RES-02
+    title: Secret scanning could not be confirmed
+    type: Observations
+    description: The evaluator could not observe secret scanning with its token, and the project does not declare it in Security Insights.
+    criteria-reference:
+      reference-id: osps-baseline-2026-08
+      entries:
+        - reference-id: OSPS-BR-07.01
+    evidence:
+      - id: EV-02
+        type: EvaluationLog
+        collected-at: 2026-11-25T12:35:11Z
+        source:
+          reference-id: strimzi-evaluation
+          entry-id: OSPS-BR-07.01
+    recommendations:
+      - id: REC-01
+        text: Declare secret scanning in the project's Security Insights file, or give the evaluator a token that can read it.
+        required: "yes"
+  - id: RES-03
+    title: Required status checks are unclear
+    type: Gap
+    description: Many status checks run on pull requests, but the evaluator could not confirm which ones are required before merging.
+    criteria-reference:
+      reference-id: osps-baseline
+      entries:
+        - reference-id: OSPS-QA-03.01
+    evidence:
+      - id: EV-03
+        type: EvaluationLog
+        collected-at: 2026-11-25T12:35:11Z
+        source:
+          reference-id: strimzi-evaluation
+          entry-id: OSPS-QA-03.01
+    recommendations:
+      - text: Mark the checks that must pass as required in the branch ruleset.

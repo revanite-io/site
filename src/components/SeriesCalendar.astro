@@ -1,0 +1,39 @@
+---
+// The day-by-day list on a series intro: released days link to their guide, the rest show their date.
+import { formatDate, getGuides, href, type Guide } from '../lib/content';
+
+interface Props {
+  intro: Guide;
+}
+
+const { intro } = Astro.props;
+const released = (await getGuides()).filter((g) => g.data.series === intro.id);
+// Day 1 falls on the intro's own date.
+const dateOf = (n: number) => new Date(intro.data.date.valueOf() + (n - 1) * 86_400_000);
+---
+
+<section class="mt-16 max-w-3xl">
+  <h2 class="text-2xl font-semibold tracking-tight">The days</h2>
+  <ol class="mt-6 divide-y divide-[var(--color-line)] border-y border-[var(--color-line)]">
+    {
+      intro.data.days!.map((d, i) => {
+        const page = released.find((g) => g.data.day === i + 1);
+        return (
+          <li class="flex flex-wrap items-baseline gap-x-4 gap-y-1 py-3">
+            <span class="w-28 shrink-0 text-xs font-semibold uppercase tracking-widest text-[var(--color-subtle)]">
+              {formatDate(dateOf(i + 1)).replace(/, \d{4}$/, '')}
+            </span>
+            {page ? (
+              <a href={href(page)} class="font-semibold text-[var(--color-accent)] hover:underline">
+                {page.data.title}
+              </a>
+            ) : (
+              <span class="text-[var(--color-muted)]">{d.title}</span>
+            )}
+            <span class="ml-auto text-xs text-[var(--color-subtle)]">{d.section}</span>
+          </li>
+        );
+      })
+    }
+  </ol>
+</section>

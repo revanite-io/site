@@ -4,6 +4,7 @@ import { getEntries, render } from 'astro:content';
 import { Icon } from 'astro-icon/components';
 import Layout from './Layout.astro';
 import EntryList from '../components/EntryList.astro';
+import SeriesCalendar from '../components/SeriesCalendar.astro';
 import { formatDate, formatMonth, getGuides, hasTag, type Guide, type Post } from '../lib/content';
 
 interface Props {
@@ -21,7 +22,12 @@ const guide = entry.collection === 'guides' ? entry.data : undefined;
 const published = entry.data.date;
 const updated = entry.data.updated;
 
-const section = isPost ? { href: '/blog', label: 'All posts' } : { href: '/guides', label: 'All guides' };
+const series = guide?.series ? (await getGuides()).find((g) => g.id === guide.series) : undefined;
+const section = isPost
+  ? { href: '/blog', label: 'All posts' }
+  : series
+    ? { href: `/guides/${series.id}`, label: series.data.title }
+    : { href: '/guides', label: 'All guides' };
 const eyebrow = isPost ? 'Blog' : guide?.eyebrow === false ? undefined : guide?.layout === 'how-to' ? 'How-to guide' : 'Explainer';
 
 // Explainers end with the how-to guides that share a topic.
@@ -137,6 +143,8 @@ if (guide && guide.faq.length > 0) {
           <Content />
         </div>
 
+        {guide?.days && <SeriesCalendar intro={entry as Guide} />}
+
         {
           guide && guide.faq.length > 0 && (
             <section class="mt-16 max-w-3xl">
@@ -169,3 +177,21 @@ if (guide && guide.faq.length > 0) {
     }
   </article>
 </Layout>
+
+<script>
+  // Answer boxes (<form data-answer="<sha256 hex>">): only the hash of the answer is on the page.
+  const sha256 = async (text: string) =>
+    Array.from(new Uint8Array(await crypto.subtle.digest('SHA-256', new TextEncoder().encode(text))))
+      .map((b) => b.toString(16).padStart(2, '0'))
+      .join('');
+
+  document.querySelectorAll<HTMLFormElement>('form[data-answer]').forEach((form) => {
+    form.addEventListener('submit', async (event) => {
+      event.preventDefault();
+      const input = form.querySelector('input')!;
+      const status = form.querySelector('[role="status"]')!;
+      const right = (await sha256(input.value.trim().toLowerCase())) === form.dataset.answer;
+      status.textContent = right ? 'Correct!' : 'Not quite. Try again.';
+    });
+  });
+</script>

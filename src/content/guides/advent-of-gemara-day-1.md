@@ -1,0 +1,50 @@
+---
+title: "December 1: Start with the End in Mind"
+description: "To kick things off, we’re gonna dissect an audit log and trace each part back to the document type that supplies it."
+layout: explainer
+date: 2026-12-01
+authors: [revanite]
+tags: [gemara]
+image: /images/advent-of-gemara.png
+series: advent-of-gemara
+day: 1
+---
+
+## Lesson
+
+To kick things off, we’re gonna dissect an audit log and trace each part back to the document type that supplies it.
+
+This is just one of two elements in Layer 7 of the Gemara model: Audit & Continuous Monitoring.
+
+The latter was shortened for its place in the title of Layer 7, and may be better known as Continuous Compliance Monitoring (CCM).
+
+Both parts of Layer 7 are about demonstrating compliance “to those who weren’t involved with the sensitive activity.” In other words, it’s just about proving that rules were followed.
+
+There are two key differences between Audit and CCM: (1) frequency and (2) machine vs human inspection.
+
+* CCM is intended to be compiled on a rapid basis, oftentimes daily, hourly, and some technologies even enable sub-minute or sub-second evaluations. By contrast, an Audit might take place annually, quarterly, or monthly… and rarely more often than that.
+* Audits are performed less often because they are significantly more comprehensive, culminating in a human opinion. CCM, on the other hand, is about compiling the logs of findings and any relevant enforcement activities into a data store that can be connected to alerting systems, referenced by decision makers, or included in audits.
+
+Currently there is not a specification written to support CCM using Gemara (contributions welcome!), and the specification for audit logs is experimental while additional feedback is gathered. That being said, understanding the general shape of an audit will help contextualize everything else we’ll do in this Advent of Gemara.
+
+Many terms may feel unfamiliar at first, because Gemara strives for neutral language that is unambiguous whenever possible. You can use the [Gemara Lexicon](https://gemara.openssf.org/model/02-definitions.html) to find definitions for most terms. Try it out now by looking up the definition of “sensitive activity,” which is the centerpoint of everything we do in this ecosystem.
+
+The following questions are answered in an audit, primarily through links to other artifacts.
+
+**What guidance is this activity beholden to?** This might include standards, regulations, frameworks, or best practices.
+
+**How were those guidance elements translated to each specific activity category covered by this audit?** For example, a physical security audit might cover how personnel behave on the job - and there may be different requirements for each role. Or in a software security audit, we might have different rules for the different technologies that comprise the product.
+
+**How did we tailor and deliver the aforementioned information to relevant people?** This is the organizational policy that outlines when certain requirements are in effect, what exceptions might be prepared, and who needs to be involved in the process. This might also include additional requirements about what type of tooling is acceptable when gathering evidence.
+
+**How do we know whether the rules were followed?** These are the evaluation results: the checks run against each requirement, and what they found.
+
+**What steps were taken to mitigate observed risk?** In the event that findings were reported during an evaluation, this details the enforcement activities which took place.
+
+**What is the opinion of the human reviewing all of the compiled information?** This includes a final recommendation to the relevant parties, based on all of the evidence gathered.
+
+## Challenge
+
+<!-- Placeholder: the Day 1 challenge is still being designed (REV-1398). -->
+
+The Day 1 challenge is coming soon.
