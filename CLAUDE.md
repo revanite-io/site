@@ -30,7 +30,7 @@ Pushing to `main` triggers `.github/workflows/pages.yaml`, which builds and depl
 - `src/content/authors.yaml`: author ids for `authors:`.
 - `aliases:` in any frontmatter lists old URLs; `src/pages/[...alias].astro` builds a redirect page for each, and the sitemap leaves them out. Use it whenever a page moves.
 - `draft: true` keeps an entry out of the production build.
-- An entry dated in the future also stays out of the production build until a build on or after its `date:`; the Pages workflow rebuilds daily. `BUILD_DATE=2026-12-01 npm run build` previews a given day (the dev server shows everything).
+- An entry dated in the future also stays out of the production build until 05:00 UTC on its `date:` (midnight US Eastern), when the Pages workflow's daily scheduled run rebuilds. `BUILD_DATE=2026-12-01T05:00Z npm run build` previews a given release (the dev server shows everything).
 - Guides only: `replaces: <id>` makes a guide take over another guide's URL once released (the Advent of Gemara intro replacing its coming-soon page); `days:` on a series intro lists its days, and each day sets `series: <intro id>` and `day: N`. `scripts/vet-advent.sh` (CI) checks Advent code blocks opened as ```` ```yaml vet=#Definition ```` and the Day 2 puzzle file with `cue vet`.
 - Templates: `blog/_template.md`, `guides/_template.md` (files starting with `_` are not content).
 

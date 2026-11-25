@@ -3,12 +3,13 @@ import { getCollection, type CollectionEntry } from 'astro:content';
 export type Post = CollectionEntry<'blog'>;
 export type Guide = CollectionEntry<'guides'>;
 
-// Entries dated in the future stay out of the build until a build on or after that date
-// (the Pages workflow rebuilds daily). BUILD_DATE=2026-11-30 previews a given day's build.
+// Entries release at 05:00 UTC on their `date:` (midnight US Eastern), when the Pages workflow's
+// daily run rebuilds. BUILD_DATE=2026-12-01T05:00Z previews a given release's build.
+const RELEASE_HOUR_MS = 5 * 3_600_000;
 const buildDate = process.env.BUILD_DATE;
 const now = buildDate ? new Date(buildDate) : new Date();
 const published = <T extends { data: { draft: boolean; date: Date } }>(e: T) =>
-  (import.meta.env.DEV && !buildDate) || (!e.data.draft && e.data.date <= now);
+  (import.meta.env.DEV && !buildDate) || (!e.data.draft && e.data.date.valueOf() + RELEASE_HOUR_MS <= now.valueOf());
 
 export async function getPosts(): Promise<Post[]> {
   return (await getCollection('blog', published)).sort(
