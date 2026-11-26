@@ -23,6 +23,11 @@ if [[ -f "$tmp/blocks.tsv" ]]; then
   done < "$tmp/blocks.tsv"
 fi
 
+# Day 2: the sample audit.yaml shown on the page (vetted above) must match the download.
+cmp "$tmp/advent-of-gemara-day-2-1.yaml" public/advent-of-gemara/audit.yaml ||
+  { echo "Day 2 audit.yaml code block differs from public/advent-of-gemara/audit.yaml" >&2; exit 1; }
+cue vet -c -d '#AuditLog' "$spec" public/advent-of-gemara/audit.yaml
+
 # Day 2: rejected-audit.yaml must fail, and pass once the four intended fixes are made.
 rejected=public/advent-of-gemara/rejected-audit.yaml
 if cue vet -c -d '#AuditLog' "$spec" "$rejected" > /dev/null 2>&1; then

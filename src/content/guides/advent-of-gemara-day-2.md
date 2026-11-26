@@ -69,6 +69,58 @@ And here’s the same thing in JSON:
 
 Now, you’re not gonna check a single recommendation on its own. You’ll check the whole file it lives in. Once you’ve installed CUE v0.15.1 or later, run `cue vet` with the definition for the whole document, plus your file:
 
+```yaml vet=#AuditLog
+metadata:
+  id: strimzi-osps-audit-2026-12
+  type: AuditLog
+  gemara-version: v1.5.0
+  version: 1.0.0
+  date: 2026-12-02T09:00:00Z
+  description: Audit of strimzi-kafka-operator against the OSPS Baseline at maturity level 2.
+  author:
+    id: advent-auditor
+    name: Advent Auditor
+    type: Human
+  mapping-references:
+    - id: osps-baseline-2026-08
+      title: Open Source Project Security Baseline
+      version: 2026-08
+    - id: strimzi-evaluation
+      title: Privateer evaluation of strimzi-kafka-operator
+      version: 1.3.1-20261125T123436Z
+      url: https://grc.store/strimzi/strimzi-kafka-operator-osps-baseline-2026-08/versions/1.3.1-20261125T123436Z
+target:
+  id: strimzi/strimzi-kafka-operator
+  name: strimzi/strimzi-kafka-operator
+  type: Software
+  version: 1.3.1
+summary: Most maturity level 2 requirements pass. Secret scanning and required status checks could not be confirmed and need follow-up.
+criteria:
+  - reference-id: osps-baseline-2026-08
+results:
+  - id: RES-01
+    title: Secret scanning could not be confirmed
+    type: Observation
+    description: The evaluator could not observe secret scanning with its token, and the project does not declare it in Security Insights.
+    criteria-reference:
+      reference-id: osps-baseline-2026-08
+      entries:
+        - reference-id: OSPS-BR-07.01
+    evidence:
+      - id: EV-01
+        type: EvaluationLog
+        collected-at: 2026-11-25T12:35:11Z
+        source:
+          reference-id: strimzi-evaluation
+          entry-id: OSPS-BR-07.01
+    recommendations:
+      - id: REC-01
+        text: Declare secret scanning in the project's Security Insights file, or give the evaluator a token that can read it.
+        required: true
+```
+
+<a href="/advent-of-gemara/audit.yaml" download>Download `audit.yaml`</a>
+
 ```sh
 cue vet -c -d '#AuditLog' github.com/gemaraproj/gemara@latest audit.yaml
 ```
