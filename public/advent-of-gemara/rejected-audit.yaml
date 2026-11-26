@@ -40,7 +40,7 @@ results:
         type: EvaluationLog
         collected-at: 2026-11-25T12:35:11Z
         source:
-          reference-id: grc-store
+          reference-id: strimzi-evaluation
           entry-id: OSPS-AC-03
   - id: RES-02
     title: Secret scanning could not be confirmed
@@ -61,7 +61,7 @@ results:
       - id: REC-01
         text: Declare secret scanning in the project's Security Insights file, or give the evaluator a token that can read it.
         required: "yes"
-  - id: RES-03
+  - id: RES-02
     title: Required status checks are unclear
     type: Gap
     description: Many status checks run on pull requests, but the evaluator could not confirm which ones are required before merging.

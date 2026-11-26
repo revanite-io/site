@@ -29,10 +29,10 @@ if cue vet -c -d '#AuditLog' "$spec" "$rejected" > /dev/null 2>&1; then
   echo "$rejected passes cue vet, so the Day 2 puzzle has nothing to fix" >&2
   exit 1
 fi
+# The third result reuses the ID RES-02; the fix renames that second one to RES-03.
 sed -e 's/type: Observations$/type: Observation/' \
     -e 's/required: "yes"$/required: true/' \
     -e 's/reference-id: osps-baseline$/reference-id: osps-baseline-2026-08/' \
-    -e 's/reference-id: grc-store$/reference-id: strimzi-evaluation/' \
-    "$rejected" > "$tmp/fixed-audit.yaml"
+    "$rejected" | awk '/^  - id: RES-02$/ && ++seen == 2 { sub(/RES-02/, "RES-03") } { print }' > "$tmp/fixed-audit.yaml"
 cue vet -c -d '#AuditLog' "$spec" "$tmp/fixed-audit.yaml"
 echo "Advent of Gemara examples and puzzle files pass."
