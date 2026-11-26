@@ -4,12 +4,13 @@ export type Post = CollectionEntry<'blog'>;
 export type Guide = CollectionEntry<'guides'>;
 
 // Entries release at 05:00 UTC on their `date:` (midnight US Eastern), when the Pages workflow's
-// daily run rebuilds. BUILD_DATE=2026-12-01T05:00Z previews a given release's build.
+// daily run rebuilds. BUILD_DATE=2026-12-01T05:00Z previews a given release's build. The dev
+// server defaults to the last Advent of Gemara day, so every module is active; builds use the real clock.
 const RELEASE_HOUR_MS = 5 * 3_600_000;
-const buildDate = process.env.BUILD_DATE;
+const buildDate = process.env.BUILD_DATE ?? (import.meta.env.DEV ? '2026-12-24T05:00:00Z' : undefined);
 const now = buildDate ? new Date(buildDate) : new Date();
 const published = <T extends { data: { draft: boolean; date: Date } }>(e: T) =>
-  (import.meta.env.DEV && !buildDate) || (!e.data.draft && e.data.date.valueOf() + RELEASE_HOUR_MS <= now.valueOf());
+  (import.meta.env.DEV || !e.data.draft) && e.data.date.valueOf() + RELEASE_HOUR_MS <= now.valueOf();
 
 export async function getPosts(): Promise<Post[]> {
   return (await getCollection('blog', published)).sort(

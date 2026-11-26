@@ -11,7 +11,7 @@ Marketing site and knowledge base for Revanite (revanite.io). Static Astro site:
 | Task | Command |
 | --- | --- |
 | Install deps | `npm install` (or `make install`) |
-| Dev server | `npm run dev` (or `make start`; opens browser). Drafts are visible here. |
+| Dev server | `npm run dev` (or `make start`; opens browser). Drafts are visible here, and the release clock is set to 2026-12-24 05:00 UTC. |
 | Production build | `npm run build` (or `make build`), outputs `dist/` |
 | Preview built site | `npm run preview` (or `make preview`) |
 | Simulate CI build | `npm run test:build` (runs `./test-build.sh`) |
@@ -30,7 +30,7 @@ Pushing to `main` triggers `.github/workflows/pages.yaml`, which builds and depl
 - `src/content/authors.yaml`: author ids for `authors:`.
 - `aliases:` in any frontmatter lists old URLs; `src/pages/[...alias].astro` builds a redirect page for each, and the sitemap leaves them out. Use it whenever a page moves.
 - `draft: true` keeps an entry out of the production build.
-- An entry dated in the future also stays out of the production build until 05:00 UTC on its `date:` (midnight US Eastern), when the Pages workflow's daily scheduled run rebuilds. `BUILD_DATE=2026-12-01T05:00Z npm run build` previews a given release (the dev server shows everything).
+- An entry dated in the future also stays out of the production build until 05:00 UTC on its `date:` (midnight US Eastern), when the Pages workflow's daily scheduled run rebuilds. `BUILD_DATE=2026-12-01T05:00Z npm run build` previews a given release. The dev server instead defaults to `2026-12-24T05:00Z`, so every Advent of Gemara day is active (set `BUILD_DATE` to override; drafts still show); production builds use the real clock.
 - **Scheduled releases are checked, not trusted.** `scripts/test-release.sh` (CI) builds at each release edge and asserts which Advent pages and which homepage banner wording exist; the Pages workflow's `verify` job runs `scripts/check-live.sh` after every deploy and fails if the live site does not match the release rule for that build's time. GitHub's limits on the daily `schedule:` run: it only fires from the default branch (`main`), it can start late (often by minutes, sometimes much more under load) and is occasionally dropped, and GitHub pauses it in a repo with no activity for 60 days. If a release morning shows no `schedule` run in Actions, rebuild by hand with **Run workflow** (`workflow_dispatch`) on the Pages workflow.
 - Guides only: `replaces: <id>` makes a guide take over another guide's URL once released (the Advent of Gemara intro replacing its coming-soon page); `days:` on a series intro lists its days, and each day sets `series: <intro id>` and `day: N`. `scripts/vet-advent.sh` (CI) checks Advent code blocks opened as ```` ```yaml vet=#Definition ```` and the Day 2 puzzle file with `cue vet`.
 - Templates: `blog/_template.md`, `guides/_template.md` (files starting with `_` are not content).
