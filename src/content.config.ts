@@ -45,9 +45,9 @@ const guides = defineCollection({
     outcome: z.string().optional(),
     testedWith: z.string().optional(),
     faq: z.array(z.object({ q: z.string(), a: z.string() })).default([]),
-    // Id of an entry this one takes over once released, keeping its URL (e.g. a coming-soon page).
-    replaces: z.string().optional(),
-    // A series intro lists its days here; day N links to the guide with `series: <intro id>` and `day: N`.
+    // A series intro lists its days here, from `start:` (day 1's date); day N links to the guide with
+    // `series: <intro id>` and `day: N` once that guide is released.
+    start: z.coerce.date().optional(),
     days: z.array(z.object({ title: z.string(), section: z.string() })).optional(),
     series: z.string().optional(),
     day: z.number().int().positive().optional(),

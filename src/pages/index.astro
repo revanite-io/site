@@ -4,10 +4,10 @@ import { PartnersSection } from '../components/PartnersSection';
 import { Icon } from 'astro-icon/components';
 import Layout from '../layouts/Layout.astro';
 import EntryList from '../components/EntryList.astro';
-import { getGuides, getPosts } from '../lib/content';
+import { getGuides, getPosts, isReleased } from '../lib/content';
 
-// The Advent banner goes live with the series intro (05:00 UTC on December 1, by the release rule).
-const adventLive = (await getGuides()).some((g) => g.id === 'advent-of-gemara' && g.data.days);
+// The Advent banner comes down at 05:00 UTC on January 2, a week after the series ends (release rule).
+const adventBanner = !isReleased(new Date('2027-01-02'));
 
 const projects = [
   {
@@ -112,14 +112,18 @@ const jsonLd = [
     >
     </div>
     <div class="container-page py-20 md:py-32">
-      <a
-        href="/guides/advent-of-gemara"
-        class="mb-10 inline-flex items-center gap-2 rounded-full border border-[var(--color-line-strong)] bg-[var(--color-surface)] px-4 py-1.5 text-sm text-[var(--color-muted)] hover:border-[var(--color-accent)] hover:text-[var(--color-fg)]"
-      >
-        <span class="font-semibold text-[var(--color-accent)]">Advent of Gemara</span>
-        {adventLive ? 'is live: a new workshop and puzzle every day until December 24.' : '24 days of workshops and puzzles, starting December 1'}
-        <Icon name="lucide:arrow-right" class="h-4 w-4" />
-      </a>
+      {
+        adventBanner && (
+          <a
+            href="/guides/advent-of-gemara"
+            class="mb-10 inline-flex items-center gap-2 rounded-full border border-[var(--color-line-strong)] bg-[var(--color-surface)] px-4 py-1.5 text-sm text-[var(--color-muted)] hover:border-[var(--color-accent)] hover:text-[var(--color-fg)]"
+          >
+            <span class="font-semibold text-[var(--color-accent)]">Advent of Gemara</span>
+            24 days of workshops and puzzles, December 1 to 24
+            <Icon name="lucide:arrow-right" class="h-4 w-4" />
+          </a>
+        )
+      }
       <div class="max-w-3xl">
         <p class="eyebrow">Open source GRC engineering</p>
         <h1 class="mt-5 text-balance text-4xl font-semibold tracking-tight sm:text-5xl md:text-6xl">

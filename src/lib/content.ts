@@ -9,8 +9,9 @@ export type Guide = CollectionEntry<'guides'>;
 const RELEASE_HOUR_MS = 5 * 3_600_000;
 const buildDate = process.env.BUILD_DATE ?? (import.meta.env.DEV ? '2026-12-24T05:00:00Z' : undefined);
 const now = buildDate ? new Date(buildDate) : new Date();
+export const isReleased = (date: Date) => date.valueOf() + RELEASE_HOUR_MS <= now.valueOf();
 const published = <T extends { data: { draft: boolean; date: Date } }>(e: T) =>
-  (import.meta.env.DEV || !e.data.draft) && e.data.date.valueOf() + RELEASE_HOUR_MS <= now.valueOf();
+  (import.meta.env.DEV || !e.data.draft) && isReleased(e.data.date);
 
 export async function getPosts(): Promise<Post[]> {
   return (await getCollection('blog', published)).sort(
@@ -19,12 +20,7 @@ export async function getPosts(): Promise<Post[]> {
 }
 
 export async function getGuides(): Promise<Guide[]> {
-  const guides = await getCollection('guides', published);
-  const replaced = new Set(guides.map((g) => g.data.replaces).filter(Boolean));
-  return guides
-    .filter((g) => !replaced.has(g.id))
-    .map((g) => (g.data.replaces ? { ...g, id: g.data.replaces } : g))
-    .sort(
+  return (await getCollection('guides', published)).sort(
     (a, b) =>
       (a.data.weight ?? Infinity) - (b.data.weight ?? Infinity) ||
       a.data.title.localeCompare(b.data.title),

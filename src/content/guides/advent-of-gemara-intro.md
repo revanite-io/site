@@ -1,5 +1,5 @@
 ---
-# Takes over /guides/advent-of-gemara (the coming-soon page) on its release date.
+# SUPERSEDED: the intro now lives in advent-of-gemara.md. Delete this file (REV-1398).
 title: "Advent of Gemara"
 description: "24 days of Gemara, December 1 to 24: a short workshop and a puzzle each day, building up to writing and validating your own audit."
 layout: explainer
@@ -7,7 +7,7 @@ date: 2026-12-01
 authors: [revanite]
 tags: [gemara]
 image: /images/advent-of-gemara.png
-replaces: advent-of-gemara
+draft: true
 # Working titles until each day is written; a released day shows its own title.
 days:
   - { title: "Start at the end", section: "Foundations" }

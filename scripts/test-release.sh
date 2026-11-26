@@ -1,44 +1,44 @@
 #!/usr/bin/env bash
-# Boundary builds for the release rule: builds the site as of each release edge and asserts
-# which Advent of Gemara pages and which homepage banner wording the build contains.
+# Boundary builds for the release rule: builds the site as of each release edge and asserts which
+# Advent of Gemara day pages exist, how many calendar days are locked, and whether the banner shows.
 set -euo pipefail
 cd "$(dirname "$0")/.."
 
-SOON='24 days of workshops and puzzles, starting December 1'
-LIVE='is live: a new workshop and puzzle every day until December 24.'
+BANNER='24 days of workshops and puzzles, December 1 to 24'
 fail=0
+no() { echo "FAIL $when: $*"; fail=1; }
 
-# check <build date> <banner: soon|live> <pages that must exist> -- <pages that must not>
+# check <build date> <banner: on|off> <locked days> <day pages that must exist> -- <that must not>
 check() {
-  local when=$1 banner=$2; shift 2
+  when=$1; local banner=$2 locked=$3; shift 3
   BUILD_DATE=$when npm run build > /dev/null
   local want=1 page
   for page in "$@"; do
     if [[ $page == -- ]]; then want=0; continue; fi
-    local file="dist/guides/$page.html"
-    if (( want )) && [[ ! -f $file ]]; then echo "FAIL $when: $page missing"; fail=1; fi
-    if (( ! want )) && [[ -f $file ]]; then echo "FAIL $when: $page built before its release"; fail=1; fi
+    if (( want )) && [[ ! -f dist/guides/$page.html ]]; then no "$page missing"; fi
+    if (( ! want )) && [[ -f dist/guides/$page.html ]]; then no "$page built before its release"; fi
     if (( ! want )) && grep -qE "/guides/$page[\"<]" dist/sitemap-0.xml dist/index.html dist/guides.html dist/guides/advent-of-gemara.html; then
-      echo "FAIL $when: unreleased $page is linked or in the sitemap"; fail=1
+      no "unreleased $page is linked or in the sitemap"
     fi
   done
-  local text=$SOON; [[ $banner == live ]] && text=$LIVE
-  grep -qF "$text" dist/index.html || { echo "FAIL $when: homepage banner is not the $banner wording"; fail=1; }
-  # Before the intro releases, the series URL is the coming-soon page.
-  if [[ $banner == soon ]] && ! grep -qF 'Day 1 unlocks' dist/guides/advent-of-gemara.html; then
-    echo "FAIL $when: /guides/advent-of-gemara is not the coming-soon page"; fail=1
-  fi
-  if [[ $banner == live ]] && ! grep -qF 'The days' dist/guides/advent-of-gemara.html; then
-    echo "FAIL $when: /guides/advent-of-gemara is not the series intro"; fail=1
-  fi
+  # The intro and its calendar are live the whole time; locked days show only their date.
+  [[ -f dist/guides/advent-of-gemara.html ]] || no "the intro /guides/advent-of-gemara is missing"
+  local n; n=$(grep -o 'data-locked' dist/guides/advent-of-gemara.html | wc -l | tr -d ' ')
+  (( n == locked )) || no "$n locked days on the calendar, expected $locked"
+  if [[ $banner == on ]]; then grep -qF "$BANNER" dist/index.html || no "homepage banner missing"
+  else ! grep -qF "$BANNER" dist/index.html || no "homepage banner still up"; fi
   echo "checked $when"
 }
 
-check 2026-12-01T04:59Z soon advent-of-gemara -- advent-of-gemara-day-1 advent-of-gemara-day-2
-check 2026-12-01T05:00Z live advent-of-gemara advent-of-gemara-day-1 -- advent-of-gemara-day-2
-check 2026-12-02T04:59Z live advent-of-gemara advent-of-gemara-day-1 -- advent-of-gemara-day-2
-check 2026-12-02T05:00Z live advent-of-gemara advent-of-gemara-day-1 advent-of-gemara-day-2
-check 2026-12-24T05:00Z live advent-of-gemara advent-of-gemara-day-1 advent-of-gemara-day-2
-check 2026-12-25T05:00Z live advent-of-gemara advent-of-gemara-day-1 advent-of-gemara-day-2
+check 2026-11-30T05:00Z on 24 -- advent-of-gemara-day-1 advent-of-gemara-day-2
+check 2026-12-01T04:59Z on 24 -- advent-of-gemara-day-1 advent-of-gemara-day-2
+check 2026-12-01T05:00Z on 23 advent-of-gemara-day-1 -- advent-of-gemara-day-2
+check 2026-12-02T04:59Z on 23 advent-of-gemara-day-1 -- advent-of-gemara-day-2
+check 2026-12-02T05:00Z on 22 advent-of-gemara-day-1 advent-of-gemara-day-2
+# Days 3-24 are not written yet, so they stay locked; update these counts as days are added.
+check 2026-12-24T05:00Z on 22 advent-of-gemara-day-1 advent-of-gemara-day-2
+check 2026-12-25T05:00Z on 22 advent-of-gemara-day-1 advent-of-gemara-day-2
+check 2027-01-02T04:59Z on 22 advent-of-gemara-day-1 advent-of-gemara-day-2
+check 2027-01-02T05:00Z off 22 advent-of-gemara-day-1 advent-of-gemara-day-2
 
 exit $fail

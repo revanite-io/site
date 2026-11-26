@@ -1,14 +1,13 @@
 #!/usr/bin/env bash
 # Checks the deployed site against the release rule, so a scheduled release that silently
 # did nothing fails the Pages run. Usage: check-live.sh <site url> <build time, ISO 8601 UTC>
-# Every Advent guide released by <build time> must be live, every later one must 404, and the
-# homepage banner must match whether the series intro is out.
+# The series intro must be live, every Advent day released by <build time> must be live, every
+# later one must 404, and the homepage banner must be up until 05:00 UTC on 2027-01-02.
 set -euo pipefail
 cd "$(dirname "$0")/.."
 
 site=${1%/} built=$(date -u -d "$2" +%s)
-SOON='24 days of workshops and puzzles, starting December 1'
-LIVE='is live: a new workshop and puzzle every day until December 24.'
+BANNER='24 days of workshops and puzzles, December 1 to 24'
 
 released() { # same rule as src/lib/content.ts: 05:00 UTC on `date:`, never drafts
   local d; d=$(sed -n 's/^date: *\([0-9-]*\).*/\1/p' "$1" | head -1)
@@ -23,9 +22,13 @@ attempt() {
     got=$(curl -s -o /dev/null -w '%{http_code}' "$site/guides/$page")
     [[ $got == "$want" ]] || { echo "  /guides/$page: HTTP $got, expected $want"; ok=1; }
   done
-  local text=$SOON
-  released src/content/guides/advent-of-gemara-intro.md && text=$LIVE
-  curl -s "$site/" | grep -qF "$text" || { echo "  homepage banner is not: $text"; ok=1; }
+  got=$(curl -s -o /dev/null -w '%{http_code}' "$site/guides/advent-of-gemara")
+  [[ $got == 200 ]] || { echo "  /guides/advent-of-gemara: HTTP $got, expected 200"; ok=1; }
+  if (( built < $(date -u -d '2027-01-02 05:00' +%s) )); then
+    curl -s "$site/" | grep -qF "$BANNER" || { echo "  homepage banner is missing"; ok=1; }
+  else
+    ! curl -s "$site/" | grep -qF "$BANNER" || { echo "  homepage banner is still up"; ok=1; }
+  fi
   return $ok
 }
 
