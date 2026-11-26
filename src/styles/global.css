@@ -171,6 +171,20 @@
   --tw-prose-td-borders: var(--color-line);
 }
 
+/* Inline code: the typography plugin bolds it and wraps it in literal backticks; show it as a
+   code chip instead. Fenced blocks (code inside pre) keep the plugin's styling. */
+.prose :where(code):not(:where(pre *)) {
+  font-weight: inherit;
+  padding: 0.125em 0.375em;
+  border: 1px solid var(--color-line);
+  border-radius: 0.25rem;
+  background: var(--color-bg);
+}
+.prose :where(code):not(:where(pre *))::before,
+.prose :where(code):not(:where(pre *))::after {
+  content: none;
+}
+
 @layer components {
   .prose {
     max-width: 44rem;
