@@ -16,7 +16,7 @@ If you click over to the Gemara specification repo on GitHub, you’ll see a sca
 
 The Gemara project chose to adopt CUE for our specification because it works more natively with the Go ecosystem. CUE provides a command line interface that lets us export Go types to ensure that the `go-gemara` SDK remains closely coupled to the specification.
 
-The CUE CLI also lets us publish the specification to the cue registry, where used in verification without need for users to clone the source repo. Similar to any alternative we could have chosen, writing constraints into the specification makes the source hard to read and understand at times. To make things simpler, the Gemara project programatically converts the specification into pages on the project website.
+The CUE CLI also lets us publish the specification to the cue registry, where it can be used in verification without need for users to clone the source repo. Similar to any alternative we could have chosen, writing constraints into the specification makes the source hard to read and understand at times. To make things simpler, the Gemara project programatically converts the specification into pages on the project website.
 
 As we hinted to on the previous page, there are a series of artifact types in the spec.
 
@@ -44,7 +44,7 @@ Each type is defined in its own `.cue` file, and the top of each file marks its 
 
 You never have to write CUE to use Gemara. You write YAML or JSON, and CUE checks it against the definitions.
 
-Take a look at how the #Recommendation object might go into a the #AuditLog recommendations field in YAML:
+Here’s where recommendations live inside an audit log, written in YAML. Each item in that list is one #Recommendation:
 
 ```yaml
 recommendations:
@@ -53,7 +53,7 @@ recommendations:
     required: true
 ```
 
-Here’s the same recommendation in JSON:
+And here’s the same thing in JSON:
 
 ```json
 {
@@ -67,10 +67,10 @@ Here’s the same recommendation in JSON:
 
 ### Checking with cue vet
 
-You could then install CUE v0.15.1 or later, then run `cue vet` with the definition to check against and your file:
+Now, you’re not gonna check a single recommendation on its own. You’ll check the whole file it lives in. Once you’ve installed CUE v0.15.1 or later, run `cue vet` with the definition for the whole document, plus your file:
 
 ```sh
-cue vet -c -d '#Recommendation' github.com/gemaraproj/gemara@latest recommendation.yaml
+cue vet -c -d '#AuditLog' github.com/gemaraproj/gemara@latest audit.yaml
 ```
 
 The `-d` flag names the definition, and `github.com/gemaraproj/gemara@latest` pulls the spec from the CUE registry, so you don’t need to clone the repo. If the file is valid, `cue vet` prints nothing. If it isn’t, it tells you which field failed and why.
@@ -98,6 +98,6 @@ The evaluation log marks some requirements as Needs Review, which means a person
 <form data-answer="4b227777d4dd1fc61c6f884f48641d02b4d121d3fd328cb08b5531fcacdabf8a" class="not-prose mt-6 flex max-w-md flex-wrap items-center gap-3">
   <label for="day-2-answer" class="w-full text-sm font-semibold">Your answer</label>
   <input id="day-2-answer" name="answer" inputmode="numeric" autocomplete="off" required class="flex-1 rounded-lg border border-[var(--color-line-strong)] bg-[var(--color-bg)] px-3 py-2" />
-  <button type="submit" class="rounded-lg bg-[var(--color-accent)] px-4 py-2 font-semibold text-white hover:opacity-90">Check</button>
+  <button type="submit" class="rounded-lg bg-[var(--color-accent)] px-4 py-2 font-semibold text-[var(--color-accent-fg)] hover:opacity-90">Check</button>
   <p role="status" aria-live="polite" class="w-full text-sm text-[var(--color-muted)]"></p>
 </form>
