@@ -20,6 +20,9 @@ check() {
     if (( ! want )) && grep -qE "/guides/$page[\"<]" dist/sitemap-0.xml dist/index.html dist/guides.html dist/guides/advent-of-gemara.html; then
       no "unreleased $page is linked or in the sitemap"
     fi
+    # A locked day's title must not appear anywhere in the build: pages, metadata, feeds.
+    local title; title=$(sed -n 's/^title: *"\(.*\)"$/\1/p' "src/content/guides/$page.md")
+    if (( ! want )) && grep -rqF "$title" dist; then no "locked $page title \"$title\" is in the build"; fi
   done
   # The intro and its calendar are live the whole time; locked days show only their date.
   [[ -f dist/guides/advent-of-gemara.html ]] || no "the intro /guides/advent-of-gemara is missing"
