@@ -63,3 +63,28 @@ jobs:
           version: v0.15.1
       - name: Check Advent of Gemara examples against the Gemara spec
         run: ./scripts/vet-advent.sh
+
+  release-boundaries:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read # Clone the repository
+    steps:
+      - name: Harden Runner
+        uses: step-security/harden-runner@46b06cea07f9e64621fdf066ba77ac6915163d43 # v2.22.3
+        with:
+          egress-policy: audit
+      - name: Checkout
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          persist-credentials: false
+      - name: Setup Node.js
+        uses: actions/setup-node@949feb2413d6458794dcd2491c4babbbce0c15c1 # v7.1.0
+        with:
+          node-version: '22'
+          cache: 'npm'
+      - name: Install dependencies
+        run: npm ci
+      - name: Build at each release edge and check pages and banner
+        env:
+          NODE_ENV: production
+        run: ./scripts/test-release.sh
