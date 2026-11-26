@@ -73,7 +73,7 @@ Now, you’re not gonna check a single recommendation on its own. You’ll check
 metadata:
   id: strimzi-osps-audit-2026-12
   type: AuditLog
-  gemara-version: v1.5.0
+  gemara-version: v1.6.0
   version: 1.0.0
   date: 2026-12-02T09:00:00Z
   description: Audit of strimzi-kafka-operator against the OSPS Baseline at maturity level 2.
