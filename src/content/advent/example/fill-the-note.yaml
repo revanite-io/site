@@ -1,0 +1,10 @@
+type: fill-in-the-blank
+# Each blank is its answer in braces. The word bank holds every answer plus the decoys.
+text: "An audit ends with a {human} opinion, while {monitoring} can run every hour."
+# Extra words for the bank, each with the hint shown when a reader puts it in a blank.
+decoys:
+  machine: Machines gather the evidence, but they don't sign the conclusion.
+  annual: Audits are often annual. Which activity runs far more often?
+correct: That's the note. Audits are rare and human; monitoring is frequent and automatic.
+# Shown when a word from the text is in the wrong blank.
+hint: Both words are right there in the bank. Try swapping them.

@@ -1,6 +1,7 @@
 import { defineCollection, reference } from 'astro:content';
 import { glob, file } from 'astro/loaders';
 import { z } from 'astro/zod';
+import { withAdventDays } from './advent/loader';
 
 // Files starting with "_" (the templates) are not content.
 const md = (dir: string) => glob({ pattern: ['**/*.md', '!**/_*.md'], base: `./src/content/${dir}` });
@@ -32,7 +33,8 @@ const blog = defineCollection({
 });
 
 const guides = defineCollection({
-  loader: md('guides'),
+  // Plus the Advent of Gemara days, one YAML directory each in src/content/advent/ (src/advent/loader.ts).
+  loader: withAdventDays(md('guides')),
   schema: z.object({
     ...common,
     layout: z.enum(['how-to', 'explainer']),
@@ -51,6 +53,8 @@ const guides = defineCollection({
     days: z.number().int().positive().optional(),
     series: z.string().optional(),
     day: z.number().int().positive().optional(),
+    // An Advent of Gemara day's story, cut at each challenge; set by the loader, not written by hand.
+    story: z.array(z.object({ html: z.string(), challenge: z.any().optional() })).optional(),
   }),
 });
 

@@ -1,0 +1,25 @@
+---
+const { id, question, options, answer } = Astro.props;
+---
+
+<div class="prose" set:html={question} />
+<fieldset class="mt-4 grid gap-2" data-answer={String(answer)}>
+  <legend class="sr-only">Pick one</legend>
+  {
+    (options as string[]).map((html, i) => (
+      <label class="advent-choice">
+        <input type="radio" name={id} value={String(i)} required />
+        <span set:html={html} />
+      </label>
+    ))
+  }
+</fieldset>
+
+<script>
+  import { registerCheck } from '../../client';
+
+  registerCheck('multiple-choice', (form) => {
+    const picked = form.querySelector<HTMLInputElement>('input:checked')!.value;
+    return picked === form.querySelector('fieldset')!.dataset.answer || `option-${picked}`;
+  });
+</script>

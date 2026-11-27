@@ -1,0 +1,104 @@
+---
+// An Advent of Gemara day: story sections and challenges in order. With JavaScript, everything after
+// the first unsolved challenge stays hidden; solved challenge ids are kept in localStorage per day.
+// Without JavaScript, the whole story shows.
+import type { AstroComponentFactory } from 'astro/runtime/server/index.js';
+
+interface Props {
+  id: string;
+  story: { html: string; challenge?: { id: string; type: string; correct: string; hints: Record<string, string> } }[];
+}
+
+const { id, story } = Astro.props;
+const renderers = import.meta.glob<{ default: AstroComponentFactory }>('./challenges/*/Challenge.astro', { eager: true });
+const rendererFor = (type: string) => {
+  const r = renderers[`./challenges/${type}/Challenge.astro`];
+  if (!r) throw new Error(`Challenge type ${type} has no src/advent/challenges/${type}/Challenge.astro`);
+  return r.default;
+};
+---
+
+<div data-advent-story={id}>
+  {
+    story.map(({ html, challenge }) => {
+      const Renderer = challenge && rendererFor(challenge.type);
+      return (
+        <>
+          {html.trim() && <div data-step class="prose prose-lg" set:html={html} />}
+          {challenge && Renderer && (
+            <form
+              data-step
+              data-challenge={challenge.id}
+              data-type={challenge.type}
+              class="my-10 max-w-3xl rounded-xl border border-[var(--color-line)] bg-[var(--color-bg)] p-6"
+            >
+              <p class="eyebrow mb-4">Challenge</p>
+              <Renderer {...challenge} />
+              <button type="submit" class="btn btn-primary mt-6 disabled:opacity-50">Check</button>
+              <div aria-live="polite" class="prose mt-4">
+                <div data-correct hidden set:html={challenge.correct} />
+                {Object.entries(challenge.hints).map(([key, hint]) => <div data-hint={key} hidden set:html={hint} />)}
+              </div>
+            </form>
+          )}
+        </>
+      );
+    })
+  }
+  {story.some((s) => s.challenge) && (<button type="button" data-reset class="mt-10 text-sm text-[var(--color-muted)] underline hover:text-[var(--color-fg)]">
+    Start this day over
+  </button>)}
+</div>
+
+<script>
+  import { checks } from './client';
+
+  const story = document.querySelector<HTMLElement>('[data-advent-story]');
+  if (story) {
+    const key = `advent-of-gemara:${story.dataset.adventStory}`;
+    const solved = new Set<string>();
+    try {
+      for (const id of JSON.parse(localStorage.getItem(key) ?? '[]')) solved.add(id);
+    } catch {} // No storage (private window, blocked): progress just isn't remembered.
+    const save = () => {
+      try {
+        localStorage.setItem(key, JSON.stringify([...solved]));
+      } catch {}
+    };
+
+    const steps = [...story.querySelectorAll<HTMLElement>('[data-step]')];
+    const reveal = () => {
+      let open = true;
+      for (const step of steps) {
+        step.hidden = !open;
+        if (step instanceof HTMLFormElement && !solved.has(step.dataset.challenge!)) open = false;
+      }
+    };
+    const show = (form: HTMLFormElement, which: string) =>
+      form.querySelectorAll<HTMLElement>('[data-correct], [data-hint]').forEach((el) => (el.hidden = !el.matches(which)));
+    const markSolved = (form: HTMLFormElement) => {
+      show(form, '[data-correct]');
+      form.querySelectorAll<HTMLInputElement>('input, select, button').forEach((el) => (el.disabled = true));
+    };
+
+    for (const form of story.querySelectorAll<HTMLFormElement>('form[data-challenge]')) {
+      if (solved.has(form.dataset.challenge!)) markSolved(form);
+      form.addEventListener('submit', (event) => {
+        event.preventDefault();
+        const result = checks.get(form.dataset.type!)!(form);
+        if (result !== true) return show(form, `[data-hint="${result}"]`);
+        solved.add(form.dataset.challenge!);
+        save();
+        markSolved(form);
+        reveal();
+      });
+    }
+    story.querySelector('[data-reset]')?.addEventListener('click', () => {
+      try {
+        localStorage.removeItem(key);
+      } catch {}
+      location.reload();
+    });
+    reveal();
+  }
+</script>

@@ -1,0 +1,44 @@
+# A worked example of the Advent of Gemara day format, and a template to copy for a new day.
+# It is a draft, so it shows only on the dev server: /guides/advent-of-gemara-example
+#
+# A day is a directory: src/content/advent/day-N/ is served at /guides/advent-of-gemara-day-N.
+# This file holds the page's details and the whole story, as Markdown. A line
+#   {% include "file.yaml" %}
+# puts the challenge in that file at that point. Readers see the story up to the first challenge;
+# each right answer reveals the story up to the next one. Every other .yaml file in the directory
+# is a challenge, and each must be included exactly once.
+#
+# Challenge types (src/advent/challenges/): true-false, multiple-choice, word-scramble and
+# fill-in-the-blank. See this directory's challenge files for each one's fields.
+title: "Practice Day: The Missing Log"
+description: "Find out who wrote the audit log on the workshop floor."
+# Releases at 05:00 UTC on this date. A day-N directory must carry the date the calendar shows for day N.
+date: 2026-11-27
+draft: true
+authors: [revanite]
+tags: [gemara]
+image: /images/advent-of-gemara.png
+
+story: |
+  The elves found an audit log on the workshop floor. Nobody remembers writing it.
+
+  Before we chase the author, let's agree on what an audit is.
+
+  {% include "audit-is-human.yaml" %}
+
+  An audit ends with a human opinion. A machine can gather evidence, but someone has to sign
+  their name to the conclusion.
+
+  The log has six sections. One of them is stamped with the organization's seal.
+
+  {% include "which-section.yaml" %}
+
+  The policy names who should have reviewed the results. One word keeps turning up in the margins.
+
+  {% include "scramble-evaluation.yaml" %}
+
+  Before they file it away, the elves write a note on the cover.
+
+  {% include "fill-the-note.yaml" %}
+
+  That's the trail. Tomorrow we follow it back to the guidance it all started from.

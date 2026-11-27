@@ -1,0 +1,8 @@
+type: word-scramble
+clue: The checks run against each requirement, and what they found.
+answer: evaluation
+# Optional: the letters as shown. Left out, they're shown in alphabetical order.
+scrambled: TALVENOUIA
+correct: Evaluation results, the evidence at the heart of the log.
+# Wrong guesses can't be listed, so there's one hint for all of them.
+hint: Ten letters. You'll find them in the section on whether the rules were followed.

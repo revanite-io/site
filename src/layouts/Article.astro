@@ -5,6 +5,7 @@ import { Icon } from 'astro-icon/components';
 import Layout from './Layout.astro';
 import EntryList from '../components/EntryList.astro';
 import SeriesCalendar from '../components/SeriesCalendar.astro';
+import Story from '../advent/Story.astro';
 import { formatDate, formatMonth, getGuides, hasTag, type Guide, type Post } from '../lib/content';
 
 interface Props {
@@ -13,12 +14,13 @@ interface Props {
 
 const { entry } = Astro.props;
 const { data } = entry;
-const { Content } = await render(entry);
 const authors = await getEntries(data.authors);
 const topics = await getEntries(data.tags);
 
 const isPost = entry.collection === 'blog';
 const guide = entry.collection === 'guides' ? entry.data : undefined;
+// An Advent of Gemara day has a story instead of a Markdown body.
+const { Content } = guide?.story ? { Content: undefined } : await render(entry);
 const published = entry.data.date;
 const updated = entry.data.updated;
 
@@ -139,9 +141,17 @@ if (guide && guide.faq.length > 0) {
           )
         }
 
-        <div class:list={['prose prose-lg', guide?.layout === 'how-to' && 'how-to']}>
-          <Content />
-        </div>
+        {
+          guide?.story ? (
+            <Story id={entry.id} story={guide.story} />
+          ) : (
+            Content && (
+              <div class:list={['prose prose-lg', guide?.layout === 'how-to' && 'how-to']}>
+                <Content />
+              </div>
+            )
+          )
+        }
 
         {guide?.days && <SeriesCalendar intro={entry as Guide} />}
 

@@ -1,0 +1,35 @@
+---
+const { parts, words, decoys } = Astro.props as { parts: string[]; words: string[]; decoys: Record<string, string> };
+---
+
+<p class="text-xs font-semibold uppercase tracking-widest text-[var(--color-subtle)]">Word bank</p>
+<ul class="mt-2 flex flex-wrap gap-2" data-decoys={JSON.stringify(decoys)}>
+  {words.map((word) => <li class="advent-tile">{word}</li>)}
+</ul>
+<p class="mt-5 text-lg leading-loose">
+  {
+    parts.map((part, i) =>
+      i % 2 ? (
+        <select data-answer={part} required aria-label={`Blank ${(i + 1) / 2}`} class="advent-blank">
+          <option value="">______</option>
+          {words.map((word) => <option>{word}</option>)}
+        </select>
+      ) : (
+        part
+      ),
+    )
+  }
+</p>
+
+<script>
+  import { registerCheck } from '../../client';
+
+  registerCheck('fill-in-the-blank', (form) => {
+    const decoys: Record<string, string> = JSON.parse(form.querySelector<HTMLElement>('[data-decoys]')!.dataset.decoys!);
+    for (const blank of form.querySelectorAll('select')) {
+      // The first wrong blank decides the hint: a decoy's own, or the general one.
+      if (blank.value !== blank.dataset.answer) return decoys[blank.value] ?? 'hint';
+    }
+    return true;
+  });
+</script>

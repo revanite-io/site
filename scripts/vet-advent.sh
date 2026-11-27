@@ -9,12 +9,17 @@ tmp=$(mktemp -d)
 trap 'rm -rf "$tmp"' EXIT
 
 # Code blocks opened as ```yaml vet=#Definition (or json) must pass `cue vet` against that definition.
-for md in src/content/guides/advent-of-gemara*.md; do
-  awk -v tmp="$tmp" -v name="$(basename "$md" .md)" '
+# Days are src/content/advent/<name>/index.yaml, whose `story: |` block is indented two spaces.
+for src in src/content/guides/advent-of-gemara*.md src/content/advent/*/index.yaml; do
+  [[ -f $src ]] || continue
+  if [[ $src == *.md ]]; then name=$(basename "$src" .md) indent=0
+  else name=advent-of-gemara-$(basename "$(dirname "$src")") indent=2; fi
+  awk -v tmp="$tmp" -v name="$name" -v indent="$indent" '
+    { $0 = substr($0, indent + 1) }
     /^```(yaml|json) vet=#/ { n++; split($0, a, " vet="); f = tmp "/" name "-" n "." substr(a[1], 4); print a[2] "\t" f >> (tmp "/blocks.tsv"); body = 1; next }
     body && /^```/ { body = 0; next }
     body { print > f }
-  ' "$md"
+  ' "$src"
 done
 if [[ -f "$tmp/blocks.tsv" ]]; then
   while IFS=$'\t' read -r def file; do

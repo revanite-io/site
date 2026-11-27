@@ -1,0 +1,13 @@
+type: multiple-choice
+question: Which section answers "How did we tailor this guidance and deliver it to our people?"
+# Shown in this order. The right option says `answer: true`; every other option has its own hint.
+options:
+  - text: The guidance the activity is beholden to
+    hint: That's the standards and frameworks themselves. Which section is about your own organization?
+  - text: The organizational policy
+    answer: true
+  - text: The evaluation results
+    hint: Those say whether the rules were followed, not how they were handed out.
+  - text: The enforcement activities
+    hint: Those come after a finding. Look for the section written before anything was checked.
+correct: Yes. The policy says when requirements apply, what exceptions exist, and who's involved.

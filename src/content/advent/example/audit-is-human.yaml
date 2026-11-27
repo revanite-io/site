@@ -1,0 +1,6 @@
+type: true-false
+statement: An audit can be completed without any human involvement.
+answer: false
+correct: Right. Fully automated checking is continuous compliance monitoring. An audit always ends with a human's recommendation.
+# Shown after a wrong answer; the reader can try again as often as they like.
+hint: Think about who signs the conclusion at the end of an audit.

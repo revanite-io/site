@@ -1,0 +1,26 @@
+---
+const { id, clue, answer, scrambled } = Astro.props;
+---
+
+<div class="prose" set:html={clue} />
+<p class="mt-4 flex flex-wrap gap-1.5" aria-label={`Scrambled letters: ${scrambled}`}>
+  {[...(scrambled as string)].map((ch) => <span class="advent-tile" aria-hidden="true">{ch}</span>)}
+</p>
+<label class="mt-4 block text-sm font-semibold" for={`${id}-answer`}>Unscrambled</label>
+<input
+  id={`${id}-answer`}
+  data-answer={answer}
+  required
+  autocomplete="off"
+  spellcheck="false"
+  class="mt-2 w-full max-w-sm rounded-lg border border-[var(--color-line-strong)] bg-[var(--color-bg)] px-3 py-2"
+/>
+
+<script>
+  import { registerCheck } from '../../client';
+
+  registerCheck('word-scramble', (form) => {
+    const input = form.querySelector<HTMLInputElement>('input[data-answer]')!;
+    return input.value.toLowerCase().replace(/\s/g, '') === input.dataset.answer || 'hint';
+  });
+</script>

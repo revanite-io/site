@@ -1,0 +1,25 @@
+---
+const { id, statement, answer } = Astro.props;
+---
+
+<div class="prose" set:html={statement} />
+<fieldset class="mt-4 flex gap-3" data-answer={String(answer)}>
+  <legend class="sr-only">True or false?</legend>
+  {
+    ['true', 'false'].map((value) => (
+      <label class="advent-choice">
+        <input type="radio" name={id} value={value} required />
+        {value === 'true' ? 'True' : 'False'}
+      </label>
+    ))
+  }
+</fieldset>
+
+<script>
+  import { registerCheck } from '../../client';
+
+  registerCheck('true-false', (form) => {
+    const picked = form.querySelector<HTMLInputElement>('input:checked')!.value;
+    return picked === form.querySelector('fieldset')!.dataset.answer || 'hint';
+  });
+</script>

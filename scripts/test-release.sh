@@ -21,7 +21,11 @@ check() {
       no "unreleased $page is linked or in the sitemap"
     fi
     # A locked day's title must not appear anywhere in the build: pages, metadata, feeds.
-    local title; title=$(sed -n 's/^title: *"\(.*\)"$/\1/p' "src/content/guides/$page.md")
+    # Advent days live in src/content/advent/day-N/index.yaml; other guides are Markdown.
+    local src=src/content/guides/$page.md
+    [[ -f $src ]] || src=src/content/advent/${page#advent-of-gemara-}/index.yaml
+    local title; title=$(sed -n 's/^title: *"\(.*\)"$/\1/p' "$src")
+    [[ -n $title ]] || no "no quoted title: in $src"
     if (( ! want )) && grep -rqF "$title" dist; then no "locked $page title \"$title\" is in the build"; fi
   done
   # The intro and its calendar are live the whole time; locked days show only their date.
