@@ -6,7 +6,7 @@ eyebrow: false
 date: 2026-11-27
 authors: [revanite]
 tags: [gemara]
-image: /images/advent-of-gemara-og.png
+image: /images/advent-of-gemara-og-v2.png
 ---
 
 Very few people are aware of the tenuous financial ties that exist between software producers, product manufacturers, nation states, and the North Pole.

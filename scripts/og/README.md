@@ -1,9 +1,9 @@
 # Social preview images
 
-Each `<name>.svg` here renders to `public/images/<name>.png` (1200×630):
+Each `<name>.svg` here renders to `public/images/<name>.png` at 2400×1260 (twice the 1200×630 Open Graph size, so text stays sharp after LinkedIn recompresses it):
 
 ```
-scripts/og/render.sh advent-of-gemara-og
+scripts/og/render.sh advent-of-gemara-og-v2
 ```
 
 The SVGs embed their font as a WOFF2 subset, so they render the same on any machine with Chrome. To change the text, re-subset the font with the new glyphs and replace the base64 in the `@font-face`:
