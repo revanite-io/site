@@ -5,6 +5,7 @@
 import type { z } from 'astro/zod';
 import * as fillInTheBlank from './fill-in-the-blank/schema';
 import * as multipleChoice from './multiple-choice/schema';
+import * as sentenceScramble from './sentence-scramble/schema';
 import * as trueFalse from './true-false/schema';
 import * as wordScramble from './word-scramble/schema';
 
@@ -30,5 +31,6 @@ export const challengeTypes: Record<string, ChallengeType> = {
   'true-false': trueFalse,
   'multiple-choice': multipleChoice,
   'word-scramble': wordScramble,
+  'sentence-scramble': sentenceScramble,
   'fill-in-the-blank': fillInTheBlank,
 };

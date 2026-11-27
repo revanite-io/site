@@ -179,6 +179,17 @@
     background: var(--color-surface);
     font-weight: 600;
   }
+  button.advent-tile {
+    cursor: pointer;
+  }
+  .advent-tile[data-tile]:disabled {
+    opacity: 0.3;
+    cursor: default;
+  }
+  .advent-line {
+    padding-bottom: 0.5rem;
+    border-bottom: 1px solid var(--color-line-strong);
+  }
   .advent-blank {
     margin-inline: 0.25rem;
     padding: 0.125rem 0.375rem;

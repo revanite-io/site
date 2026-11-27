@@ -1,0 +1,8 @@
+type: sentence-scramble
+prompt: Put the elves' motto back in order.
+answer: Every audit ends with a human opinion.
+# Optional: the word order shown. Left out, the words are shuffled at build time, the same on every build.
+# Checking ignores case and the final punctuation.
+correct: That's the motto, stitched over the workshop door.
+# Wrong orders can't be listed, so there's one hint for all of them.
+hint: Start with the word that means "each one", and end with what the reviewer gives.

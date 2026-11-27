@@ -1,0 +1,47 @@
+---
+const { prompt, answer, tiles } = Astro.props as { prompt: string; answer: string; tiles: string[] };
+---
+
+<div class="prose" set:html={prompt} />
+<p class="mt-2 text-sm text-[var(--color-muted)]">Tap the words in order. Tap a placed word to take it back.</p>
+<p class="mt-4 text-xs font-semibold uppercase tracking-widest text-[var(--color-subtle)]">Your sentence</p>
+<div data-line={answer} aria-live="polite" class="advent-line mt-2 flex min-h-12 flex-wrap gap-2"></div>
+<p class="mt-4 text-xs font-semibold uppercase tracking-widest text-[var(--color-subtle)]">Words</p>
+<div data-bank class="mt-2 flex flex-wrap gap-2">
+  {tiles.map((word, i) => <button type="button" data-tile={i} class="advent-tile">{word}</button>)}
+</div>
+
+<script>
+  import { registerCheck } from '../../client';
+  // The same rule as schema.ts: ignore case and the final punctuation.
+  const normalize = (s: string) => s.trim().replace(/[.!?,;:]+$/, '').replace(/\s+/g, ' ').toLowerCase();
+
+  // Tap a word to add it to the sentence; tap a placed word to put it back.
+  for (const form of document.querySelectorAll<HTMLFormElement>('form[data-type="sentence-scramble"]')) {
+    const line = form.querySelector<HTMLElement>('[data-line]')!;
+    form.querySelector('[data-bank]')!.addEventListener('click', (event) => {
+      const tile = (event.target as HTMLElement).closest<HTMLButtonElement>('[data-tile]');
+      if (!tile || tile.disabled) return;
+      const placed = document.createElement('button');
+      placed.type = 'button';
+      placed.className = 'advent-tile';
+      placed.textContent = tile.textContent;
+      placed.dataset.from = tile.dataset.tile;
+      placed.setAttribute('aria-label', `Remove ${tile.textContent}`);
+      line.append(placed);
+      tile.disabled = true;
+    });
+    line.addEventListener('click', (event) => {
+      const placed = (event.target as HTMLElement).closest<HTMLButtonElement>('[data-from]');
+      if (!placed || placed.disabled) return;
+      form.querySelector<HTMLButtonElement>(`[data-tile="${placed.dataset.from}"]`)!.disabled = false;
+      placed.remove();
+    });
+  }
+
+  registerCheck('sentence-scramble', (form) => {
+    const line = form.querySelector<HTMLElement>('[data-line]')!;
+    const built = [...line.querySelectorAll('[data-from]')].map((b) => b.textContent).join(' ');
+    return normalize(built) === line.dataset.line || 'hint';
+  });
+</script>

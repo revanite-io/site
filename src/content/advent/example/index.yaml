@@ -8,8 +8,8 @@
 # each right answer reveals the story up to the next one. Every other .yaml file in the directory
 # is a challenge, and each must be included exactly once.
 #
-# Challenge types (src/advent/challenges/): true-false, multiple-choice, word-scramble and
-# fill-in-the-blank. See this directory's challenge files for each one's fields.
+# Challenge types (src/advent/challenges/): true-false, multiple-choice, word-scramble,
+# sentence-scramble and fill-in-the-blank. See this directory's challenge files for each one's fields.
 title: "Practice Day: The Missing Log"
 description: "Find out who wrote the audit log on the workshop floor."
 # Releases at 05:00 UTC on this date. A day-N directory must carry the date the calendar shows for day N.
@@ -40,5 +40,9 @@ story: |
   Before they file it away, the elves write a note on the cover.
 
   {% include "fill-the-note.yaml" %}
+
+  Over the workshop door hangs the elves' motto, but the wind has blown the words out of order.
+
+  {% include "build-the-motto.yaml" %}
 
   That's the trail. Tomorrow we follow it back to the guidance it all started from.
