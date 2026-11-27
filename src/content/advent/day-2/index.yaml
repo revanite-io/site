@@ -3,7 +3,7 @@ description: "The spec is written in CUE: definitions, required and optional fie
 date: 2026-12-02
 authors: [revanite]
 tags: [gemara, osps-baseline]
-image: /images/advent-of-gemara.png
+image: /images/advent-of-gemara-og-v2.png
 
 story: |
   ## Lesson

@@ -343,16 +343,17 @@
   color: var(--advent-green);
 }
 
-/* The 24 days as closed doors, dates only. */
-[data-page='advent-of-gemara'] .prose .advent-doors {
+/* The 24 days as doors (src/components/SeriesCalendar.astro): locked ones show only their date. */
+[data-page='advent-of-gemara'] .advent-doors {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(4.75rem, 1fr));
   gap: 0.75rem;
+  max-width: 44rem;
   margin: 1.5rem 0 0;
   padding: 0;
   list-style: none;
 }
-[data-page='advent-of-gemara'] .prose .advent-doors li {
+[data-page='advent-of-gemara'] .advent-doors li {
   position: relative;
   display: grid;
   place-content: center;
@@ -368,18 +369,18 @@
   text-align: center;
   color: var(--color-fg);
 }
-[data-page='advent-of-gemara'] .prose .advent-doors li:nth-child(even) {
+[data-page='advent-of-gemara'] .advent-doors li:nth-child(even) {
   background: color-mix(in oklab, var(--advent-green) 6%, var(--color-bg));
 }
 /* The door's frame and its knob. */
-[data-page='advent-of-gemara'] .prose .advent-doors li::before {
+[data-page='advent-of-gemara'] .advent-doors li::before {
   content: '';
   position: absolute;
   inset: 0.3rem;
   border: 1px dashed var(--color-line-strong);
   border-radius: 0.3rem;
 }
-[data-page='advent-of-gemara'] .prose .advent-doors li::after {
+[data-page='advent-of-gemara'] .advent-doors li::after {
   content: '';
   position: absolute;
   top: 50%;
@@ -389,7 +390,7 @@
   border-radius: 50%;
   background: var(--advent-gold);
 }
-[data-page='advent-of-gemara'] .prose .advent-doors span {
+[data-page='advent-of-gemara'] .advent-doors span {
   display: block;
   margin-bottom: 0.3rem;
   font-family: var(--font-sans);
@@ -398,4 +399,25 @@
   letter-spacing: 0.14em;
   text-transform: uppercase;
   color: var(--color-subtle);
+}
+/* A released day: the door is open and links to the day. */
+[data-page='advent-of-gemara'] .advent-doors li[data-open] {
+  border-color: var(--advent-gold);
+  background: color-mix(in oklab, var(--advent-gold) 14%, var(--color-bg));
+}
+[data-page='advent-of-gemara'] .advent-doors li[data-open]::after {
+  display: none;
+}
+[data-page='advent-of-gemara'] .advent-doors li[data-open] a {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  display: grid;
+  place-content: center;
+  border-radius: 0.5rem;
+  color: inherit;
+  text-decoration: none;
+}
+[data-page='advent-of-gemara'] .advent-doors li[data-open] a:hover {
+  background: color-mix(in oklab, var(--advent-gold) 12%, transparent);
 }

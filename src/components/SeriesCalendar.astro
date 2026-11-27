@@ -1,8 +1,7 @@
 ---
-// The day-by-day list on a series intro: released days link to their guide by title; locked days
-// show only their date, so nothing about them is in the built page until they release.
-import { Icon } from 'astro-icon/components';
-import { formatDate, getAllGuides, href, type Guide } from '../lib/content';
+// The series calendar: one door per day. A released day's door opens onto its guide; a locked door
+// shows only its date, so nothing about that day is in the built page until it releases.
+import { getAllGuides, href, type Guide } from '../lib/content';
 
 interface Props {
   intro: Guide;
@@ -12,29 +11,30 @@ const { intro } = Astro.props;
 const released = (await getAllGuides()).filter((g) => g.data.series === intro.id);
 // Day 1 falls on the intro's `start:` date.
 const dateOf = (n: number) => new Date(intro.data.start!.valueOf() + (n - 1) * 86_400_000);
+const month = (d: Date) => d.toLocaleDateString('en-US', { month: 'short', timeZone: 'UTC' });
+const longDate = (d: Date) => d.toLocaleDateString('en-US', { month: 'long', day: 'numeric', timeZone: 'UTC' });
+const open = released.length;
 ---
 
-<section class="mt-16 max-w-3xl">
-  <h2 class="text-2xl font-semibold tracking-tight">The days</h2>
-  <ol class="mt-6 divide-y divide-[var(--color-line)] border-y border-[var(--color-line)]">
-    {
-      Array.from({ length: intro.data.days! }, (_, i) => {
-        const page = released.find((g) => g.data.day === i + 1);
-        return (
-          <li class="flex flex-wrap items-baseline gap-x-4 gap-y-1 py-3" data-locked={page ? undefined : ''}>
-            <span class="w-28 shrink-0 text-xs font-semibold uppercase tracking-widest text-[var(--color-subtle)]">
-              {formatDate(dateOf(i + 1)).replace(/, \d{4}$/, '')}
-            </span>
-            {page ? (
-              <a href={href(page)} class="font-semibold text-[var(--color-accent)] hover:underline">
-                {page.data.title}
-              </a>
-            ) : (
-              <Icon name="lucide:lock" class="h-4 w-4 self-center text-[var(--color-subtle)]" aria-label="Locked" role="img" />
-            )}
-          </li>
-        );
-      })
-    }
-  </ol>
-</section>
+<ol
+  class="advent-doors"
+  aria-label={`The ${intro.data.days} days, ${open ? `${open} open` : 'all locked'}`}
+>
+  {
+    Array.from({ length: intro.data.days! }, (_, i) => {
+      const date = dateOf(i + 1);
+      const page = released.find((g) => g.data.day === i + 1);
+      return page ? (
+        <li data-open>
+          <a href={href(page)} aria-label={`${longDate(date)}: ${page.data.title}`} title={page.data.title}>
+            <span>{month(date)}</span> {date.getUTCDate()}
+          </a>
+        </li>
+      ) : (
+        <li data-locked>
+          <span>{month(date)}</span> {date.getUTCDate()}
+        </li>
+      );
+    })
+  }
+</ol>

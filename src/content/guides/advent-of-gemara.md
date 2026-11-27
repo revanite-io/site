@@ -7,6 +7,10 @@ date: 2026-11-27
 authors: [revanite]
 tags: [gemara]
 image: /images/advent-of-gemara-og-v2.png
+# The series page: the calendar of doors renders below this text. Each day stays locked until it
+# releases at 05:00 UTC on its date.
+start: 2026-12-01
+days: 24
 ---
 
 Very few people are aware of the tenuous financial ties that exist between software producers, product manufacturers, nation states, and the North Pole.
@@ -74,30 +78,3 @@ With that final derisive comment, Santa waved his hand through the air. In a bur
 ---
 
 <p class="advent-unlock">Day 1 unlocks on December 1.</p>
-
-<ol class="advent-doors" aria-label="The 24 days, December 1 to 24, all locked">
-<li><span>Dec</span> 1</li>
-<li><span>Dec</span> 2</li>
-<li><span>Dec</span> 3</li>
-<li><span>Dec</span> 4</li>
-<li><span>Dec</span> 5</li>
-<li><span>Dec</span> 6</li>
-<li><span>Dec</span> 7</li>
-<li><span>Dec</span> 8</li>
-<li><span>Dec</span> 9</li>
-<li><span>Dec</span> 10</li>
-<li><span>Dec</span> 11</li>
-<li><span>Dec</span> 12</li>
-<li><span>Dec</span> 13</li>
-<li><span>Dec</span> 14</li>
-<li><span>Dec</span> 15</li>
-<li><span>Dec</span> 16</li>
-<li><span>Dec</span> 17</li>
-<li><span>Dec</span> 18</li>
-<li><span>Dec</span> 19</li>
-<li><span>Dec</span> 20</li>
-<li><span>Dec</span> 21</li>
-<li><span>Dec</span> 22</li>
-<li><span>Dec</span> 23</li>
-<li><span>Dec</span> 24</li>
-</ol>
