@@ -2,4 +2,4 @@ type: true-false
 statement: The value of Gemara depends on what tools you build internal to your organization.
 answer: false
 correct: False. There are several tools in the Gemara system that can be reused or extended to accelerate your adoption of automated governance.
-hint: Do you really have to build everything yourself? Think about the SDKs in your notes.
+hint: Users don't need to build everything themselves. Many open source catalogs are designed to be imported and the Privateer toolkit exists to share Gemara-compatible evaluators.
