@@ -28,7 +28,8 @@ const series = guide?.series ? (await getGuides()).find((g) => g.id === guide.se
 const section = isPost
   ? { href: '/blog', label: 'All posts' }
   : series
-    ? { href: `/guides/${series.id}`, label: series.data.title }
+    ? // The series name only: "Advent of Gemara", not "Advent of Gemara: November 27th".
+      { href: `/guides/${series.id}`, label: series.data.title.split(':')[0] }
     : { href: '/guides', label: 'All guides' };
 const eyebrow = isPost ? 'Blog' : guide?.eyebrow === false ? undefined : guide?.layout === 'how-to' ? 'How-to guide' : 'Explainer';
 
