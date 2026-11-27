@@ -1,0 +1,52 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="1200" height="630" viewBox="0 0 1200 630">
+  <!-- Social preview for /guides/advent-of-gemara. Render with: scripts/og/render.sh advent-of-gemara-og
+       Colours match the teaser page (the advent block in src/styles/global.css). The font is Source Serif 4
+       (60pt SemiBold, SIL OFL 1.1), subset to the glyphs of "Advent of Gemara" and embedded as WOFF2 with
+       fontTools.subset (text "Advent of Gemara", flavor woff2). Changing the title means re-subsetting.
+       XML comments cannot contain a double hyphen, so the command is in scripts/og/README.md. -->
+  <style>
+    @font-face {
+      font-family: 'Source Serif 4 OG';
+      font-weight: 600;
+      src: url(data:font/woff2;base64,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) format('woff2');
+    }
+    .title { font-family: 'Source Serif 4 OG', serif; font-weight: 600; font-size: 124px; letter-spacing: -1px; fill: #1d5b45; }
+  </style>
+  <defs>
+    <!-- Light snowfall, as behind the page header. -->
+    <pattern id="snow-a" width="37" height="37" patternUnits="userSpaceOnUse">
+      <circle cx="4" cy="4" r="1.6" fill="#e2dccf" />
+    </pattern>
+    <pattern id="snow-b" width="61" height="61" patternUnits="userSpaceOnUse" x="19" y="23">
+      <circle cx="4" cy="4" r="2.2" fill="#ebe6dc" />
+    </pattern>
+    <radialGradient id="glow" cx="0.5" cy="0.45" r="0.6">
+      <stop offset="0" stop-color="#faf7f1" stop-opacity="1" />
+      <stop offset="0.55" stop-color="#faf7f1" stop-opacity="0.85" />
+      <stop offset="1" stop-color="#faf7f1" stop-opacity="0" />
+    </radialGradient>
+    <!-- Four-point star, radius 1. -->
+    <path id="star" d="M0,-1 Q0,0 1,0 Q0,0 0,1 Q0,0 -1,0 Q0,0 0,-1 Z" />
+  </defs>
+
+  <rect width="1200" height="630" fill="#f6f2ea" />
+  <rect width="1200" height="630" fill="url(#snow-a)" />
+  <rect width="1200" height="630" fill="url(#snow-b)" />
+  <rect width="1200" height="630" fill="url(#glow)" />
+  <rect width="1200" height="14" fill="#9b1c2c" />
+  <rect y="616" width="1200" height="14" fill="#9b1c2c" />
+
+  <g fill="#a8823a">
+    <use xlink:href="#star" transform="translate(552 212) scale(11)" />
+    <use xlink:href="#star" transform="translate(600 206) scale(19)" />
+    <use xlink:href="#star" transform="translate(648 212) scale(11)" />
+  </g>
+
+  <text class="title" x="600" y="362" text-anchor="middle">Advent of Gemara</text>
+
+  <g fill="#a8823a">
+    <rect x="470" y="421" width="110" height="2" />
+    <rect x="620" y="421" width="110" height="2" />
+    <use xlink:href="#star" transform="translate(600 422) scale(8)" fill="#9b1c2c" />
+  </g>
+</svg>
