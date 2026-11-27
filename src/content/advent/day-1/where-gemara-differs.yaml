@@ -1,0 +1,16 @@
+type: multiple-choice
+question: The difference lays in your approach to…
+options:
+  - text: Guidance
+    hint: Guidance matters, but it isn’t where your notes say to start the conversation.
+  - text: Controls
+    hint: Controls matter, but it isn’t where your notes say to start the conversation.
+  - text: Policy
+    hint: Everyone wants to start with policy. Your notes say policy is a compilation document that needs other pieces first.
+  - text: Evaluation
+    hint: Your notes say audits are different from evaluations. Which one comes first in your reminders?
+  - text: Enforcement
+    hint: Enforcement matters, but it isn’t where your notes say to start the conversation.
+  - text: Audits
+    answer: true
+correct: Audits. Start with the end in mind.

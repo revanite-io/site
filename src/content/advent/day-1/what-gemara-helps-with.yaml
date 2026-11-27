@@ -1,0 +1,12 @@
+type: multiple-choice
+question: What does Gemara help with?
+options:
+  - text: Cross-team interoperability
+    hint: True, but that’s not all of it. Check your notes again.
+  - text: Tooling orchestration for security and compliance
+    hint: True, but that’s not all of it. Check your notes again.
+  - text: History and traceability in regulated contexts
+    hint: True, but that’s not all of it. Check your notes again.
+  - text: All of the above
+    answer: true
+correct: All three. Your notes list them in one line.

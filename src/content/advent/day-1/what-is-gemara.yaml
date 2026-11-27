@@ -1,0 +1,5 @@
+type: sentence-scramble
+prompt: What is Gemara?
+answer: Gemara is a philosophical model for automated risk assessment with a technical ecosystem that includes document specifications and software development kits (SDKs).
+correct: That’s the one-line version from your notes.
+hint: Your *Back to Basics* notes have this almost word for word. Start with “Gemara is a philosophical model…”

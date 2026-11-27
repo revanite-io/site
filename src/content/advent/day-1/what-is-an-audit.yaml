@@ -1,0 +1,7 @@
+type: fill-in-the-blank
+text: "Audits contain a look back on every {policy} and how well it was {implemented} for a particular situation or deployment. It represents someone’s comprehensive {opinion} based on multiple {data points}. Contents of an Audit depend on the {organizational policy}."
+decoys:
+  evaluation: Audits are different from evaluations. An evaluation is one of the data points an audit draws on.
+  checklist: An audit is more than a checklist. It’s a person’s judgement.
+correct: That’s an audit. You’re ready for the first conversation.
+hint: Every word in the bank is used once, except the decoys. Check your reminders for the first conversation.

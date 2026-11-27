@@ -6,41 +6,112 @@ tags: [gemara]
 image: /images/advent-of-gemara-og-v2.png
 
 story: |
-  ## Lesson
+  Unfortunately, you’re in completely over your head. Historians decades from now may ponder your motivation: What led this individual to say ‘yes’ to everything Santa asked, regardless of their actual knowledge on the topic?
 
-  To kick things off, we’re gonna dissect an audit log and trace each part back to the document type that supplies it.
+  Was it delusions of grandeur? A prime example of the Dunning-Kreuger effect? Malicious deception? Overwhelmed panic?
 
-  This is just one of two elements in Layer 7 of the Gemara model: Audit & Continuous Monitoring.
+  Regardless, it’s up to you now to determine how the story ends. Will you rise to meet the occasion, or slink away into obscurity? Will you mail it in and hope that the elfs solve the problem on their own, or will you push yourself to truly understand the topic and rise to the occasion?
 
-  The latter was shortened for its place in the title of Layer 7, and may be better known as Continuous Compliance Monitoring (CCM).
+  Before your thoughts could spiral further, something up ahead draws your attention. For the past hour all you’ve seen is a red glow refracting from the biting cold mist sweeping past you. Only the light from your phone screen gave any variation to the mind-numbing repetition.
 
-  Both parts of Layer 7 are about demonstrating compliance “to those who weren’t involved with the sensitive activity.” In other words, it’s just about proving that rules were followed.
+  But now you see something new: a white light in the foggy darkness.
 
-  There are two key differences between Audit and CCM: (1) frequency and (2) machine vs human inspection.
+  You can’t make out any more quite yet, so you return to your notes.
 
-  * CCM is intended to be compiled on a rapid basis, oftentimes daily, hourly, and some technologies even enable sub-minute or sub-second evaluations. By contrast, an Audit might take place annually, quarterly, or monthly… and rarely more often than that.
-  * Audits are performed less often because they are significantly more comprehensive, culminating in a human opinion. CCM, on the other hand, is about compiling the logs of findings and any relevant enforcement activities into a data store that can be connected to alerting systems, referenced by decision makers, or included in audits.
+  *Back to Basics* was written in title font at the top.
 
-  Currently there is not a specification written to support CCM using Gemara (contributions welcome!), and the specification for audit logs is experimental while additional feedback is gathered. That being said, understanding the general shape of an audit will help contextualize everything else we’ll do in this Advent of Gemara.
+  > Gemara is a philosophical model for automated risk assessment. The technical ecosystem includes document specifications and software development kits (SDKs).
 
-  Many terms may feel unfamiliar at first, because Gemara strives for neutral language that is unambiguous whenever possible. You can use the [Gemara Lexicon](https://gemara.openssf.org/model/02-definitions.html) to find definitions for most terms. Try it out now by looking up the definition of “sensitive activity,” which is the centerpoint of everything we do in this ecosystem.
+  It was old news, but you needed it memorized to distill it for the client.
 
-  The following questions are answered in an audit, primarily through links to other artifacts.
+  > Helps with cross-team interoperability, tooling orchestration for security and compliance, and history/traceability in regulated contexts.
 
-  **What guidance is this activity beholden to?** This might include standards, regulations, frameworks, or best practices.
+  Beneath that you had a scattering of reminders for the first conversation.
 
-  **How were those guidance elements translated to each specific activity category covered by this audit?** For example, a physical security audit might cover how personnel behave on the job - and there may be different requirements for each role. Or in a software security audit, we might have different rules for the different technologies that comprise the product.
+  > Make sure they understand audits. Different from evaluations, audits contain a look back on every policy and how well it was implemented. Represent someone’s comprehensive opinion based on multiple data points. Contents depend on the organizational policy. Scoped for a particular situation or deployment.
 
-  **How did we tailor and deliver the aforementioned information to relevant people?** This is the organizational policy that outlines when certain requirements are in effect, what exceptions might be prepared, and who needs to be involved in the process. This might also include additional requirements about what type of tooling is acceptable when gathering evidence.
+  Your notes link to the Gemara website for more of the philosophy behind audits.
 
-  **How do we know whether the rules were followed?** These are the evaluation results: the checks run against each requirement, and what they found.
+  > Everyone wants to start with policy. That’s good, but remind them that policy is also a compilation document. Needs pre-defined risks, guidance, and requirements before the policy is complete.
 
-  **What steps were taken to mitigate observed risk?** In the event that findings were reported during an evaluation, this details the enforcement activities which took place.
+  The sleigh flies rapidly closer to the light, descending now. The clustered light begin to take the shape of a small settlement — a rainbow of colored lights scattered across the ice. It was a small city, with hundreds of buildings in a tight, colorful mosaic.
 
-  **What is the opinion of the human reviewing all of the compiled information?** This includes a final recommendation to the relevant parties, based on all of the evidence gathered.
+  Surrounding the little city were countless little black pockmarks against the white surface. At first it was difficult to discern any more from your distance, but the realization dawned as the sleigh flew straight toward the ground. They were tunnels. And you were headed straight for one.
 
-  ## Challenge
+  The sleigh bumped down, terrifyingly snug but oddly smooth as its speed was dampened by a sparkling magic aura that seemed to emanate from the ice itself.
 
-  <!-- Placeholder: the Day 1 challenge is still being designed (REV-1398). -->
+  Then suddenly, some of those sparkles coalesced into a familiar humanoid shape: Santa Clause.
 
-  The Day 1 challenge is coming soon.
+  “Ho, ho, ho! Merry Christmas!” Santa said with a jolly grin and a pat on his plump belly. “Well, it will be a merry Christmas — with your help!”
+
+  You greet Santa for the second time in your life… twice more than any human is likely to ever have the chance.
+
+  The red coated man scattered a bag of carrots onto the floor of the ice tunnel, then turned his back and gestured for you to follow.
+
+  “Listen, friend,” Santa leaned down to whisper conspiratorily. “You’ve seen some clues tonight already, but I’ll make you a deal. If you set up a system that keeps me out of trouble with the Europeans, I promise to tell you how we pull off the Christmas distribution. And I’ll make you another promise — it’ll blow your stockings off. It’s nothing like you’ve seen in any of the fairy tails or christmas movies.”
+
+  Santa led you through a long tunnel, chatting the entire way about nothing at all. Candies and toys seemed to be his favorite topics, with no surprises in the conversation at all. You were surprised, however, to notice that the tunnel you walked along had ample signage with magical lighting, marking directions at every fork. The forks always led backwards, though. Your path was leading toward the center of something massive.
+
+  After what felt like forever in the disorienting white tunnel, your path ended at a large steel door with the number one painted in red from top to bottom.
+
+  Santa opened the door and you were met with a wave of heat.
+
+  “The magic down here keeps the ice from melting,” Santa smiled, “But elfs work best in the comfort of a warm workshop.”
+
+  Impossible daylight filled the hall, coming in from windows that couldn’t have led outdoors. Hardwood floors lined the hall, leading to a broad staircase with steps sized just a bit too large for an elf and a bit too small for Santa’s large stature. Apparently human-sized steps are the perfect middle-ground for the two antonymous creatures.
+
+  Just before reaching the top of the staircase, you notice something odd. A pair of rails ran along each wall of the staircase, just above the floor.
+
+  “Here we are,” Santa gestured to a door on the right wall.
+
+  The long hallway continued further, toward a massive set of double doors, with the strange rails continuing along the wall. Even the door had the strange rail cutting through it. Halfway up the door were stenciled letters painted in both red and green this time.
+
+  “Manager’s Office”
+
+  Santa swung the door open and walked in with an air of bravado.
+
+  “Sandy, your new colleague has arrived!”
+
+  The creature that sat in front of you was humanoid, but like Santa… not quite human. He wasn’t like any dwarf you’d ever met, and he didn’t look like a child or anything that a human actor could accurately portray. It was like like staring at an alien and a familiar face at the same time — the uncanny valley brought to life in front of you.
+
+  Standing up from behind the desk, he reached barely four feet nine inches, carrying a slender, lithe frame of perhaps a hundred pounds. His entire body looked like an impossible evolutionary collage: long, wiry limbs and hunched, primitive shoulders that belonged to an ape from three million years ago.
+
+  His smile looked foreign, impossible to discern.
+
+  “I’m not going to say I’m excited to have you here, but I’m optimistic that we’ll get this all sorted out in a jiffy.”
+
+  He extended a hand across the desk. His impossibly long arms carried hands and fingers that looked nearly identical to your own. As you shake his hand, you feel like it might pop right off… like a man’s hand on a child’s wrist.
+
+  Beneath a heavy, shelf-like brow ridge sat a shockingly compact head, with a head the size of a grapefruit. His nose was flat and his jaw jutted forward with primal strength, yet when he offered a faint half-smile, he revealed a neat row of small, human-shaped teeth.
+
+  Santa read your expression… or your aura… or whatever it is he does to know what humans are thinking.
+
+  “Elfs have a powerful bone and muscle density,” he said with a laugh. “Don’t worry about a thing. The closest elf relative your people have discovered is the Homo naledi. A very rare and seclusive species; they’ve never gotten on well with humans.”
+
+  “My name is Sandabütz,” the elf said.
+
+  “But you can call him Sandy,” Santa interjected.
+
+  “My name comes from a nickname my father received when he used to play tricks on townsfolk perhaps one or two hundred years before I was born. The sand sprite, they called him.”
+
+  “Humans depend on their big brains,” Santa laughed, “And elfs rely on the Otherworld. I have both! Best of both worlds.”
+
+  Sandabütz shook his head at Santa’s comment. “So tell me about this solution of yours. I believe it’s called Gemara, if Santa’s notes were accurate.”
+
+  {% include "what-is-gemara.yaml" %}
+
+  Sandabütz nods. “Okay, that’s a simple explanation. What’s it good for?”
+
+  {% include "what-gemara-helps-with.yaml" %}
+
+  Sandabütz looks incredulous. “So is this just a bunch of file formats? Sounds like we’re still going to have to do all the work.”
+
+  {% include "tools-you-build.yaml" %}
+
+  Sandabütz tilts his head. “So what’s the difference between Gemara and the same old building and buying that people in the security and compliance have always done?”
+
+  {% include "where-gemara-differs.yaml" %}
+
+  Sandabütz scratches his chin, thoughtfully. “Okay, what do I need to understand about Audits?”
+
+  {% include "what-is-an-audit.yaml" %}
