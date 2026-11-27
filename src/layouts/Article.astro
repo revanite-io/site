@@ -69,7 +69,7 @@ if (guide && guide.faq.length > 0) {
 ---
 
 <Layout title={`${data.title} — Revanite`} description={data.description} image={data.image} type="article" jsonLd={jsonLd}>
-  <article class="border-t border-[var(--color-line)]">
+  <article data-page={entry.id} class="border-t border-[var(--color-line)]">
     <div class="container-page py-16 md:py-20">
       <a
         href={section.href}

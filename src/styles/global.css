@@ -242,3 +242,117 @@
     border-radius: 0.5rem;
   }
 }
+
+/* Advent of Gemara teaser (/guides/advent-of-gemara): a first pass at Christmas styling, on that
+   page only (Article sets data-page to the entry id). CSS only; colours sit on the site tokens.
+   Unlayered so it beats the typography plugin's utilities layer. */
+[data-page='advent-of-gemara'] {
+  --advent-red: #9b1c2c;
+  --advent-green: #1d5b45;
+  --advent-gold: #a8823a;
+  border-top: 3px solid var(--advent-red);
+  /* A warm glow and a light fall of snow behind the header. */
+  background-color: var(--color-bg);
+  background-image:
+    radial-gradient(ellipse at 90% 0%, color-mix(in oklab, var(--advent-gold) 16%, transparent), transparent 55%),
+    radial-gradient(circle, var(--color-line-strong) 1px, transparent 1.6px),
+    radial-gradient(circle, var(--color-line) 1.6px, transparent 2.2px);
+  background-size: auto, 37px 37px, 61px 61px;
+  background-position: 0 0, 0 0, 19px 23px;
+}
+:root[data-theme='dark'] [data-page='advent-of-gemara'] {
+  --advent-red: oklch(0.7 0.15 22);
+  --advent-green: oklch(0.74 0.1 160);
+  --advent-gold: oklch(0.8 0.11 85);
+}
+[data-page='advent-of-gemara'] .eyebrow {
+  color: var(--advent-red);
+}
+
+/* The story reads as a story: serif text and a drop cap. */
+[data-page='advent-of-gemara'] .prose p {
+  font-family: var(--font-display);
+}
+[data-page='advent-of-gemara'] .prose > p:first-child::first-letter {
+  float: left;
+  margin: 0.06em 0.1em 0 0;
+  font-size: 3.6em;
+  font-weight: 600;
+  line-height: 0.85;
+  color: var(--advent-red);
+}
+[data-page='advent-of-gemara'] .prose hr {
+  height: auto;
+  overflow: visible;
+  border: 0;
+  margin-block: 3.5rem 2.5rem;
+  text-align: center;
+}
+[data-page='advent-of-gemara'] .prose hr::after {
+  content: '✦ ✦ ✦';
+  content: '✦ ✦ ✦' / '';
+  letter-spacing: 0.75em;
+  color: var(--advent-gold);
+}
+[data-page='advent-of-gemara'] .prose .advent-unlock {
+  font-family: var(--font-sans);
+  font-weight: 600;
+  color: var(--advent-green);
+}
+
+/* The 24 days as closed doors, dates only. */
+[data-page='advent-of-gemara'] .prose .advent-doors {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(4.75rem, 1fr));
+  gap: 0.75rem;
+  margin: 1.5rem 0 0;
+  padding: 0;
+  list-style: none;
+}
+[data-page='advent-of-gemara'] .prose .advent-doors li {
+  position: relative;
+  display: grid;
+  place-content: center;
+  aspect-ratio: 4 / 5;
+  margin: 0;
+  padding: 0;
+  border: 1px solid var(--color-line-strong);
+  border-radius: 0.5rem;
+  background: color-mix(in oklab, var(--advent-red) 6%, var(--color-bg));
+  font-family: var(--font-display);
+  font-size: 1.6rem;
+  line-height: 1;
+  text-align: center;
+  color: var(--color-fg);
+}
+[data-page='advent-of-gemara'] .prose .advent-doors li:nth-child(even) {
+  background: color-mix(in oklab, var(--advent-green) 6%, var(--color-bg));
+}
+/* The door's frame and its knob. */
+[data-page='advent-of-gemara'] .prose .advent-doors li::before {
+  content: '';
+  position: absolute;
+  inset: 0.3rem;
+  border: 1px dashed var(--color-line-strong);
+  border-radius: 0.3rem;
+}
+[data-page='advent-of-gemara'] .prose .advent-doors li::after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  right: 0.5rem;
+  width: 0.3rem;
+  height: 0.3rem;
+  border-radius: 50%;
+  background: var(--advent-gold);
+}
+[data-page='advent-of-gemara'] .prose .advent-doors span {
+  display: block;
+  margin-bottom: 0.3rem;
+  font-family: var(--font-sans);
+  font-size: 0.65rem;
+  font-weight: 600;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--color-subtle);
+}
