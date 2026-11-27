@@ -2,14 +2,14 @@
 // The day-by-day list on a series intro: released days link to their guide by title; locked days
 // show only their date, so nothing about them is in the built page until they release.
 import { Icon } from 'astro-icon/components';
-import { formatDate, getGuides, href, type Guide } from '../lib/content';
+import { formatDate, getAllGuides, href, type Guide } from '../lib/content';
 
 interface Props {
   intro: Guide;
 }
 
 const { intro } = Astro.props;
-const released = (await getGuides()).filter((g) => g.data.series === intro.id);
+const released = (await getAllGuides()).filter((g) => g.data.series === intro.id);
 // Day 1 falls on the intro's `start:` date.
 const dateOf = (n: number) => new Date(intro.data.start!.valueOf() + (n - 1) * 86_400_000);
 ---

@@ -5,6 +5,7 @@
   "type": "module",
   "scripts": {
     "dev": "astro dev",
+    "dev:preview": "PREVIEW=1 astro dev",
     "build": "astro build",
     "preview": "astro preview",
     "test:build": "./test-build.sh"

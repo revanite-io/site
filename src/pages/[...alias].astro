@@ -2,12 +2,12 @@
 // Redirect pages for every `aliases:` entry in blog, guide and topic frontmatter,
 // so a moved or renamed page keeps its old URL working on any static host.
 import { getCollection } from 'astro:content';
-import { getGuides, getPosts, href } from '../lib/content';
+import { getAllGuides, getPosts, href } from '../lib/content';
 
 export async function getStaticPaths() {
   const targets = [
     ...(await getPosts()).map((e) => ({ to: href(e), aliases: e.data.aliases })),
-    ...(await getGuides()).map((e) => ({ to: href(e), aliases: e.data.aliases })),
+    ...(await getAllGuides()).map((e) => ({ to: href(e), aliases: e.data.aliases })),
     ...(await getCollection('topics')).map((t) => ({ to: `/topics/${t.id}`, aliases: t.data.aliases })),
   ];
   const seen = new Map<string, string>();

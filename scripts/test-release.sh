@@ -16,6 +16,8 @@ check() {
   for page in "$@"; do
     if [[ $page == -- ]]; then want=0; continue; fi
     if (( want )) && [[ ! -f dist/guides/$page.html ]]; then no "$page missing"; fi
+    # Days are reached only through the series calendar, never listed as guides of their own.
+    if grep -qE "/guides/$page[\"<]" dist/index.html dist/guides.html dist/topics/*.html; then no "$page is listed as a guide"; fi
     if (( ! want )) && [[ -f dist/guides/$page.html ]]; then no "$page built before its release"; fi
     if (( ! want )) && grep -qE "/guides/$page[\"<]" dist/sitemap-0.xml dist/index.html dist/guides.html dist/guides/advent-of-gemara.html; then
       no "unreleased $page is linked or in the sitemap"
@@ -34,6 +36,7 @@ check() {
   (( n == locked )) || no "$n locked days on the calendar, expected $locked"
   if [[ $banner == on ]]; then grep -qF "$BANNER" dist/index.html || no "homepage banner missing"
   else ! grep -qF "$BANNER" dist/index.html || no "homepage banner still up"; fi
+  ./scripts/check-links.sh > /dev/null || no "broken internal links (run scripts/check-links.sh)"
   echo "checked $when"
 }
 
