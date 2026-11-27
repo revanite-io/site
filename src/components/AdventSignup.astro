@@ -1,0 +1,90 @@
+---
+// The Advent of Gemara daily reminder sign-up: one line and an email box, posted to HubSpot's form
+// submission API (our own markup and styles; no HubSpot script, iframe or tracking cookie).
+// When the block nears the viewport it fetches the form's definition from HubSpot, the request
+// HubSpot's own embed makes first. If that fails (ad blocker, offline, form deleted), or the form has
+// gained consent text or a captcha this block can't show, the block hides. Without JavaScript it never
+// shows. Left out of the build entirely when the form config in src/lib/hubspot.ts is incomplete.
+import { hubspotEnabled, hubspotForm } from '../lib/hubspot';
+
+const { portalId, formId, region } = hubspotForm;
+---
+
+{
+  hubspotEnabled && (
+    <aside
+      class="advent-signup"
+      aria-labelledby="advent-signup-line"
+      data-hubspot-signup
+      data-definition={`https://forms-${region}.hsforms.com/embed/v3/form/${portalId}/${formId}/json`}
+      data-submit={`https://api-${region}.hsforms.com/submissions/v3/integration/submit/${portalId}/${formId}`}
+    >
+      <noscript>
+        <style>{'.advent-signup { display: none !important; }'}</style>
+      </noscript>
+      <p id="advent-signup-line" class="advent-signup-line">Get a reminder each morning when a new day unlocks.</p>
+      <form class="advent-signup-form">
+        <label for="advent-signup-email" class="sr-only">Email address</label>
+        <input
+          id="advent-signup-email"
+          name="email"
+          type="email"
+          required
+          autocomplete="email"
+          placeholder="you@example.com"
+        />
+        <button type="submit" class="btn btn-primary">Remind me</button>
+      </form>
+      <p class="advent-signup-status" role="status" />
+    </aside>
+  )
+}
+
+<script>
+  const block = document.querySelector<HTMLElement>('[data-hubspot-signup]');
+  if (block) {
+    const form = block.querySelector('form')!;
+    const email = form.querySelector('input')!;
+    const status = block.querySelector('[role="status"]')!;
+    const hide = () => (block.hidden = true);
+
+    new IntersectionObserver(
+      async (entries, observer) => {
+        if (!entries.some((e) => e.isIntersecting)) return;
+        observer.disconnect();
+        try {
+          const res = await fetch(block.dataset.definition!);
+          const { form: def } = await res.json();
+          // shortcut: fails closed on consent or captcha rather than rendering them; build them in if the form ever needs them.
+          if (!res.ok || def.captchaEnabled || def.metaData.some((m: { name: string }) => m.name === 'legalConsentOptions')) hide();
+        } catch {
+          hide();
+        }
+      },
+      { rootMargin: '600px 0px' },
+    ).observe(block);
+
+    form.addEventListener('submit', async (event) => {
+      event.preventDefault();
+      const button = form.querySelector('button')!;
+      button.disabled = true;
+      status.textContent = '';
+      try {
+        const res = await fetch(block.dataset.submit!, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({
+            fields: [{ objectTypeId: '0-1', name: 'email', value: email.value.trim() }],
+            context: { pageUri: location.href, pageName: document.title },
+          }),
+        });
+        if (!res.ok) throw new Error(String(res.status));
+        form.hidden = true;
+        status.textContent = "You're on the list: look for an email each morning when a new day unlocks.";
+      } catch {
+        button.disabled = false;
+        status.textContent = "That didn't go through. Check the address and try again.";
+      }
+    });
+  }
+</script>

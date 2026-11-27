@@ -36,6 +36,11 @@ check() {
   (( n == locked )) || no "$n locked days on the calendar, expected $locked"
   if [[ $banner == on ]]; then grep -qF "$BANNER" dist/index.html || no "homepage banner missing"
   else ! grep -qF "$BANNER" dist/index.html || no "homepage banner still up"; fi
+  # The reminder sign-up (src/components/AdventSignup.astro) is on the intro and every released day.
+  for page in advent-of-gemara "$@"; do
+    [[ $page == -- ]] && break
+    grep -qF hsforms.com "dist/guides/$page.html" || no "$page has no reminder sign-up"
+  done
   ./scripts/check-links.sh > /dev/null || no "broken internal links (run scripts/check-links.sh)"
   echo "checked $when"
 }
@@ -50,5 +55,11 @@ check 2026-12-24T05:00Z on 22 advent-of-gemara-day-1 advent-of-gemara-day-2
 check 2026-12-25T05:00Z on 22 advent-of-gemara-day-1 advent-of-gemara-day-2
 check 2027-01-02T04:59Z on 22 advent-of-gemara-day-1 advent-of-gemara-day-2
 check 2027-01-02T05:00Z off 22 advent-of-gemara-day-1 advent-of-gemara-day-2
+
+# With the HubSpot form config empty (src/lib/hubspot.ts), no sign-up block reaches the build.
+when='empty HubSpot config'
+HUBSPOT_FORM_ID= BUILD_DATE=2026-12-02T05:00Z npm run build > /dev/null
+if grep -rlF hsforms dist; then no "sign-up block rendered with no form ID"; fi
+echo "checked $when"
 
 exit $fail

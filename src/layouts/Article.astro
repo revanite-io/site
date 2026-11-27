@@ -5,6 +5,7 @@ import { Icon } from 'astro-icon/components';
 import Layout from './Layout.astro';
 import EntryList from '../components/EntryList.astro';
 import SeriesCalendar from '../components/SeriesCalendar.astro';
+import AdventSignup from '../components/AdventSignup.astro';
 import Story from '../advent/Story.astro';
 import { formatDate, formatMonth, getGuides, hasTag, type Guide, type Post } from '../lib/content';
 
@@ -155,6 +156,9 @@ if (guide && guide.faq.length > 0) {
         }
 
         {guide?.days && <SeriesCalendar intro={entry as Guide} />}
+
+        {/* The reminder sign-up: below the series calendar, and at the end of each day. */}
+        {(guide?.days || guide?.series) && <AdventSignup />}
 
         {
           guide && guide.faq.length > 0 && (

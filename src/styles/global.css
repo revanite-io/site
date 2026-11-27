@@ -292,10 +292,13 @@
 /* Advent of Gemara teaser (/guides/advent-of-gemara): a first pass at Christmas styling, on that
    page only (Article sets data-page to the entry id). CSS only; colours sit on the site tokens.
    Unlayered so it beats the typography plugin's utilities layer. */
-[data-page='advent-of-gemara'] {
+[data-page='advent-of-gemara'],
+.advent-signup {
   --advent-red: #9b1c2c;
   --advent-green: #1d5b45;
   --advent-gold: #a8823a;
+}
+[data-page='advent-of-gemara'] {
   border-top: 3px solid var(--advent-red);
   /* A warm glow and a light fall of snow behind the header. */
   background-color: var(--color-bg);
@@ -306,7 +309,8 @@
   background-size: auto, 37px 37px, 61px 61px;
   background-position: 0 0, 0 0, 19px 23px;
 }
-:root[data-theme='dark'] [data-page='advent-of-gemara'] {
+:root[data-theme='dark'] [data-page='advent-of-gemara'],
+:root[data-theme='dark'] .advent-signup {
   --advent-red: oklch(0.7 0.15 22);
   --advent-green: oklch(0.74 0.1 160);
   --advent-gold: oklch(0.8 0.11 85);
@@ -420,4 +424,58 @@
 }
 [data-page='advent-of-gemara'] .advent-doors li[data-open] a:hover {
   background: color-mix(in oklab, var(--advent-gold) 12%, transparent);
+}
+
+/* The daily reminder sign-up (src/components/AdventSignup.astro), on the series page and every day page. */
+.advent-signup {
+  max-width: 44rem;
+  margin-top: 3.5rem;
+  padding: 1.5rem;
+  border: 1px solid var(--advent-gold);
+  border-top: 3px solid var(--advent-red);
+  border-radius: 0.75rem;
+  background: color-mix(in oklab, var(--advent-gold) 8%, var(--color-bg));
+}
+.advent-signup-line {
+  font-family: var(--font-display);
+  font-size: 1.35rem;
+  font-weight: 600;
+  line-height: 1.35;
+  color: var(--color-fg);
+}
+.advent-signup-line::before {
+  content: '✦ ';
+  content: '✦ ' / '';
+  color: var(--advent-gold);
+}
+.advent-signup-form {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  margin-top: 1rem;
+}
+.advent-signup-form input {
+  flex: 1 1 16rem;
+  min-width: 0;
+  padding: 0.6rem 0.9rem;
+  border: 1px solid var(--color-line-strong);
+  border-radius: 0.5rem;
+  background: var(--color-surface);
+  color: var(--color-fg);
+}
+.advent-signup-form input:focus-visible {
+  outline: 2px solid var(--advent-green);
+  outline-offset: 1px;
+}
+.advent-signup-form .btn-primary {
+  background: var(--advent-red);
+  color: var(--color-bg);
+}
+.advent-signup-form .btn-primary:hover {
+  background: color-mix(in oklab, var(--advent-red) 85%, var(--color-fg));
+}
+.advent-signup-status:not(:empty) {
+  margin-top: 0.75rem;
+  font-weight: 600;
+  color: var(--advent-green);
 }
