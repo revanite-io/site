@@ -2,6 +2,7 @@
 title: "Advent of Gemara: November 27th"
 description: "Advent of Gemara starts December 1: 24 days of workshops and puzzles. Before the first door opens, a story from the North Pole."
 layout: explainer
+eyebrow: false
 date: 2026-11-27
 authors: [revanite]
 tags: [gemara]

@@ -265,9 +265,6 @@
   --advent-green: oklch(0.74 0.1 160);
   --advent-gold: oklch(0.8 0.11 85);
 }
-[data-page='advent-of-gemara'] .eyebrow {
-  color: var(--advent-red);
-}
 
 /* The story reads as a story: serif text and a drop cap. */
 [data-page='advent-of-gemara'] .prose p {

@@ -22,7 +22,7 @@ const published = entry.data.date;
 const updated = entry.data.updated;
 
 const section = isPost ? { href: '/blog', label: 'All posts' } : { href: '/guides', label: 'All guides' };
-const eyebrow = isPost ? 'Blog' : guide?.layout === 'how-to' ? 'How-to guide' : 'Explainer';
+const eyebrow = isPost ? 'Blog' : guide?.eyebrow === false ? undefined : guide?.layout === 'how-to' ? 'How-to guide' : 'Explainer';
 
 // Explainers end with the how-to guides that share a topic.
 const related =
@@ -80,7 +80,7 @@ if (guide && guide.faq.length > 0) {
       </a>
 
       <header class="mt-10 max-w-3xl">
-        <p class="eyebrow">{eyebrow}</p>
+        {eyebrow && <p class="eyebrow">{eyebrow}</p>}
         <h1 class="mt-4 text-balance text-4xl font-semibold tracking-tight sm:text-5xl">{data.title}</h1>
         <p class="mt-6 text-pretty text-xl leading-relaxed text-[var(--color-muted)]">{data.description}</p>
         <p class="mt-6 text-sm text-[var(--color-subtle)]">

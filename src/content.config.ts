@@ -36,6 +36,8 @@ const guides = defineCollection({
   schema: z.object({
     ...common,
     layout: z.enum(['how-to', 'explainer']),
+    // false hides the label above the title ("How-to guide" / "Explainer").
+    eyebrow: z.boolean().default(true),
     date,
     updated: z.coerce.date().optional(),
     weight: z.number().optional(),
